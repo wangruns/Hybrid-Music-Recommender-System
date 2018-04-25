@@ -30,7 +30,7 @@
 	      </div>
 	      <div class="modal-body">
 	       
-	        <form class="form-signin">
+	        <form class="form-signin" id="login-submit">
 		      <!-- <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
 		      <h1 class="h3 mb-3 font-weight-normal">请输入帐号和密码</h1>
 		      <label for="inputEmail" class="sr-only">Email address</label>
@@ -47,7 +47,7 @@
 		          <input type="checkbox" value="remember-me"> 记住我
 		        </label>
 		      </div>
-			  <button class="btn btn-lg btn-primary btn-block" type="button" id="login-submit">登录</button>
+			  <button class="btn btn-lg btn-primary btn-block" type="submit" >登录</button>
 		      <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p> -->
 		    </form>
 	        
@@ -59,6 +59,52 @@
 	    </div>
 	  </div>
 	</div><!-- 登录Modal End-->
+	
+	<!-- 注册Modal -->
+	<div class="modal fade" id="SignUpModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalCenterTitleSignUp">注册</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	       
+	        <form class="form-signin">
+		      <!-- <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+		      <h1 class="h3 mb-3 font-weight-normal">请输入帐号和密码</h1>
+		      <label for="inputEmail" class="sr-only">Email address</label>
+		      <input type="email" id="inputEmail" class="form-control" placeholder="邮箱帐号" required autofocus>
+		     
+		      
+		      <button type="button"  class="btn btn-md btn-primary">获取验证码</button>
+		      <input type="text" class="form-control" placeholder="验证码" required> 
+		      
+
+		      
+		      <label for="inputPassword" class="sr-only">Password</label>
+		      <input type="password" id="inputPassword" class="form-control" placeholder="密码" required>
+		      <label for="inputPasswordAgain" class="sr-only">Password Again</label>
+		      <input type="password" id="inputPasswordAgain" class="form-control" placeholder="再输入一次密码" required>
+		      
+		      <div class="collapse" id="collapse-error-hint">
+					<div class="card card-body">两次密码不一致</div>
+			 	</div>
+		      
+			  <button class="btn btn-lg btn-primary btn-block" type="button" id="register-submit">注册</button>
+		      <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p> -->
+		    </form>
+	        
+	      </div>
+	      <!-- <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+	        <button type="button" class="btn btn-primary">确定</button>
+	      </div> -->
+	    </div>
+	  </div>
+	</div><!-- 注册Modal End-->
 
     <header>
       <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
@@ -82,22 +128,20 @@
             <input class="form-control mr-sm-2" type="text" placeholder="音乐" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
           </form>
-          <ul class="navbar-nav mr-auto" id="login-btn">
+          <ul class="navbar-nav mr-auto">
 				<li class="nav-item dropdown" <c:if test="${sessionScope.user!=null}">style="display:none;"</c:if>><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button"  aria-haspopup="true"
 					aria-expanded="false" data-toggle="modal" data-target="#SignInModalCenter"> 登录 </a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#"> 注册 	</a>
-
-					</div></li>
-				<%-- <li class="nav-item " <c:if test="${sessionScope.user==null}">style="display:none;"</c:if>><a
-					class="nav-link " href="${pageContext.request.contextPath}/logout.do"
-					role="button"> 退出 </a>
-					</li> --%>
+					</li> 
+				<li class="nav-item dropdown" <c:if test="${sessionScope.user!=null}">style="display:none;"</c:if>><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button"  aria-haspopup="true"
+					aria-expanded="false" data-toggle="modal" data-target="#SignUpModalCenter"> 注册 </a>
+					</li> 
 			</ul>
 			
-			 <ul class="navbar-nav" id="logout-btn">
+			 <ul class="navbar-nav">
 				<li class="nav-item dropdown" <c:if test="${sessionScope.user==null}">style="display:none;"</c:if>><a
 					class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/logout.do" 
 					role="button"> 退出 </a>
@@ -208,7 +252,8 @@
 	<script>
 	$(function(){
 		
-		$("#login-submit").click(function(){
+		//处理登录
+		$("#login-submit").submit(function(){
 			var email=$("#inputEmail").val();
 	        var password=$("#inputPassword").val();
 	        var data = {        
@@ -231,6 +276,7 @@
 	                }
 	            }
 	        });
+	        return false;
 	        
 		});
 		
