@@ -8,9 +8,14 @@
 		password=#{password}
 	</select>
 	
-	<select id="isEmailExisted" parameterType="String"
-		resultType="String">
-		select email from user where email=#{email}
+	<select id="selectByEmail" parameterType="String"
+		resultType="top.wangruns.trackstacking.model.User">
+		select * from user where email=#{email}
 	</select>
+	
+	<insert id="insert" parameterType="top.wangruns.trackstacking.model.User">
+		insert into user(email,password) select #{email},#{password}
+		from dual where #{email} not in (select email from user)
+	</insert>
 
 </mapper>

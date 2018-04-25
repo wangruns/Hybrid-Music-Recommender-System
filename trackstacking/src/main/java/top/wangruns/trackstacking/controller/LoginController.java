@@ -24,12 +24,12 @@ public class LoginController {
 	@PostMapping(value = "login.do",produces = "text/html;charset=UTF-8")
 	@ResponseBody
 	public String login(HttpServletRequest request, User u) {
-		User user=userService.findLogin(u);
-		if(user==null) {
+		boolean isUserExisted=userService.findLogin(u);
+		if(!isUserExisted) {
 			return ReturnMsg.msg(HttpServletResponse.SC_BAD_REQUEST, "帐号或密码错误");
 		}else {
-			request.getSession().setAttribute("user", user);
-			return ReturnMsg.msg(HttpServletResponse.SC_OK, JSONObject.toJSON(user).toString());
+			request.getSession().setAttribute("user", u);
+			return ReturnMsg.msg(HttpServletResponse.SC_OK, JSONObject.toJSON(u).toString());
 		}
 	}
 	

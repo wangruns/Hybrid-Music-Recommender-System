@@ -4,6 +4,15 @@ public class User {
 	private int userId;
 	private String email;
 	private String password;
+	private String validateCode;
+
+	public String getValidateCode() {
+		return validateCode;
+	}
+
+	public void setValidateCode(String validateCode) {
+		this.validateCode = validateCode;
+	}
 
 	public String getPassword() {
 		return password;

@@ -16,18 +16,31 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 
-	public User findLogin(User u) {
-		User user = userDao.findLogin(u);
-		return user;
+	public boolean findLogin(User u) {
+		boolean isUserExisted=false;
+		User result = userDao.selectByUser(u);
+		if(result!=null) {
+			isUserExisted=true;
+		}
+		return isUserExisted;
 	}
 
 	public boolean isEmailExisted(String email) {
 		boolean isEmailExisted=false;
-		String result  = userDao.isEmailExisted(email);
+		User result  = userDao.selectByEmail(email);
 		if(result!=null) {
 			isEmailExisted=true;
 		}
 		return isEmailExisted;
+	}
+
+	public boolean insert(User u) {
+		boolean isInsertSuccessful=false;
+		int affectedRows=userDao.insert(u);
+		if(affectedRows>0) {
+			isInsertSuccessful=true;
+		}
+		return isInsertSuccessful;
 	}
 
 }

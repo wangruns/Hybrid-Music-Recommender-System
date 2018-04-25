@@ -10,16 +10,26 @@ public interface UserService {
 	 * @param u
 	 * 帐号和密码被实例化的User
 	 * @return
-	 * 从数据库中查找的结果
+	 * 若找到返回true
 	 */
-	public User findLogin(User u);
+	public boolean findLogin(User u);
 
 	/**
 	 * 检验指定的邮箱帐号是否存在
 	 * @param email
 	 * 邮箱帐号
 	 * @return
+	 * 若存在返回true
 	 */
 	public boolean isEmailExisted(String email);
+
+	/**
+	 * 向user用户表中插入新的记录
+	 * @param u
+	 * 用户User对象
+	 * @return
+	 * 若插入成功返回true
+	 */
+	public boolean insert(User u);
 
 }
