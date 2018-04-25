@@ -14,4 +14,12 @@ public interface UserService {
 	 */
 	public User findLogin(User u);
 
+	/**
+	 * 检验指定的邮箱帐号是否存在
+	 * @param email
+	 * 邮箱帐号
+	 * @return
+	 */
+	public boolean isEmailExisted(String email);
+
 }

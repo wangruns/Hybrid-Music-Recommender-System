@@ -72,28 +72,23 @@
 	      </div>
 	      <div class="modal-body">
 	       
-	        <form class="form-signin">
+	        <form class="form-signin" id="register-submit">
 		      <!-- <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
 		      <h1 class="h3 mb-3 font-weight-normal">请输入帐号和密码</h1>
 		      <label for="inputEmail" class="sr-only">Email address</label>
-		      <input type="email" id="inputEmail" class="form-control" placeholder="邮箱帐号" required autofocus>
+		      <input type="email" id="inputEmail-signup" class="form-control" placeholder="邮箱帐号" required autofocus>
 		     
-		      
-		      <button type="button"  class="btn btn-md btn-primary">获取验证码</button>
-		      <input type="text" class="form-control" placeholder="验证码" required> 
-		      
-
+		      <button type="button"  class="btn btn-md btn-primary" id="get-validate-code">获取验证码</button>
+		      <input type="number" class="form-control" id="validate-code-signup" placeholder="验证码" required> 
 		      
 		      <label for="inputPassword" class="sr-only">Password</label>
-		      <input type="password" id="inputPassword" class="form-control" placeholder="密码" required>
-		      <label for="inputPasswordAgain" class="sr-only">Password Again</label>
-		      <input type="password" id="inputPasswordAgain" class="form-control" placeholder="再输入一次密码" required>
+		      <input type="password" id="inputPassword-signup" class="form-control" placeholder="密码" required>
 		      
-		      <div class="collapse" id="collapse-error-hint">
+		      <div class="collapse" id="collapse-error-hint-signup">
 					<div class="card card-body">两次密码不一致</div>
 			 	</div>
 		      
-			  <button class="btn btn-lg btn-primary btn-block" type="button" id="register-submit">注册</button>
+			  <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
 		      <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p> -->
 		    </form>
 	        
@@ -252,6 +247,7 @@
 	<script>
 	$(function(){
 		
+		
 		//处理登录
 		$("#login-submit").submit(function(){
 			var email=$("#inputEmail").val();
@@ -279,9 +275,77 @@
 	        return false;
 	        
 		});
+
+	
+	
+	//获取验证码
+	$("#get-validate-code").click(function(){
+		var email=$("#inputEmail-signup").val();
+		if(!checkEmail(email)){
+			$('#collapse-error-hint-signup').html("请输入正确的邮箱");
+        	$('#collapse-error-hint-signup').collapse()
+			return;
+		}
+        var data = {        
+		        "email": email,
+		 };
+        url = "${pageContext.request.contextPath}/getValidateCode.do";
+        $.ajax({
+            type:"POST",
+            url:url,
+            data:data,
+            success:function(data){
+            	var res=JSON.parse(data);
+            	$('#collapse-error-hint-signup').html(res.msg);
+            	$('#collapse-error-hint-signup').collapse()
+            }
+        });
+        
+	  });
+	
+	
+	
+	//处理注册
+	$("#login-submit").submit(function(){
+			var email=$("#inputEmail-signup").val();
+	        var password=$("#inputPassword-signup").val();
+	        var validationCode=$("#validate-code-signup").val();
+	        var data = {        
+			        "email": email,
+			        "password":password,
+			 };
+	        url = "${pageContext.request.contextPath}/register.do";
+	        $.ajax({
+	            type:"POST",
+	            url:url,
+	            data:data,
+	            success:function(data){
+	            	var res=JSON.parse(data);
+	                if(res.status==200){
+	                    $("#SignUpModalCenter").modal('hide');
+	                    location.reload();
+	                }else{
+	                	$('#collapse-error-hint-signup').html(res.msg);
+	                	$('#collapse-error-hint-signup').collapse()
+	                }
+	            }
+	        });
+	        return false;
+	        
+		});
 		
+	
 	});
 	
+	
+	function checkEmail(str){
+		   var re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+		   if(re.test(str)){
+			   return true;
+		   }else{
+			   return false;
+		   }
+	}
 	</script>
   </body>
 </html>

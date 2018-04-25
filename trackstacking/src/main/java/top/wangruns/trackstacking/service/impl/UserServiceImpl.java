@@ -21,4 +21,13 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
+	public boolean isEmailExisted(String email) {
+		boolean isEmailExisted=false;
+		String result  = userDao.isEmailExisted(email);
+		if(result!=null) {
+			isEmailExisted=true;
+		}
+		return isEmailExisted;
+	}
+
 }

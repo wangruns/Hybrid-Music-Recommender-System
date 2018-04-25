@@ -6,6 +6,10 @@ public interface UserDao {
 
 	
 	public User findLogin(User u);
+
+	public int numberOfEmail(String email);
+
+	public String isEmailExisted(String email);
 	
 
 }

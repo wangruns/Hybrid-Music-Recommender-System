@@ -7,5 +7,10 @@
 		select * from user where email=#{email} and
 		password=#{password}
 	</select>
+	
+	<select id="isEmailExisted" parameterType="String"
+		resultType="String">
+		select email from user where email=#{email}
+	</select>
 
 </mapper>
