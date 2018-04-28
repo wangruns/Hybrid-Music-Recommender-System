@@ -212,6 +212,22 @@
                    </c:forEach>
                       
                  </ul>
+                 
+                 <nav aria-label="...">
+  <ul class="pagination">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active">
+      <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
       		
    			 </div><!--中DIV 歌曲部分 End-->
    			 <!-- 后DIV -->
@@ -249,6 +265,7 @@
 							<div class="audio-prev"></div>
 							<div class="audio-play audio-stop"></div>
 							<div class="audio-next"></div>
+							<div class="icon-shuffle icon-loop" id="play-pattern" title="单曲循环"></div>
 							<div class="audio-menu"></div>
 							<div class="audio-volume"></div>
 						</div>

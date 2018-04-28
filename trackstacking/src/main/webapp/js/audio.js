@@ -10,6 +10,8 @@
 		cover : ".audio-cover",
 
 		autoPlay : false,
+		
+		isLoop	: true,
 
 		volume : {
 
@@ -48,6 +50,12 @@
 			play : ".audio-play",
 
 			next : ".audio-next",
+			
+			loop : ".icon-loop",
+			
+			shuffle : ".icon-shuffle",
+			
+			model   : ".audio-model",
 
 			menu : ".audio-menu",
 
@@ -96,6 +104,9 @@
 			play = $(_this.button.play),
 			prev = $(_this.button.prev),
 			next = $(_this.button.next),
+			loop = $(_this.button.loop),
+			model = $(_this.button.model),
+			shuffle = $(_this.button.shuffle),
 			menuBtn = $(_this.button.menu),
 			volume = $(_this.button.volume),
 			menuClose = $(_this.button.menuClose),
@@ -140,15 +151,21 @@
 			thisTime.text(_this.conversion(_this.audio.currentTime));
 
 			_this.audio.onended = function(){
-
-				setTimeout(function(){
-
-					++songEq;
-					songEq = (songEq < _this.song.length) ? songEq : 0;
-					_this.selectMenu(songEq,true);
-				},1000);
+				
+				if(_this.isLoop){
+					//等待1s继续播放
+					setTimeout(function(){
+						_this.selectMenu(songEq,true);
+					},1000);
+				}else{
+					//等待1s随机顺序播放
+					setTimeout(function(){
+						++songEq;
+						songEq = (songEq < _this.song.length) ? songEq : 0;
+						_this.selectMenu(songEq,true);
+					},1000);
+				}
 			}
-
 		}
 
 		var timeAudio;
@@ -370,6 +387,26 @@
 			++songEq;
 			songEq = (songEq < _this.song.length) ? songEq : 0;
 			_this.selectMenu(songEq,true);
+		});
+		
+		/*单曲循环播放-随机顺序播放*/
+		loop.on('click',function(){
+			
+			if(_this.isLoop){
+				//当前是单曲循循环播放，点击后变成顺序随机播放
+				$(_this.button.loop).addClass('icon-shuffle');
+				$(_this.button.loop).removeClass('icon-loop');
+				_this.isLoop=!_this.isLoop;
+				//修改title
+				$("#play-pattern").attr("title","随机顺序");
+			}else{
+				//当前是顺序随机播放，点击后变成单曲循循环播放
+				$(_this.button.shuffle).addClass('icon-loop');
+				$(_this.button.shuffle).removeClass('icon-shuffle');
+				_this.isLoop=!_this.isLoop;
+				//修改title
+				$("#play-pattern").attr("title","单曲循环");
+			}
 		});
 
 		menuClose.on('click',function(){
