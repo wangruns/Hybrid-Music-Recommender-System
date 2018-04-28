@@ -36,8 +36,14 @@ public class TrendingRecController {
 		s2.setArtist("周杰伦2");
 		s2.setLength(120);
 		s2.setName("千里之外2");
-		s2.setType("Rock2");
 		
+		
+		song1.add(s1);
+		song1.add(s2);
+		song1.add(s1);
+		song1.add(s2);
+		song1.add(s1);
+		song1.add(s2);
 		song1.add(s1);
 		song1.add(s2);
 		modelAndView.addObject("song1",song1);

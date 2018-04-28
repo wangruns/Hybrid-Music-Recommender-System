@@ -167,15 +167,17 @@
       	<h1></h1>
       	<h3>热门推荐+${test}</h3>
       	<div class="row content hot-content">
+      	   
+      	    <div class="col-sm-1"></div><!-- 该前DIV为了中DIV居中 -->
       		<!--歌曲部分-->
-            <div class="col-sm-8 h-item">
+            <div class="col-sm-10 h-item"><!-- 中DIV -->
                
       				One of three columns
-      		  <ul class="list-group " >
+      		  <ul class="list-group list-group-flush" >
 				
 				<c:forEach items="${song1}" var="song" varStatus="status">
 				
-                      <li class="list-group-item" title="${song.address}" data-duration="${song.length}" data-name="${song.name}">
+                      <li class="list-group-item list-group-item-light" title="${song.address}" data-duration="${song.length}" data-name="${song.name}">
                       	<!-- 歌曲信息区 -->
                       	<div class="clear text-ellipsis">
                           <span>${status.index+1}.${song.name}</span>
@@ -198,12 +200,10 @@
                       
                     </ul>
       		
-      		                      
-      				
    			 </div><!--歌曲部分 End-->
    			 
-   				
-      	
+   			 <div class="col-sm-1"></div><!-- 该后DIV为了中DIV居中 -->
+   			 
       	</div>
 		
 	  </div><!-- /.container -->
