@@ -208,52 +208,56 @@
 		
 	  </div><!-- /.container -->
 	  
+	  
+	  <!-- 播放器栏 -->
 	  <nav class="fixed-bottom" >
-	 <div class="audio-box">
-		<div class="audio-container">
-			<div class="audio-cover" style="background-image: url(&quot;images/cover.jpg&quot;);"></div>
-			<div class="audio-view">
-				<h3 class="audio-title">the xx</h3>
-				<div class="audio-body">
-					<div class="audio-backs">
-						<div class="audio-this-time">00:35</div>
-						<div class="audio-count-time">01:03</div>
-						<div class="audio-setbacks">
-							<i class="audio-this-setbacks" style="width: 55.0658%;">
-								<span class="audio-backs-btn"></span>
-							</i>
-							<span class="audio-cache-setbacks" style="width: 100%;">
-							</span>
+		 <div class="audio-box">
+			<div class="audio-container">
+				<div class="audio-cover" style="background-image: url(&quot;images/cover.jpg&quot;);"></div>
+				<div class="audio-view">
+					<h3 class="audio-title">the xx</h3>
+					<!-- 进度条 -->
+					<div class="audio-body">
+						<div class="audio-backs">
+							<div class="audio-this-time">00:35</div>
+							<div class="audio-count-time">01:03</div>
+							<div class="audio-setbacks">
+								<i class="audio-this-setbacks" style="width: 55.0658%;">
+									<span class="audio-backs-btn"></span>
+								</i>
+								<span class="audio-cache-setbacks" style="width: 100%;">
+								</span>
+							</div>
 						</div>
 					</div>
+					<!-- 控制选项 -->
+					<div class="audio-btn">
+						<div class="audio-select">
+							<div class="audio-prev"></div>
+							<div class="audio-play audio-stop"></div>
+							<div class="audio-next"></div>
+							<div class="audio-menu"></div>
+							<div class="audio-volume"></div>
+						</div>
+						<div class="audio-set-volume">
+							<div class="volume-box">
+								<i style="height: 80%;"><span></span></i>
+							</div>
+						</div>
+						<!-- 播放列表 -->
+						<div class="audio-list">
+							<div class="audio-list-head">
+								<p>播放列表</p>
+								<span class="menu-close">关闭</span>
+							</div>
+							<ul class="audio-inline"><li><a href="javascript:;">the xx</a></li><li><a href="javascript:;">不该 - 周杰伦、张惠妹</a></li><li><a href="javascript:;">再见 - 邓紫棋</a></li><li><a href="javascript:;">最后一次 - 庄心妍</a></li><li><a href="javascript:;">远走高飞 - 金志文、徐佳莹</a></li><li><a href="javascript:;">极乐净土 - GARNiDELiA</a></li></ul>
+						</div>
+					</div><!-- 控制选项 End-->
+					
 				</div>
-				
-				<div class="audio-btn">
-					<div class="audio-select">
-						<div class="audio-prev"></div>
-						<div class="audio-play audio-stop"></div>
-						<div class="audio-next"></div>
-						<div class="audio-menu"></div>
-						<div class="audio-volume"></div>
-					</div>
-					<div class="audio-set-volume">
-						<div class="volume-box">
-							<i style="height: 80%;"><span></span></i>
-						</div>
-					</div>
-					<div class="audio-list">
-						<div class="audio-list-head">
-							<p>☺随心听</p>
-							<span class="menu-close">关闭</span>
-						</div>
-						<ul class="audio-inline"><li><a href="javascript:;">the xx</a></li><li><a href="javascript:;">不该 - 周杰伦、张惠妹</a></li><li><a href="javascript:;">再见 - 邓紫棋</a></li><li><a href="javascript:;">最后一次 - 庄心妍</a></li><li><a href="javascript:;">远走高飞 - 金志文、徐佳莹</a></li><li><a href="javascript:;">极乐净土 - GARNiDELiA</a></li></ul>
-					</div>
-				</div>
-				
 			</div>
 		</div>
-	</div>
-	  </nav>
+	  </nav><!-- 播放器栏 End-->
 	  
       
       <!-- 页面滑动 End-->
@@ -305,12 +309,13 @@
 	<script src="${pageContext.request.contextPath}/js/bootstrap.bundle.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	
-	<script src="${pageContext.request.contextPath}/js/index.js"></script>
-	<script src="${pageContext.request.contextPath}/js/Song.js"></script>
+	<%-- <script src="${pageContext.request.contextPath}/js/index.js"></script> --%>
+	<%-- <script src="${pageContext.request.contextPath}/js/Song.js"></script>
 	<script src="${pageContext.request.contextPath}/js/Player.js"></script>
-	<script src="${pageContext.request.contextPath}/js/listener.js"></script>
+	<script src="${pageContext.request.contextPath}/js/listener.js"></script> --%>
 	
 	<script src="${pageContext.request.contextPath}/js/audio.js"></script>
+	<script src="${pageContext.request.contextPath}/js/add2list.js"></script>
 	
 	
 	<script>
@@ -447,64 +452,6 @@
 			settime(val)
 		},1000);
 	}//限制60s获取一次验证码 End
-	
-	
-	$(function(){
-		var song = [
-			{
-				'cover' : 'images/cover.jpg',
-				'src' : 'http://jq22.qiniudn.com/the.mp3',
-				'title' : 'the xx'
-			},
-			{
-				'cover' : 'images/cover2.jpg',
-				'src' : 'file:///home/hadwin/Music/e.mp3',
-				'title' : '不该 - 周杰伦、张惠妹'
-			},
-			{
-				'cover' : 'images/cover5.jpg',
-				'src' : 'http://m10.music.126.net/20180428151231/289e1a268262e9349dc8db0f59d88728/ymusic/d055/334e/7cae/5f45bde0eafa37c00e3f3bbd671910fe.mp3',
-				'title' : '再见 - 邓紫棋'
-			},
-			{
-				'cover' : 'images/cover3.jpg',
-				'src' : 'http://so1.111ttt.com:8282/2017/1/05m/09/298092042172.m4a?tflag=1494768586&pin=f8d0e2e08864846460002b12768a9267&ip=114.233.172.33#.mp3',
-				'title' : '最后一次 - 庄心妍'
-			},
-			{
-				'cover' : 'images/cover1.jpg',
-				'src' : 'http://so1.111ttt.com:8282/2017/1/05m/09/298092036393.m4a?tflag=1494768868&pin=9a24cbf7571cb3524af1d6c883916169&ip=114.233.172.33#.mp3',
-				'title' : '远走高飞 - 金志文、徐佳莹'
-			}
-		];
-
-		var audioFn = audioPlay({
-			song : song,
-			autoPlay : true  //是否立即播放第一首，autoPlay为true且song为空，会alert文本提示并退出
-		});
-
-		/* 向歌单中添加新曲目，第二个参数true为新增后立即播放该曲目，false则不播放 */
-		audioFn.newSong({
-			'cover' : 'images/cover4.jpg',
-			'src' : 'http://so1.111ttt.com:8282/2016/5/06m/06/199061931237.m4a?tflag=1494769315&pin=a0b26b2dddd976d74724841f6d2641d6&ip=114.233.172.33#.mp3',
-			'title' : '极乐净土 - GARNiDELiA'
-		},false);
-
-		/* 暂停播放 */
-		//audioFn.stopAudio();
-
-		/* 开启播放 */
-		//audioFn.playAudio();
-
-		/* 选择歌单中索引为3的曲目(索引是从0开始的)，第二个参数true立即播放该曲目，false则不播放 */
-		//audioFn.selectMenu(3,true);
-
-		/* 查看歌单中的曲目 */
-		//console.log(audioFn.song);
-
-		/* 当前播放曲目的对象 */
-		//console.log(audioFn.audio);
-	});
 	
 	</script>
   </body>

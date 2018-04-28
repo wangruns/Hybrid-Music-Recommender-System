@@ -68,10 +68,7 @@ function collectBtnsEvent(url){
     };
 }
 function hotBtnsEvent(){
-	
     var len=playBtns.length;
-    
-    
     
     for(var i=0;i<len;i++){
         playBtns[i].index=i;
