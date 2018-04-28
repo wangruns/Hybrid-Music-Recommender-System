@@ -1,0 +1,76 @@
+.player{width:1360px;height:60px;border-top:1px solid #524c4c;position: fixed;bottom:0px;left:0px;
+    background-image: url("../images/bg/bk-darkgray.png");
+    z-index:5;transition:all ease 0.5s;
+}
+.player .p-content{height:60px;line-height: 60px;}
+.player .p-content .play-btns{ line-height:60px;height:60px;}
+.player .p-content .play-btns a{margin:0px 10px;}
+.player .p-content .play-btns a .iconfont{ font-size:30px;}
+.player .p-content .range{}
+.player .p-content .range #m_pro{display: inline-block;width:80%;}
+.player .p-content .range #musicName{display: block;font-size:12px;
+    height:20px;line-height: 20px;margin-top:10px;color:deepskyblue;
+}
+.player .p-content .range .time{
+    display:inline-block;float:right;line-height: 60px;
+}
+.player .p-content .range .progress{
+    height:8px;width:100%;line-height: 60px;margin-top:10px;
+}
+.player .p-content .play-option{text-align: right;}
+.player .p-content .play-option a{margin-left:10px;}
+.player .p-content .play-option a .iconfont{font-size:24px;}
+.player .p-content .play-option #volume{
+    position: relative;
+}
+.player .p-content .play-option #volume .v-rangeWrap{
+    position: absolute;left: -50px;top: -72px;
+    padding:5px 10px;transform:rotate(-90deg);
+    display: none;
+}
+.player .p-content .play-option #volume .v-rangeWrap input[type="range"]{
+    -webkit-appearance:none;
+    height:8px;
+    width:100px;
+    background-color: #999;
+    border-radius:8px;
+    outline:none;
+    cursor:pointer;
+}
+.player .p-content .play-option #volume .v-rangeWrap input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance:none;
+    height:10px;width:10px;border-radius:10px;
+    background-color:#fff;
+}
+.player #tip-btn{
+    position: absolute;left:630px;top:-21px;width:100px;height:20px;
+    background-image: url("../images/bg/bk-darkgray.png");
+    
+    border-radius:6px 6px 0px 0px;text-align: center;line-height: 20px;color:deepskyblue;cursor: pointer;
+}
+/*閹绢厽鏂侀崚妤勩�*/
+.player .ListWrap{
+    position: absolute;width:300px;height:250px;border:1px solid whitesmoke;right:-310px;top:-250px;
+     background-image: url("../images/bg/bk-darkgray.png");
+    opacity: 0.9;overflow: auto;z-index:-1;transition:all linear 0.5s;
+}
+.player .ListWrap ul li{
+    height:30px;line-height: 30px;cursor: pointer;padding-left:10px;
+    border-bottom:1px dotted deepskyblue;overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+.player .ListWrap ul li:hover{background:linear-gradient(90deg,#4d4d4d,#7a7a7a);
+    transition:all .3s ease-in; color:whitesmoke;}
+
+.player .ListWrap ul li .iconfont{border:1px solid deepskyblue;padding:4px; border-radius: 20px;margin-right:20px;}
+.player .ListWrap ul .active{
+    box-shadow: 0px 0px 10px deepskyblue inset;
+}
+
+footer p{line-height:30px;text-align:center;}
+
+.player ::-webkit-scrollbar{width:10px;background-color: deepskyblue;border-radius: 10px;}
+.player ::-webkit-scrollbar-track-piece{background-color: black;  }
+.player ::-webkit-scrollbar-thumb{height:20px;background-color: deepskyblue;border-radius: 10px;}
+

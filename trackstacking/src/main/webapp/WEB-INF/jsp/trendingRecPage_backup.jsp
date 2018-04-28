@@ -10,11 +10,21 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>发现音乐</title>
+    <title>热门推荐</title>
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/carousel.css" >
+	
+	<!-- Animate CSS https://daneden.github.io/animate.css/-->
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/animate.css" >
+	<!-- simple-line-icons CSS http://www.bootcdn.cn/simple-line-icons/-->
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/simple-line-icons.css" >
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/player.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/iconfont/iconfont.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
+	
+	
   </head>
   <body>
   
@@ -147,55 +157,112 @@
       </nav>
     </header>
 
-    <main role="main">
+    <%--main --%>
 	  <!-- 页面滑动 -->
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
-            <div class="container">
-              <div class="carousel-caption text-left">
-                <h1>Example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-              </div>
+      
+      <div class="container" id="hot">
+      	<h1></h1>
+      	<h3>热门推荐+${test}</h3>
+      	<div class="row content hot-content">
+      		<!--歌曲部分-->
+            <div class="col-sm-8 h-item">
+               
+      				One of three columns
+      		  <ul class="list-group " >
+				
+				<c:forEach items="${song1}" var="song" varStatus="status">
+				
+                      <li class="list-group-item" title="${song.address}" data-duration="${song.length}" data-name="${song.name}">
+                      	<!-- 歌曲信息区 -->
+                      	<div class="clear text-ellipsis">
+                          <span>${status.index+1}.${song.name}</span>
+                          <span class="text-muted"> -- 04:35</span>
+                          <span class="badge badge-pill badge-primary badge-pill">12</span>
+                        </div>
+                        <!-- 播放控制区 -->
+                        <div class="pull-right m-l option fr">
+	                        <a href="javascript:;" class="play">
+	                          <i class="icon-control-play text  "></i>
+	                          <!-- <i class="icon-control-pause text-active"></i> -->
+	                        </a>
+	                         <a href="#" class="m-r-sm"><i class="icon-cloud-download"></i></a>
+	                         <a href="#" class="m-r-sm"><i class="icon-plus"></i></a>
+                        </div>
+                        
+                      </li>
+                      
+                   </c:forEach>
+                      
+                    </ul>
+      		
+      		                      
+      				
+   			 </div><!--歌曲部分 End-->
+   			 
+   				
+      	
+      	</div>
+      	
+      	
+		
+
+	  </div><!-- /.container -->
+	  
+	  
+	  <div class="container">
+	  <!--播放器-->
+        <div class="row player" id="player">
+            <div class="p-content col-sm-10 ">
+                <!--播放按钮-->
+                <div class="play-btns fl col-sm-3">
+                    <!--上一首-->
+                    <a href="javascript:;" id="_prev"><i class="iconfont">&#xe6c9;</i></a>
+                    <!--播放&#xe65d;  暂停&#xe682;-->
+                    <a href="javascript:;" id="_play"><i class="iconfont">&#xe65d;</i></a>
+                    <!--下一首-->
+                    <a href="javascript:;" id="_next"><i class="iconfont">&#xe6c8;</i></a>
+                </div>
+                <!--进度条-->
+                <div class="range fl col-sm-6">
+                    <div id="m_pro">
+                        <span id="musicName">欢迎来到畅音阁~</span>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="0"
+                                 aria-valuemin="0" aria-valuemax="100" style="width: 0%;" id="mus-range">
+                                <span class="sr-only"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="time fr" id="time">00:00</span>
+                </div>
+                <!--播放选项-->
+                <div class="play-option fl col-sm-3">
+                    <!--音量-->
+                    <a href="javascript:;" id="volume">
+                        <i class="iconfont">&#xe638;</i>
+                        <div class="v-rangeWrap">
+                            <input  type="range" min="0" max="100" value="60" id="v-range">
+                        </div>
+                    </a>
+                    <!--列表-->
+                    <a href="javascript:;" id="playList">
+                        <i class="iconfont">&#xe6b7;</i>
+                    </a>
+
+                    <!--歌词-->
+                    <a href="javascript:;" id="lyricBtn"><i class="iconfont">&#xe6e0;</i></a>
+                    <!--循环播放-->
+                    <a href="javascript:;" id="modelBtn"><i title="单曲循环" class="iconfont">&#xf0030;</i></a>
+                </div>
             </div>
-          </div>
-          <div class="carousel-item">
-            <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
-            <div class="container">
-              <div class="carousel-caption">
-                <h1>Another example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-              </div>
+            <div class="ListWrap col-sm-2" id="ListWrap">
+                <ul>
+                </ul>
             </div>
-          </div>
-          <div class="carousel-item">
-            <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
-            <div class="container">
-              <div class="carousel-caption text-right">
-                <h1>One more for good measure.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-              </div>
-            </div>
-          </div>
         </div>
-        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div><!-- 页面滑动 End-->
+	  </div><!-- /.container -->
+      
+      <!-- 页面滑动 End-->
 
 
       <!-- Marketing messaging and featurettes
@@ -235,7 +302,7 @@
         <p class="float-right"><a href="#">Back to top</a></p>
         <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
-    </main>
+    <%--main End--%>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -243,6 +310,12 @@
 	<script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.bundle.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+	
+	<script src="${pageContext.request.contextPath}/js/index.js"></script>
+	<script src="${pageContext.request.contextPath}/js/Song.js"></script>
+	<script src="${pageContext.request.contextPath}/js/Player.js"></script>
+	<script src="${pageContext.request.contextPath}/js/listener.js"></script>
+	
 	
 	<script>
 	$(function(){

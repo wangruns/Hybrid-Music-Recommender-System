@@ -1,0 +1,179 @@
+*{margin:0px;padding:0px;}
+body{font-size:14px;font-family: "微软雅黑";color:#88898c;
+    background-image: url("../images/bg/bg.jpg") ;
+    background-size:1360px auto;
+    padding-bottom:100px;
+}
+ul,li{list-style: none;}
+a,a:active,a:focus,a:hover{text-decoration: none;display: inline-block;}
+.fr{float:right;}
+.fl{float:left;}
+.clear{content:"";height:0px;display:block;border:none;clear:both;}
+
+header{
+	width:100%;height:40px;
+	background-image:url("../images/bg/texture-top-nav.png");
+	 background-size:100% 50px;
+}
+
+ .logo{
+      height: 130px;
+    text-align: center;
+    margin-left: 90px;
+    font-size: 50px;
+    line-height: 130px;
+}
+.logo img{
+	    width: 75px;
+    height: 72px;
+}
+ .logo a span{    color: #2b2b45;
+    line-height: 50px;
+    font-weight: bold;
+ }
+.header{width:100%;margin-top:30px;
+	background-image:url("../images/bg/texture-top-nav.png");
+	 background-size:100% 50px;
+	overflow: hidden;
+	
+	}
+.header .m-nav-bar{font-size:16px;border-bottom:1px solid lightslategray;
+    border-top:1px solid lightslategray;height:50px;line-height: 50px;overflow: hidden;
+}
+
+.header .m-nav-bar #navWrap{position:relative;z-index: 2;}
+.header .m-nav-bar #navWrap .iconfont{font-size:16px;padding:0px 5px;}
+ .header .m-nav-bar #navWrap li{display:inline-block;cursor:pointer;
+    tansition:all ease 0.5s;overflow: hidden;
+}
+ .header .m-nav-bar #navWrap li a{ color:whitesmoke;display: block;width:100%;height:50px;padding:0px 25px;}
+
+.header .m-nav-bar #navWrap .active a{color:deepskyblue;}
+.header .m-nav-bar #navWrap .flag{width:108px;height:50px;box-shadow: 0px 0px 20px 1px deepskyblue inset;
+    position: absolute;left:0px;top:0px;transition:all ease-in-out 0.4s;cursor: pointer;z-index: -1;
+}
+ .header .m-nav-bar .searcher{margin-left:50px;position:relative;}
+ .header .m-nav-bar .searcher input{
+    border: 1px solid whitesmoke;color:whitesmoke;padding-left:10px;
+    outline: none;
+    border-radius: 30px;
+    height: 22px;
+    background: none;font-size:12px;width:200px;
+    margin-top: 16px;
+}
+ .header .m-nav-bar .searcher input:hover{outline-style: none;height:22px;}
+.header .m-nav-bar .searcher input:focus{
+    box-shadow: 0px 0px 10px 2px deepskyblue;border:1px solid deepskyblue;
+}
+ .header .m-nav-bar .searcher #ser-btn{color:whitesmoke;position:absolute;
+    height:30px;line-height: 32px;text-align: center;
+    right:10px;top:11px;
+}
+.header .m-nav-bar .login{margin-left:120px;line-height:50px;}
+.header .m-nav-bar .login a{color:whitesmoke;text-decoration: underline;
+    padding:0px 5px;color:deepskyblue;
+}
+.header .m-nav-bar .login a:hover{color:cornflowerblue;}
+.header .m-nav-bar .welcome{margin-left:114px;line-height:50px;}
+.header .m-nav-bar .welcome a{color:whitesmoke;text-decoration: underline;
+    padding:0px 5px;color:deepskyblue;
+}
+.header .m-nav-bar .welcome a:hover{color:cornflowerblue;}
+/*登录对话框*/
+#myModal{top:150px;}
+.modal-dialog{
+    box-shadow: 0px 0px 10px 2px deepskyblue;border:1px solid whitesmoke;border-radius: 10px;
+    overflow: hidden;
+}
+#myModal #mTitle{
+    text-align: center;font-size:18px;color: #7575B9;
+
+}
+#myModal .modal-header{
+    background-color: rgba(10, 10, 10, 0.95);
+}
+#myModal .modal-header .close{
+    color:white;
+}
+#myModal .submitBnt{
+    background-color: #0C0106;opacity: 0.8;color:deepskyblue;transition:all ease 0.5s;
+}
+#myModal .submitBnt:hover{
+    box-shadow: 0px 0px 5px 2px deepskyblue inset;
+}
+/*.m-banner .prev{padding-left:30px;padding-top:300px;font-size:30px;}*/
+.carousel-control{padding-top:300px;font-size:30px;}
+.carousel-control .iconfont{font-size:40px;}
+.carousel-indicators{z-index:3;}
+
+.c-item{margin-top:20px;}
+.c-item .heading{
+	background-image: url("../images/bg/bk-darkgray.png");
+	border-left:4px solid red;padding:5px 10px;line-height: 30px;
+	
+}
+.c-item .heading .more{margin-right:18px;}
+.c-item .heading .iconfont{font-size:20px;padding-left:10px;}
+.c-item .heading h2{font-size:24px;color:deepskyblue;margin:0px;  }
+.c-item .hot-content{
+	 background-image: url("../images/bg/texture-bottom.png");
+	 background-size:100% 2px;
+	height:290px;
+    perspective: 800px;
+}
+.c-item .hot-content .h-item{display:none;transform-style:preserve-3d ;}
+.c-item .hot-content .h-item ul li{height:30px;line-height:30px;border:1px solid #464848;border-radius:6px;
+    margin:5px 2px;padding:0px 5px;cursor: pointer;transition:all ease 0.3s;
+}
+.c-item .hot-content .h-item ul li:hover{box-shadow: 0px 0px 5px 1px #464848 inset;
+    transform:scaleX(1.03);
+}
+.c-item .hot-content .h-item ul li .musicNameWrap{
+    width:55%;overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+.c-item .hot-content .h-item ul li span{padding-right:10px;}
+.c-item .hot-content .h-item ul li .option a{margin-left:10px;}
+
+.c-item .type-content{
+	 background-image: url("../images/bg/texture-bottom.png");
+	 background-size:100% 2px;
+}
+.c-item .type-content  ul .type-item{width:20%;float:left;height:230px;
+    padding:10px;
+}
+.c-item .type-content  ul .type-item .wrap{position:relative;width:100%;height:210px;overflow: hidden;}
+.c-item .type-content  ul .type-item .wrap img{
+    width:100%;height:100%;transition:all ease 0.6s;border:1px solid #464848;
+}
+.c-item .type-content  ul .type-item .wrap .slide{position:absolute;bottom:-50px;left:0px;height:50px;
+    border:1px solid #464848;z-index:2;width:100%;transition:all ease 0.6s;
+    background-color: rgba(53, 50, 50, 0.81);
+}
+.c-item .type-content  ul .type-item .wrap .mark{width:100%;height:210px;
+    position: absolute;left:0px;top:0px;z-index:1;background-color: rgba(53, 50, 50, 0.51);
+    transition:all ease 0.6s;
+}
+.c-item .type-content  ul .type-item .wrap .mark a{display:block;width:100%;height:210px;
+    line-height: 210px;text-align: center;
+}
+.c-item .type-content  ul .type-item .wrap .mark a span{
+    transition:all ease 0.6s;display:inline-block;
+}
+.c-item .type-content  ul .type-item .wrap:hover .mark{
+    background-color: rgba(53, 50, 50, 0.1);
+}
+.c-item .type-content  ul .type-item .wrap:hover .mark a span{
+    transform: rotate(720deg);transform-origin: center 109px;
+}
+.c-item .type-content  ul .type-item .wrap:hover .slide{
+    bottom:0px;
+}
+
+.c-item .type-content  ul .type-item .wrap:hover img{
+    transform: scale(1.1);transform-origin: center center;
+}
+.c-item .type-content  ul .type-item .wrap .mark a .iconfont{
+    font-size:42px;color:deepskyblue;
+}
