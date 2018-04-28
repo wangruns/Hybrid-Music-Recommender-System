@@ -1,0 +1,335 @@
+.bg-empty.lt,
+.bg-empty .lt {
+  background-color: #20c974;
+}
+.bg-empty.lter,
+.bg-empty .lter {
+  background-color: #2ad980;
+}
+.bg-empty.dk,
+.bg-empty .dk {
+  background-color: #15a25a;
+}
+.bg-empty.dker,
+.bg-empty .dker {
+  background-color: #108d4e;
+}
+.bg-empty.bg,
+.bg-empty .bg {
+  background-color: #1ab667;
+}
+
+.inline {
+  display: inline-block !important;
+}
+
+
+.musicbar {
+  position: relative;
+}
+.musicbar span {
+  position: absolute;
+  bottom: 0;
+  width: 15%;
+  text-indent: -9999px;
+}
+.bar1 {
+  left: 0%;
+  height: 60%;
+}
+.bar2 {
+  left: 20%;
+  height: 45%;
+}
+.bar3 {
+  left: 40%;
+  height: 90%;
+}
+.bar4 {
+  left: 60%;
+  height: 60%;
+}
+.bar5 {
+  left: 80%;
+  height: 40%;
+}
+.animate .a1 {
+  -webkit-animation: movingbar1 1s infinite alternate both;
+  -moz-animation: movingbar1 1s infinite alternate both;
+  animation: movingbar1 1s infinite alternate both;
+}
+.animate .a2 {
+  -webkit-animation: movingbar2 1.5s infinite alternate both;
+  -moz-animation: movingbar2 1.5s infinite alternate both;
+  animation: movingbar2 1.5s infinite alternate both;
+}
+.animate .a3 {
+  -webkit-animation: movingbar3 1.2s infinite alternate both;
+  -moz-animation: movingbar3 1.2s infinite alternate both;
+  animation: movingbar3 1.2s infinite alternate both;
+}
+.animate .a4 {
+  -webkit-animation: movingbar4 1.1s infinite alternate both;
+  -moz-animation: movingbar4 1.1s infinite alternate both;
+  animation: movingbar4 1.1s infinite alternate both;
+}
+.animate .a5 {
+  -webkit-animation: movingbar5 1.2s infinite alternate both;
+  -moz-animation: movingbar5 1.2s infinite alternate both;
+  animation: movingbar5 1.2s infinite alternate both;
+}
+@-webkit-keyframes movingbar1 {
+  0% {
+    height: 32%;
+  }
+  25% {
+    height: 80%;
+  }
+  50% {
+    height: 56%;
+  }
+  75% {
+    height: 100%;
+  }
+  100% {
+    height: 84%;
+  }
+}
+@-moz-keyframes movingbar1 {
+  0% {
+    height: 32%;
+  }
+  25% {
+    height: 80%;
+  }
+  50% {
+    height: 56%;
+  }
+  75% {
+    height: 100%;
+  }
+  100% {
+    height: 84%;
+  }
+}
+@keyframes movingbar1 {
+  0% {
+    height: 32%;
+  }
+  25% {
+    height: 80%;
+  }
+  50% {
+    height: 56%;
+  }
+  75% {
+    height: 100%;
+  }
+  100% {
+    height: 84%;
+  }
+}
+@-webkit-keyframes movingbar2 {
+  0% {
+    height: 20%;
+  }
+  25% {
+    height: 58%;
+  }
+  50% {
+    height: 90%;
+  }
+  75% {
+    height: 74%;
+  }
+  100% {
+    height: 53%;
+  }
+}
+@-moz-keyframes movingbar2 {
+  0% {
+    height: 20%;
+  }
+  25% {
+    height: 58%;
+  }
+  50% {
+    height: 90%;
+  }
+  75% {
+    height: 74%;
+  }
+  100% {
+    height: 53%;
+  }
+}
+@keyframes movingbar2 {
+  0% {
+    height: 20%;
+  }
+  25% {
+    height: 58%;
+  }
+  50% {
+    height: 90%;
+  }
+  75% {
+    height: 74%;
+  }
+  100% {
+    height: 53%;
+  }
+}
+@-webkit-keyframes movingbar3 {
+  0% {
+    height: 34%;
+  }
+  25% {
+    height: 69%;
+  }
+  50% {
+    height: 100%;
+  }
+  75% {
+    height: 82%;
+  }
+  100% {
+    height: 41%;
+  }
+}
+@-moz-keyframes movingbar3 {
+  0% {
+    height: 34%;
+  }
+  25% {
+    height: 69%;
+  }
+  50% {
+    height: 100%;
+  }
+  75% {
+    height: 82%;
+  }
+  100% {
+    height: 41%;
+  }
+}
+@keyframes movingbar3 {
+  0% {
+    height: 34%;
+  }
+  25% {
+    height: 69%;
+  }
+  50% {
+    height: 100%;
+  }
+  75% {
+    height: 82%;
+  }
+  100% {
+    height: 41%;
+  }
+}
+@-webkit-keyframes movingbar4 {
+  0% {
+    height: 80%;
+  }
+  25% {
+    height: 49%;
+  }
+  50% {
+    height: 59%;
+  }
+  75% {
+    height: 82%;
+  }
+  100% {
+    height: 65%;
+  }
+}
+@-moz-keyframes movingbar4 {
+  0% {
+    height: 80%;
+  }
+  25% {
+    height: 49%;
+  }
+  50% {
+    height: 59%;
+  }
+  75% {
+    height: 82%;
+  }
+  100% {
+    height: 65%;
+  }
+}
+@keyframes movingbar4 {
+  0% {
+    height: 80%;
+  }
+  25% {
+    height: 49%;
+  }
+  50% {
+    height: 59%;
+  }
+  75% {
+    height: 82%;
+  }
+  100% {
+    height: 65%;
+  }
+}
+@-webkit-keyframes movingbar5 {
+  0% {
+    height: 50%;
+  }
+  25% {
+    height: 30%;
+  }
+  50% {
+    height: 90%;
+  }
+  75% {
+    height: 50%;
+  }
+  100% {
+    height: 65%;
+  }
+}
+@-moz-keyframes movingbar5 {
+  0% {
+    height: 50%;
+  }
+  25% {
+    height: 30%;
+  }
+  50% {
+    height: 90%;
+  }
+  75% {
+    height: 50%;
+  }
+  100% {
+    height: 65%;
+  }
+}
+@keyframes movingbar5 {
+  0% {
+    height: 50%;
+  }
+  25% {
+    height: 30%;
+  }
+  50% {
+    height: 90%;
+  }
+  75% {
+    height: 50%;
+  }
+  100% {
+    height: 65%;
+  }
+}
