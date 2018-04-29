@@ -199,12 +199,12 @@
                         </div>
                         <!-- 播放控制区 -->
                         <div class="pull-right m-l option fr">
-	                        <a href="javascript:;" class="play">
+	                        <a href="javascript:;" class="play m-r-sm" title="播放">
 	                          <i class="icon-control-play text  "></i>
 	                          <!-- <i class="icon-control-pause text-active"></i> -->
 	                        </a>
-	                         <a href="#" class="m-r-sm"><i class="icon-cloud-download"></i></a>
-	                         <a href="#" class="m-r-sm"><i class="icon-plus"></i></a>
+	                         <a href="#" class="m-r-sm" title="下载"><i class="icon-cloud-download"></i></a>
+	                         <a href="#" class="m-r-sm" title="喜欢"><i class="icon-heart"></i></a>
                         </div>
                         
                       </li>
