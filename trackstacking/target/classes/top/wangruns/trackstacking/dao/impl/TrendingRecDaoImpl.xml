@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.wangruns.trackstacking.dao.TrendingRecDao">
+
+	<!-- 这里的trending为视图
+	create view trending as 
+	select songId,count(songId) as trendingCoefficient 
+	from play group by songId limit 50;
+	 -->
+	<select id="getTrendingSong"
+		resultType="top.wangruns.trackstacking.model.TrendingSong">
+		select * from trending,song
+		where trending.songId=song.songId order by trendingCoefficient desc
+	</select>
+	
+	<select id="getCollection" parameterType="top.wangruns.trackstacking.model.User"
+		resultType="top.wangruns.trackstacking.model.Collection">
+		select * from collection where userId=#{userId}
+	</select>
+	
+
+</mapper>

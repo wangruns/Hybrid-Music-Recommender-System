@@ -1,73 +1,49 @@
 package top.wangruns.trackstacking.model;
 
 public class Song {
-
-	private int id=0;
-	private String name;
-	private String address;
-	private String artist;
-	private String album;
-    private int length;
-    private int attention=0;
-    private String type;
-    private boolean whetherCollected;
-    
-    
+	private int songId;
+	private String songName;
+	private String songAddress;
+	private String songCoverAddress;
+	private String songType;
+	private int songLength;
 	
-	public boolean isWhetherCollected() {
-		return whetherCollected;
+	
+	public String getSongCoverAddress() {
+		return songCoverAddress;
 	}
-	public void setWhetherCollected(boolean whetherCollected) {
-		this.whetherCollected = whetherCollected;
+	public void setSongCoverAddress(String songCoverAddress) {
+		this.songCoverAddress = songCoverAddress;
 	}
-	public String getType() {
-		return type;
+	public String getSongType() {
+		return songType;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setSongType(String songType) {
+		this.songType = songType;
 	}
-
-	public int getId() {
-		return id;
+	public int getSongLength() {
+		return songLength;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setSongLength(int songLength) {
+		this.songLength = songLength;
 	}
-	public String getName() {
-		return name;
+	public int getSongId() {
+		return songId;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setSongId(int songId) {
+		this.songId = songId;
 	}
-	public String getAddress() {
-		return address;
+	public String getSongName() {
+		return songName;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setSongName(String songName) {
+		this.songName = songName;
 	}
-	public String getArtist() {
-		return artist;
+	public String getSongAddress() {
+		return songAddress;
 	}
-	public void setArtist(String artist) {
-		this.artist = artist;
-	}
-	public String getAlbum() {
-		return album;
-	}
-	public void setAlbum(String album) {
-		this.album = album;
-	}
-	public int getLength() {
-		return length;
-	}
-	public void setLength(int length) {
-		this.length = length;
-	}
-	public int getAttention() {
-		return attention;
-	}
-	public void setAttention(int attention) {
-		this.attention = attention;
+	public void setSongAddress(String songAddress) {
+		this.songAddress = songAddress;
 	}
 	
 }

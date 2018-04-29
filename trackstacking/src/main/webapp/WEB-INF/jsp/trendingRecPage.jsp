@@ -188,14 +188,14 @@
       		  <!-- One of three columns -->
       		  <ul class="list-group list-group-flush" >
 				
-				<c:forEach items="${song1}" var="song" varStatus="status">
+				<c:forEach items="${TrendingSongList}" var="song" varStatus="status">
 				
-                      <li class="list-group-item list-group-item-light " title="${song.address}" data-duration="${song.length}" data-name="${song.name}">
+                      <li class="list-group-item list-group-item-light " title="${song.songAddress}"  data-duration="${song.songLength}" data-name="${song.songName}">
                       	<!-- 歌曲信息区 -->
                       	<div class="clear text-ellipsis">
-                          <span>${status.index+1}.${song.name}</span>
+                          <span>${status.index+1}.${song.songName}</span>
                           <span class="text-muted"> -- 04:35</span>
-                          <span class="badge badge-pill badge-primary badge-pill">12</span>
+                          <span class="badge badge-pill badge-primary badge-pill">${song.trendingCoefficient}</span>
                         </div>
                         <!-- 播放控制区 -->
                         <div class="pull-right m-l option fr">
@@ -211,7 +211,7 @@
 	                         	<c:otherwise>class="collect m-r-sm"</c:otherwise>
 	                         </c:choose>
 	                         <%-- <c:if test="${song.whetherCollected}">class="collect m-r-sm text-danger" </c:if> --%>
-	                         onclick="collectFunc(${song.id})" id="${song.id}" title="喜欢"><i class="icon-heart"></i>
+	                         onclick="collectFunc(${song.songId})" id="${song.songId}" title="喜欢"><i class="icon-heart"></i>
 	                         </a>
                         </div>
                         
