@@ -5,6 +5,9 @@ $(function(){
     musics=$("#hot .hot-content .h-item ul li");
     playBtns=musics.find(".option .play");
     
+    //喜欢按钮添加监听
+    collectBtns=musics.find(".option .collect");
+    
     var song = [
 		{
 			'cover' : 'images/cover.jpg',
@@ -49,6 +52,10 @@ $(function(){
     hotBtnsEvent();
 });
 
+/**
+ * 将点击的歌曲添加到播放列表并播放
+ * @returns
+ */
 function hotBtnsEvent(){
     var len=playBtns.length;
     for(var i=0;i<len;i++){
@@ -73,4 +80,57 @@ function hotBtnsEvent(){
             
         };
     };
+}
+
+
+/**
+ * 收藏喜欢歌曲
+ * @param songId
+ * @returns
+ */
+function collectFunc(songId){
+	//只有登录的用户才可以享受收藏功能
+	if($("#logout")[0].style.display =='none'){
+		$("#SignInModalCenter").modal("show");
+		return;
+	} 
+	var collectElement=$("#"+songId);
+	var data = {        
+	        "songId": songId,
+	 };
+    url = "collectSong.do";
+    $.ajax({
+        type:"POST",
+        url:url,
+        data:data,
+        success:function(data){
+        	var res=JSON.parse(data);
+            if(res.status==200){
+            	alert("收藏成功")
+            	if(res.msg){
+            		//已经收藏了
+            		collectElement.addClass("text-danger");
+            		
+            	}else{
+            		//已经取消收藏了
+            		collectElement.removeClass("text-danger");
+            	}
+            }else{
+            	alert(res.msg)
+            	/*$('#collapse-error-hint').html(res.msg);
+            	$('#collapse-error-hint').collapse()*/
+            }
+        }
+    });
+	/*//已经收藏了，再次点击取消收藏
+	if(isSelected){
+		collectElement.removeClass("text-danger");
+	}else{
+		//还没有收藏，点击进行收藏
+		collectElement.addClass("text-danger");
+	}
+	isSelected=!isSelected;*/
+	
+	
+	
 }

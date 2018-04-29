@@ -10,8 +10,16 @@ public class Song {
     private int length;
     private int attention=0;
     private String type;
+    private boolean whetherCollected;
     
     
+	
+	public boolean isWhetherCollected() {
+		return whetherCollected;
+	}
+	public void setWhetherCollected(boolean whetherCollected) {
+		this.whetherCollected = whetherCollected;
+	}
 	public String getType() {
 		return type;
 	}

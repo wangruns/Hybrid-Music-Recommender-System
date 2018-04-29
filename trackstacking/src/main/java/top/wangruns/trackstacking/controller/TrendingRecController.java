@@ -28,22 +28,19 @@ public class TrendingRecController {
 		s1.setLength(229);
 		s1.setName("As Long As You Love Me");
 		s1.setType("Rock");
+		s1.setWhetherCollected(true);
 		
 		Song s2=new Song();
-		s2.setId(1);
+		s2.setId(2);
 		s2.setAddress("track/song/e.mp3");
 		s2.setAlbum("叶会美2");
 		s2.setArtist("周杰伦2");
 		s2.setLength(120);
 		s2.setName("千里之外2");
+		s2.setWhetherCollected(false);
 		
 		
-		song1.add(s1);
-		song1.add(s2);
-		song1.add(s1);
-		song1.add(s2);
-		song1.add(s1);
-		song1.add(s2);
+		
 		song1.add(s1);
 		song1.add(s2);
 		modelAndView.addObject("song1",song1);

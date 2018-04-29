@@ -151,7 +151,7 @@
 			</ul>
 			
 			 <ul class="navbar-nav">
-				<li class="nav-item dropdown" <c:if test="${sessionScope.user==null}">style="display:none;"</c:if>><a
+				<li id="logout" class="nav-item dropdown" <c:if test="${sessionScope.user==null}">style="display:none;"</c:if>><a
 					class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/logout.do" 
 					role="button"> 退出 </a>
 					</li>
@@ -204,7 +204,15 @@
 	                          <!-- <i class="icon-control-pause text-active"></i> -->
 	                        </a>
 	                         <a href="#" class="m-r-sm" title="下载"><i class="icon-cloud-download"></i></a>
-	                         <a href="#" class="m-r-sm" title="喜欢"><i class="icon-heart"></i></a>
+	                         
+	                         <a href="#"
+	                         <c:choose>
+	                         	<c:when test="${song.whetherCollected}">class="collect m-r-sm text-danger"</c:when>
+	                         	<c:otherwise>class="collect m-r-sm"</c:otherwise>
+	                         </c:choose>
+	                         <%-- <c:if test="${song.whetherCollected}">class="collect m-r-sm text-danger" </c:if> --%>
+	                         onclick="collectFunc(${song.id})" id="${song.id}" title="喜欢"><i class="icon-heart"></i>
+	                         </a>
                         </div>
                         
                       </li>
@@ -213,7 +221,7 @@
                       
                  </ul>
                  
-                 <nav aria-label="...">
+<!--                  <nav aria-label="...">
   <ul class="pagination">
     <li class="page-item disabled">
       <a class="page-link" href="#" tabindex="-1">Previous</a>
@@ -227,7 +235,7 @@
       <a class="page-link" href="#">Next</a>
     </li>
   </ul>
-</nav>
+</nav> -->
       		
    			 </div><!--中DIV 歌曲部分 End-->
    			 <!-- 后DIV -->

@@ -178,17 +178,16 @@ ul li{
 }
 .audio-list-head{
 	position: relative;
-	padding-bottom: 10px;
 	border-bottom: 1px solid #ccc;
 }
 .audio-list-head p{
 	padding-left: 8px;
 	font-size: 16px;
-	color: #47a3da;
+	color: #20c974;
 }
 .audio-list-head span{
 	position: absolute;
-	right: 6px;
+	right: 13px;
 	top: 0;
 	font-size: 12px;
 	display: block;
@@ -198,7 +197,7 @@ ul li{
 	border-radius: 3px;
 	text-align: center;
 	cursor: pointer;
-	color: #f10b0b;
+	color: #20c974;
 }
 .audio-inline{
 	height: 152px;
