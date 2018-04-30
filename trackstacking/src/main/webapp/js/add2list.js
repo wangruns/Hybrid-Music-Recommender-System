@@ -101,3 +101,4 @@ function collectFunc(songId){
         }
     });
 }
+

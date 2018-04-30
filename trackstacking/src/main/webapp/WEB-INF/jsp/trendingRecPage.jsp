@@ -197,13 +197,13 @@
                           <span class="text-muted"> -- 04:35</span>
                           <span class="badge badge-pill badge-primary badge-pill">${song.trendingCoefficient}</span>
                         </div>
-                        <!-- 播放控制区 -->
+                        <!-- 播放控制区 downloadFun(${song.songAddress})-->
                         <div class="pull-right m-l option fr">
 	                        <a href="javascript:;" class="play m-r-sm" title="播放">
 	                          <i class="icon-control-play text  "></i>
 	                          <!-- <i class="icon-control-pause text-active"></i> -->
 	                        </a>
-	                         <a href="#" class="m-r-sm" title="下载"><i class="icon-cloud-download"></i></a>
+	                        <a href="${pageContext.request.contextPath}/download.do?songAddress=${song.songAddress}" class="m-r-sm" title="下载"><i class="icon-cloud-download"></i></a>
 	                         
 	                         <a href="#"
 	                         <c:choose>
