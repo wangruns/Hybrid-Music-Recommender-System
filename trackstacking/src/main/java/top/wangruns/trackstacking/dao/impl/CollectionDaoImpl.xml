@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.wangruns.trackstacking.dao.CollectionDao">
+
+	<select id="insert"
+		parameterType="top.wangruns.trackstacking.model.Collection">
+		insert into collection(userId,songId) values(#{userId},#{songId})
+	</select>
+	
+	<select id="deleteById" parameterType="int">
+		delete from collection where collectionId=#{collectionId}
+	</select>
+	
+	<select id="selectByCollection" parameterType="top.wangruns.trackstacking.model.Collection"
+		resultType="top.wangruns.trackstacking.model.Collection">
+		select * from collection where userId=#{userId} and songId=#{songId}
+	</select>
+	
+
+</mapper>

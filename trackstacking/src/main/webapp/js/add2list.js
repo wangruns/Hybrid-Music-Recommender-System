@@ -85,8 +85,7 @@ function collectFunc(songId){
         success:function(data){
         	var res=JSON.parse(data);
             if(res.status==200){
-            	alert("收藏成功")
-            	if(res.msg){
+            	if(res.msg=="true"){
             		//已经收藏了
             		collectElement.addClass("text-danger");
             		

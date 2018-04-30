@@ -14,6 +14,7 @@ import top.wangruns.trackstacking.model.Collection;
 import top.wangruns.trackstacking.model.TrendingSong;
 import top.wangruns.trackstacking.model.User;
 import top.wangruns.trackstacking.service.TrendingRecService;
+import top.wangruns.trackstacking.utils.Request;
 
 @Service("trendingService")
 public class TrendingRecServiceImpl implements TrendingRecService {
@@ -25,7 +26,7 @@ public class TrendingRecServiceImpl implements TrendingRecService {
 	public List<TrendingSong> getTrendingSongWithCollectionFlag(HttpServletRequest request) {
 		List<TrendingSong> trendingRecList=new ArrayList<TrendingSong>();
 		List<Collection> collectionList=new ArrayList<Collection>();
-		User user=userDao.selectByUser((User) request.getSession().getAttribute("user"));
+		User user=userDao.selectByUser(Request.getUserFromHttpServletRequest(request));
 		collectionList=trendingRecDao.getCollection(user);
 		trendingRecList=trendingRecDao.getTrendingSong();
 		//在热门推荐列表中给已经被该用户收藏的歌曲加上标记
