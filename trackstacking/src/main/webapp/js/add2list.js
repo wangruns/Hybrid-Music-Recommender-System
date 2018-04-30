@@ -40,16 +40,11 @@ function hotBtnsEvent(){
     for(var i=0;i<len;i++){
         playBtns[i].index=i;
         playBtns[i].onclick=function(){
-//        	alert(this.index);
         	var src=musics[this.index].getAttribute("title");
-//        	alert(src);
-            var singer="";
             var name=musics[this.index].getAttribute("data-name");
-            var lyric="";
-            var totalTime=musics[this.index].getAttribute("data-duration");
-            var musicOBJ={
-                src:src,singer:singer,name:name,lyric:lyric,totalTime:totalTime
-            };
+            var id=musics[this.index].getAttribute("idd");
+            //记录播放信息
+            recordPlayInfo(id);
             //添加新歌并立即播放
             audioFn.newSong({
     			'cover' : 'images/cover4.jpg',
@@ -102,3 +97,28 @@ function collectFunc(songId){
     });
 }
 
+/**
+ * 简单的记录主动播放记录
+ * Attentiion！
+ * 这里只是采用了一种简单的记录方式，即点击便认为播放了
+ * 其实并不好，最好播放时间达到一定的阈值才认为播放比较好
+ * 先记录在这里，看后期还有时间改没有
+ * 2018-04-30 19：52：56
+ * @param songId
+ * @returns
+ */
+function recordPlayInfo(songId){
+	//只记录登录的用户才的播放情况
+	if($("#logout")[0].style.display =='none'){
+		return;
+	} 
+	var data = {        
+	        "songId": songId,
+	 };
+    url = "recordPlay.do";
+    $.ajax({
+        type:"GET",
+        url:url,
+        data:data,
+    });
+}

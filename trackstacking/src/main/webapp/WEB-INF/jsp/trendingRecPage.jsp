@@ -190,7 +190,7 @@
 				
 				<c:forEach items="${TrendingSongList}" var="song" varStatus="status">
 				
-                      <li class="list-group-item list-group-item-light " title="${song.songAddress}"  data-duration="${song.songLength}" data-name="${song.songName}">
+                      <li class="list-group-item list-group-item-light " idd="${song.songId}" title="${song.songAddress}"  data-duration="${song.songLength}" data-name="${song.songName}">
                       	<!-- 歌曲信息区 -->
                       	<div class="clear text-ellipsis">
                           <span>${status.index+1}.${song.songName}</span>
