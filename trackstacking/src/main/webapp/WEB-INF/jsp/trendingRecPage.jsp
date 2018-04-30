@@ -203,7 +203,7 @@
 	                          <i class="icon-control-play text  "></i>
 	                          <!-- <i class="icon-control-pause text-active"></i> -->
 	                        </a>
-	                        <a href="${pageContext.request.contextPath}/download.do?songAddress=${song.songAddress}" class="m-r-sm" title="下载"><i class="icon-cloud-download"></i></a>
+	                        <a href="${pageContext.request.contextPath}/download.do?songAddress=${song.songAddress}&songId=${song.songId}" class="m-r-sm" title="下载"><i class="icon-cloud-download"></i></a>
 	                         
 	                         <a href="#"
 	                         <c:choose>
