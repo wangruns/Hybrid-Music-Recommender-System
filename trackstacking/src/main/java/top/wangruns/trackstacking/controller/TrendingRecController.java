@@ -23,9 +23,9 @@ public class TrendingRecController {
 	public ModelAndView trendingRecPage(HttpServletRequest request) {
 		ModelAndView modelAndView=new ModelAndView();
 		modelAndView.setViewName("trendingRecPage");
-		List<TrendingSong> TrendingSongList=trendingRecService.getTrendingSongWithCollectionFlag(request);
+		List<TrendingSong> trendingSongList=trendingRecService.getTrendingSongWithCollectionFlag(request);
 		
-		modelAndView.addObject("TrendingSongList",TrendingSongList);
+		modelAndView.addObject("trendingSongList",trendingSongList);
 		modelAndView.addObject("test","Name");
 		
 		return modelAndView;
