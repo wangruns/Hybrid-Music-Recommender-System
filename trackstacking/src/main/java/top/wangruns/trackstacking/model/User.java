@@ -1,5 +1,7 @@
 package top.wangruns.trackstacking.model;
 
+import top.wangruns.trackstacking.utils.MD5Util;
+
 public class User {
 	private int userId;
 	private String email;
@@ -19,7 +21,7 @@ public class User {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = MD5Util.string2MD5(password);
 	}
 
 	public int getUserId() {
