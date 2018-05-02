@@ -109,11 +109,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">发现音乐 <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+              <a class="nav-link" href="${pageContext.request.contextPath}/trendingRecPage.do">发现音乐 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="rankingPage.html">排行榜</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/rankingPage.do">排行榜</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="myMusicPage.html">我的音乐</a>

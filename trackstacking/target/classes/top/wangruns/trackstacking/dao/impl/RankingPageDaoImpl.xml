@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.wangruns.trackstacking.dao.RankingPageDao">
+
+	<!-- 这里的weekRanking为视图,返回歌曲的id和其对应的流行系数
+	create view weekRanking as 
+	select songId,count(songId) as trendingCoefficient 
+	from play where week(playTime) >= week(now())-1
+	group by songId limit 50;
+	 -->
+	<select id="selectRecentWeekRanking"
+		resultType="top.wangruns.trackstacking.model.TrendingSong">
+		select * from weekRanking,song
+		where weekRanking.songId=song.songId order by trendingCoefficient desc
+	</select>
+	
+	<!-- 这里的monthRanking为视图,返回歌曲的id和其对应的流行系数
+	create view monthRanking as 
+	select songId,count(songId) as trendingCoefficient 
+	from play where month(playTime) >= month(now())-1
+	group by songId limit 50;
+	 -->
+	<select id="selectRecentMonthRanking"
+		resultType="top.wangruns.trackstacking.model.TrendingSong">
+		select * from monthRanking,song
+		where monthRanking.songId=song.songId order by trendingCoefficient desc
+	</select>
+	
+
+</mapper>
