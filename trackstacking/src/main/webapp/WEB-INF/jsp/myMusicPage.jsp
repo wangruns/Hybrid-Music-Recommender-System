@@ -196,7 +196,7 @@
 		  </div>
 		  <div class="col-8">
 			    <div class="tab-content" id="nav-tabContent">
-			      <!-- 周榜单 -->
+			      <!-- 我的收藏 -->
 			      <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
 			      		  <ul class="list-group list-group-flush" >
 							<c:forEach items="${myCollectionList}" var="song" varStatus="status">
@@ -226,8 +226,8 @@
 			                      </li>
 			                   </c:forEach>
 			                 </ul>
-			      </div><!-- 总榜单 End-->
-			      <!-- 月榜单 -->
+			      </div><!-- 我的收藏 End-->
+			      <!-- 最近播放 -->
 			      <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
 			      		<ul class="list-group list-group-flush" >
 							<c:forEach items="${myRecentPlayList}" var="song" varStatus="status">
@@ -250,14 +250,13 @@
 				                         	<c:when test="${song.whetherCollected}">class="collect m-r-sm text-danger"</c:when>
 				                         	<c:otherwise>class="collect m-r-sm"</c:otherwise>
 				                         </c:choose>
-				                         <%-- <c:if test="${song.whetherCollected}">class="collect m-r-sm text-danger" </c:if> --%>
-				                         onclick="collectFunc(${song.songId})" id="${song.songId}" title="喜欢"><i class="icon-heart"></i>
+				                         onclick="collectFunc(${song.songId})" id="second${song.songId}" title="喜欢"><i class="icon-heart"></i>
 				                         </a>
 			                        </div>
 			                      </li>
 			                   </c:forEach>
 			                 </ul>
-			      </div><!-- 月榜单 End-->
+			      </div><!-- 最近播放 End-->
 			      </div>
 			    </div>
 	  	</div>

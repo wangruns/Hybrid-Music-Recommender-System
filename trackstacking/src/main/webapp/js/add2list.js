@@ -69,11 +69,13 @@ function collectFunc(songId){
 		return;
 	} 
 	var collectElement=$("#"+songId);
+	//用于获取使用了tab 页里面歌曲真实id相同的元素
+	var collectElement2=$("#second"+songId);
 	var data = {        
 	        "songId": songId,
 	 };
     url = "collectSong.do";
-    $.ajax({
+	$.ajax({
         type:"POST",
         url:url,
         data:data,
@@ -82,11 +84,12 @@ function collectFunc(songId){
             if(res.status==200){
             	if(res.msg=="true"){
             		//已经收藏了
-            		collectElement.addClass("text-danger");
-            		
+            		collectElement2.addClass("text-danger");
+        			collectElement.addClass("text-danger");
             	}else{
             		//已经取消收藏了
             		collectElement.removeClass("text-danger");
+            		collectElement2.removeClass("text-danger");
             	}
             }else{
             	alert(res.msg)
@@ -95,6 +98,8 @@ function collectFunc(songId){
             }
         }
     });
+	
+    
 }
 
 /**

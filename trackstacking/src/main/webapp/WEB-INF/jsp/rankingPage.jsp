@@ -251,7 +251,7 @@
 				                         	<c:otherwise>class="collect m-r-sm"</c:otherwise>
 				                         </c:choose>
 				                         <%-- <c:if test="${song.whetherCollected}">class="collect m-r-sm text-danger" </c:if> --%>
-				                         onclick="collectFunc(${song.songId})" id="${song.songId}" title="喜欢"><i class="icon-heart"></i>
+				                         onclick="collectFunc(${song.songId})" id="second${song.songId}" title="喜欢"><i class="icon-heart"></i>
 				                         </a>
 			                        </div>
 			                      </li>
