@@ -130,7 +130,7 @@
               <a class="nav-link" href="${pageContext.request.contextPath}/rankingPage.do">排行榜</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="myMusicPage.html">我的音乐</a>
+              <a class="nav-link" href="#" onclick="myMusicPage()">我的音乐</a>
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">

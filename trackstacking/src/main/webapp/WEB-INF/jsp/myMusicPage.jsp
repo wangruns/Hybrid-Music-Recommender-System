@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>个性化推荐</title>
+    <title>我的音乐</title>
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
@@ -123,14 +123,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="${pageContext.request.contextPath}/trendingRecPage.do">发现音乐 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="${pageContext.request.contextPath}/rankingPage.do">排行榜</a>
+            </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#">发现音乐 <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="rankingPage.html">排行榜</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="myMusicPage.html">我的音乐</a>
+              <a class="nav-link" href="#">我的音乐</a>
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
@@ -166,7 +166,7 @@
       
       <div class="container" id="hot">
       	<h1></h1>
-      	<h3>个性化推荐+${test}</h3>
+      	<h3>我的音乐+${test}</h3>
       	<div class="row content hot-content">
       	    <!-- 前DIV -->
       	    <div class="col-sm-1">
@@ -184,58 +184,86 @@
       	    
       		<!--中DIV 歌曲部分-->
             <div class="col-sm-10 h-item"><!-- 中DIV -->
-               
       		  <!-- One of three columns -->
-      		  <ul class="list-group list-group-flush" >
-				
-				<c:forEach items="${personalRecSongList}" var="song" varStatus="status">
-				
-                      <li class="list-group-item list-group-item-light " idd="${song.songId}" title="${song.songAddress}"  data-duration="${song.songLength}" data-name="${song.songName}">
-                      	<!-- 歌曲信息区 -->
-                      	<div class="clear text-ellipsis">
-                          <span>${status.index+1}.${song.songName}</span>
-                          <span class="text-muted"> -- 04:35</span>
-                          <span class="text-success icon-ghost"></span>
-                        </div>
-                        <!-- 播放控制区 downloadFun(${song.songAddress})-->
-                        <div class="pull-right m-l option fr">
-	                        <a href="javascript:;" class="play m-r-sm" title="播放">
-	                          <i class="icon-control-play text  "></i>
-	                          <!-- <i class="icon-control-pause text-active"></i> -->
-	                        </a>
-	                        <a href="${pageContext.request.contextPath}/download.do?songAddress=${song.songAddress}&songId=${song.songId}" class="m-r-sm" title="下载"><i class="icon-cloud-download"></i></a>
-	                         
-	                         <a href="#"
-	                         <c:choose>
-	                         	<c:when test="${song.whetherCollected}">class="collect m-r-sm text-danger"</c:when>
-	                         	<c:otherwise>class="collect m-r-sm"</c:otherwise>
-	                         </c:choose>
-	                         <%-- <c:if test="${song.whetherCollected}">class="collect m-r-sm text-danger" </c:if> --%>
-	                         onclick="collectFunc(${song.songId})" id="${song.songId}" title="喜欢"><i class="icon-heart"></i>
-	                         </a>
-                        </div>
-                        
-                      </li>
-                      
-                   </c:forEach>
-                      
-                 </ul>
-                 
-<!--                  <nav aria-label="...">
-  <ul class="pagination">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item active">
-      <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav> -->
+      			
+
+		<div class="row">
+		  <div class="col-4">
+		    <div class="list-group" id="list-tab" role="tablist">
+		      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">我的收藏</a>
+		      <a class="list-group-item list-group-item-action " id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">最近播放</a>
+		    </div>
+		  </div>
+		  <div class="col-8">
+			    <div class="tab-content" id="nav-tabContent">
+			      <!-- 周榜单 -->
+			      <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+			      		  <ul class="list-group list-group-flush" >
+							<c:forEach items="${myCollectionList}" var="song" varStatus="status">
+			                      <li class="list-group-item list-group-item-light " idd="${song.songId}" title="${song.songAddress}"  data-duration="${song.songLength}" data-name="${song.songName}">
+			                      	<!-- 歌曲信息区 -->
+			                      	<div class="clear text-ellipsis">
+			                          <span>${status.index+1}.${song.songName}</span>
+			                          <span class="text-muted"> -- 04:35</span>
+			                          <span class="text-danger icon-fire"></span>
+			                        </div>
+			                        <!-- 播放控制区 downloadFun(${song.songAddress})-->
+			                        <div class="pull-right m-l option fr">
+				                        <a href="javascript:;" class="play m-r-sm" title="播放">
+				                          <i class="icon-control-play text  "></i>
+				                          <!-- <i class="icon-control-pause text-active"></i> -->
+				                        </a>
+				                        <a href="${pageContext.request.contextPath}/download.do?songAddress=${song.songAddress}&songId=${song.songId}" class="m-r-sm" title="下载"><i class="icon-cloud-download"></i></a>
+				                         <a href="#"
+				                         <c:choose>
+				                         	<c:when test="${song.whetherCollected}">class="collect m-r-sm text-danger"</c:when>
+				                         	<c:otherwise>class="collect m-r-sm"</c:otherwise>
+				                         </c:choose>
+				                         <%-- <c:if test="${song.whetherCollected}">class="collect m-r-sm text-danger" </c:if> --%>
+				                         onclick="collectFunc(${song.songId})" id="${song.songId}" title="喜欢"><i class="icon-heart"></i>
+				                         </a>
+			                        </div>
+			                      </li>
+			                   </c:forEach>
+			                 </ul>
+			      </div><!-- 总榜单 End-->
+			      <!-- 月榜单 -->
+			      <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+			      		<ul class="list-group list-group-flush" >
+							<c:forEach items="${myRecentPlayList}" var="song" varStatus="status">
+			                      <li class="list-group-item list-group-item-light " idd="${song.songId}" title="${song.songAddress}"  data-duration="${song.songLength}" data-name="${song.songName}">
+			                      	<!-- 歌曲信息区 -->
+			                      	<div class="clear text-ellipsis">
+			                          <span>${status.index+1}.${song.songName}</span>
+			                          <span class="text-muted"> -- 04:35</span>
+			                          <span class="text-danger icon-fire"></span>
+			                        </div>
+			                        <!-- 播放控制区 downloadFun(${song.songAddress})-->
+			                        <div class="pull-right m-l option fr">
+				                        <a href="javascript:;" class="play m-r-sm" title="播放">
+				                          <i class="icon-control-play text  "></i>
+				                          <!-- <i class="icon-control-pause text-active"></i> -->
+				                        </a>
+				                        <a href="${pageContext.request.contextPath}/download.do?songAddress=${song.songAddress}&songId=${song.songId}" class="m-r-sm" title="下载"><i class="icon-cloud-download"></i></a>
+				                         <a href="#"
+				                         <c:choose>
+				                         	<c:when test="${song.whetherCollected}">class="collect m-r-sm text-danger"</c:when>
+				                         	<c:otherwise>class="collect m-r-sm"</c:otherwise>
+				                         </c:choose>
+				                         <%-- <c:if test="${song.whetherCollected}">class="collect m-r-sm text-danger" </c:if> --%>
+				                         onclick="collectFunc(${song.songId})" id="${song.songId}" title="喜欢"><i class="icon-heart"></i>
+				                         </a>
+			                        </div>
+			                      </li>
+			                   </c:forEach>
+			                 </ul>
+			      </div><!-- 月榜单 End-->
+			      </div>
+			    </div>
+	  	</div>
+	</div>
+      		
+      		
       		
    			 </div><!--中DIV 歌曲部分 End-->
    			 <!-- 后DIV -->
@@ -288,7 +316,7 @@
 								<p>播放列表</p>
 								<span class="menu-close">关闭</span>
 							</div>
-							<ul class="audio-inline"><li><a href="javascript:;">the xx</a></li><li><a href="javascript:;">不该 - 周杰伦、张惠妹</a></li><li><a href="javascript:;">再见 - 邓紫棋</a></li><li><a href="javascript:;">最后一次 - 庄心妍</a></li><li><a href="javascript:;">远走高飞 - 金志文、徐佳莹</a></li><li><a href="javascript:;">极乐净土 - GARNiDELiA</a></li></ul>
+							<ul class="audio-inline"><li></li></ul>
 						</div>
 					</div><!-- 控制选项 End-->
 					

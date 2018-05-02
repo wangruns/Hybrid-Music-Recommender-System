@@ -122,3 +122,16 @@ function recordPlayInfo(songId){
         data:data,
     });
 }
+
+/**
+ * 我的音乐
+ * @returns
+ */
+function myMusicPage(){
+	//只有登录的用户才可以
+	if($("#logout")[0].style.display =='none'){
+		$("#SignInModalCenter").modal("show");
+		return;
+	} 
+	window.location.href ="myMusicPage.do";
+}

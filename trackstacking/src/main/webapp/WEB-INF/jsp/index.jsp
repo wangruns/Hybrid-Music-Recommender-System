@@ -116,7 +116,7 @@
               <a class="nav-link" href="${pageContext.request.contextPath}/rankingPage.do">排行榜</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="myMusicPage.html">我的音乐</a>
+              <a class="nav-link" href="#" onclick="myMusicPage()">我的音乐</a>
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">
@@ -134,6 +134,12 @@
 					role="button"  aria-haspopup="true"
 					aria-expanded="false" data-toggle="modal" data-target="#SignUpModalCenter"> 注册 </a>
 					</li> 
+			</ul>
+			<ul class="navbar-nav">
+				<li id="logout" class="nav-item dropdown" <c:if test="${sessionScope.user==null}">style="display:none;"</c:if>><a
+					class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/logout.do" 
+					role="button"> 退出 </a>
+					</li>
 			</ul>
 			
 			 <ul class="navbar-nav">
@@ -243,6 +249,7 @@
 	<script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.bundle.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/add2list.js"></script>
 	
 	<script>
 	$(function(){
