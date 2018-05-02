@@ -183,7 +183,7 @@
       	    </div><!-- 该前DIV为了中DIV居中 -->
       	    
       		<!--中DIV 歌曲部分-->
-            <div class="col-sm-10 h-item" id="mytest"><!-- 中DIV -->
+            <div class="col-sm-10 h-item"><!-- 中DIV -->
       		  <!-- One of three columns -->
       			
 
@@ -477,16 +477,6 @@
 	        return false;
 	        
 		});//处理注册 End
-		
-		
-		//处理我的收藏tab切换
-		$('#list-tab a[href="#list-home"]').on('click', function (e) {
-			$('#list-home').load("collectedFrameLoad.do");
-		});
-		//处理最近播放tab切换
-		$('#list-tab a[href="#list-profile"]').on('click', function (e) {
-			$('#list-profile').load("recentFrameLoad.do");
-		});
 		
 	
 	});

@@ -141,14 +141,6 @@
 					role="button"> 退出 </a>
 					</li>
 			</ul>
-			
-			 <ul class="navbar-nav">
-				<li class="nav-item dropdown" <c:if test="${sessionScope.user==null}">style="display:none;"</c:if>><a
-					class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/logout.do" 
-					role="button"> 退出 </a>
-					</li>
-			</ul>
-			 
         </div>
       </nav>
     </header>
