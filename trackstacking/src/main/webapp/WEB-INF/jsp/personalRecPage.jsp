@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>热门推荐</title>
+    <title>个性化推荐</title>
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
@@ -166,7 +166,7 @@
       
       <div class="container" id="hot">
       	<h1></h1>
-      	<h3>热门推荐+${test}</h3>
+      	<h3>个性化推荐+${test}</h3>
       	<div class="row content hot-content">
       	    <!-- 前DIV -->
       	    <div class="col-sm-1">
@@ -188,14 +188,14 @@
       		  <!-- One of three columns -->
       		  <ul class="list-group list-group-flush" >
 				
-				<c:forEach items="${trendingSongList}" var="song" varStatus="status">
+				<c:forEach items="${personalRecSongList}" var="song" varStatus="status">
 				
                       <li class="list-group-item list-group-item-light " idd="${song.songId}" title="${song.songAddress}"  data-duration="${song.songLength}" data-name="${song.songName}">
                       	<!-- 歌曲信息区 -->
                       	<div class="clear text-ellipsis">
                           <span>${status.index+1}.${song.songName}</span>
                           <span class="text-muted"> -- 04:35</span>
-                          <span class="badge badge-pill badge-primary badge-pill">${song.trendingCoefficient}</span>
+                          <span class="text-success icon-ghost"></span>
                         </div>
                         <!-- 播放控制区 downloadFun(${song.songAddress})-->
                         <div class="pull-right m-l option fr">
