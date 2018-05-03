@@ -7,6 +7,9 @@
 		insert into play(userId,songId) values(#{userId},#{songId})
 	</insert>
 	
-	
+	<select id="selectAll"
+		resultType="top.wangruns.trackstacking.model.PlayRecord">
+		select * from play
+	</select>
 
 </mapper>

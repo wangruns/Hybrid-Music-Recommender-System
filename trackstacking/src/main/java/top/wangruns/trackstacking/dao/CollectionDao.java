@@ -1,5 +1,7 @@
 package top.wangruns.trackstacking.dao;
 
+import java.util.List;
+
 import top.wangruns.trackstacking.model.Collection;
 
 public interface CollectionDao {
@@ -25,5 +27,11 @@ public interface CollectionDao {
 	 * @param collection
 	 */
 	public void insert(Collection collection);
+
+	/**
+	 * 查询所有用户的收藏记录
+	 * @return
+	 */
+	public List<Collection> seletAll();
 
 }

@@ -16,5 +16,10 @@
 		select * from collection where userId=#{userId} and songId=#{songId}
 	</select>
 	
+	<select id="selectAll"
+		resultType="top.wangruns.trackstacking.model.Collection">
+		select * from collection
+	</select>
+	
 
 </mapper>

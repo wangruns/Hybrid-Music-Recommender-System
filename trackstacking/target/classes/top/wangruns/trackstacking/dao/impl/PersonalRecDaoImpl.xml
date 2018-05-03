@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.wangruns.trackstacking.dao.PersonalRecDao">
+
+	<select id="selectPersonalRecFromA" parameterType="top.wangruns.trackstacking.model.User"
+		resultType="top.wangruns.trackstacking.model.TrendingSong">
+		select * from reca,song
+		where reca.userId=#{userId} and reca.songId=song.songId
+	</select>
+	
+	<select id="selectPersonalRecFromB" parameterType="top.wangruns.trackstacking.model.User"
+		resultType="top.wangruns.trackstacking.model.TrendingSong">
+		select * from recb,song
+		where recb.userId=#{userId} and recb.songId=song.songId
+	</select>
+	
+	<select id="insertRecA" parameterType="int">
+		insert into reca(userId,songId) values(#{0},#{1})
+	</select>
+	
+	
+	
+
+</mapper>

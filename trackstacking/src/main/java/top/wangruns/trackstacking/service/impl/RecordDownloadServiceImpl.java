@@ -1,5 +1,7 @@
 package top.wangruns.trackstacking.service.impl;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,10 @@ public class RecordDownloadServiceImpl implements RecordDownloadService{
 		//记录当前用户的下载记录
 		user=userDao.selectByUser(user);
 		recordDownloadDao.insert(new DownloadRecord(user.getUserId(),songId));
+	}
+
+	public List<DownloadRecord> getAllRecords() {
+		return recordDownloadDao.selectAll();
 	}
 
 }

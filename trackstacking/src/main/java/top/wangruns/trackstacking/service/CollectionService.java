@@ -1,6 +1,10 @@
 package top.wangruns.trackstacking.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+
+import top.wangruns.trackstacking.model.Collection;
 
 public interface CollectionService {
 
@@ -14,5 +18,12 @@ public interface CollectionService {
 	 * 若改变后状态为收藏，则返回true
 	 */
 	boolean collectionChange(HttpServletRequest request, int songId);
+
+	/**
+	 * 获取所有用户的收藏记录
+	 * @return
+	 * 若没有，则返回null
+	 */
+	List<Collection> getAllRecords();
 
 }

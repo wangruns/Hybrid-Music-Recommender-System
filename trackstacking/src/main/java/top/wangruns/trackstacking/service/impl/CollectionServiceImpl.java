@@ -1,5 +1,7 @@
 package top.wangruns.trackstacking.service.impl;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,10 @@ public class CollectionServiceImpl implements CollectionService {
 		}
 		//返回改变后的收藏状态
 		return !isCurCollected;
+	}
+
+	public List<Collection> getAllRecords() {
+		return collectionDao.seletAll();
 	}
 
 }

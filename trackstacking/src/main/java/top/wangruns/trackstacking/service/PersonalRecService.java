@@ -1,6 +1,7 @@
 package top.wangruns.trackstacking.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,5 +17,21 @@ public interface PersonalRecService {
 	 * @return
 	 */
 	List<TrendingSong> getPersonalDailyRecWithCollectionFlag(HttpServletRequest request);
+
+	/**
+	 * 初始化当前用户的个性化音乐推荐列表
+	 * @param request
+	 * HttpServletRequest
+	 */
+	void initializePersonalRecList(HttpServletRequest request);
+
+	/**
+	 * 更新个性化推荐列表B
+	 * @param user2song
+	 * userId to songId matrix
+	 */
+	void updatePersonalRecIntoB(Map<Integer, List<Integer>> user2song);
+
+	void updatePersonalRecIntoA(Map<Integer, List<Integer>> user2song);
 
 }

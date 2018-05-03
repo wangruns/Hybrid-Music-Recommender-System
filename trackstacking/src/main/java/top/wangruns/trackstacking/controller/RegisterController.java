@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
 
 import top.wangruns.trackstacking.model.User;
+import top.wangruns.trackstacking.service.PersonalRecService;
 import top.wangruns.trackstacking.service.UserService;
 import top.wangruns.trackstacking.utils.ReturnMsg;
 import top.wangruns.trackstacking.utils.SendEmail;
@@ -19,6 +20,8 @@ import top.wangruns.trackstacking.utils.SendEmail;
 public class RegisterController {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private PersonalRecService personalRecService;
 	
 	
 	@PostMapping(value = "getValidateCode.do",produces = "text/html;charset=UTF-8")
@@ -51,6 +54,10 @@ public class RegisterController {
 		boolean isInserted=userService.insert(u);
 		if(isInserted) {
 			request.getSession().setAttribute("user", u);
+			/**
+			 * 用户注册成功时，初始化个性化推荐列表
+			 */
+			personalRecService.initializePersonalRecList(request);
 			return ReturnMsg.msg(HttpServletResponse.SC_OK, JSONObject.toJSON(u).toString());
 		}else {
 			return ReturnMsg.msg(HttpServletResponse.SC_BAD_REQUEST, "注册失败");

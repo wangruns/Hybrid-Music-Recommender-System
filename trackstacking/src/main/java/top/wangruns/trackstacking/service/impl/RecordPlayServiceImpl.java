@@ -1,5 +1,7 @@
 package top.wangruns.trackstacking.service.impl;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,11 @@ public class RecordPlayServiceImpl implements RecordPlayService{
 		User user=userDao.selectByUser(Request.getUserFromHttpServletRequest(request));
 		recordPlayDao.insert(new PlayRecord(user.getUserId(),songId));
 		
+	}
+
+
+	public List<PlayRecord> getAllRecords() {
+		return recordPlayDao.selectAll();
 	}
 	
 

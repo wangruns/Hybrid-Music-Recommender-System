@@ -1,6 +1,10 @@
 package top.wangruns.trackstacking.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+
+import top.wangruns.trackstacking.model.DownloadRecord;
 
 public interface RecordDownloadService {
 
@@ -12,5 +16,12 @@ public interface RecordDownloadService {
 	 * 歌曲Id
 	 */
 	void recordDownload(HttpServletRequest request, int songId);
+
+	/**
+	 * 获取用户的下载记录
+	 * @return
+	 * 如果没有，则返回null
+	 */
+	List<DownloadRecord> getAllRecords();
 
 }

@@ -1,5 +1,7 @@
 package top.wangruns.trackstacking.dao;
 
+import java.util.List;
+
 import top.wangruns.trackstacking.model.DownloadRecord;
 
 public interface RecordDownloadDao {
@@ -9,5 +11,11 @@ public interface RecordDownloadDao {
 	 * @param downloadRecord
 	 */
 	void insert(DownloadRecord downloadRecord);
+
+	/**
+	 * 获取所有用户的下载记录
+	 * @return
+	 */
+	List<DownloadRecord> selectAll();
 
 }

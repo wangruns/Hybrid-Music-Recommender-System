@@ -18,6 +18,7 @@
 
 	<!-- 扫描该包 -->
 	<context:component-scan base-package="top.wangruns.trackstacking.service.impl" />
+	<bean id="beanDefineConfigue" class="top.wangruns.trackstacking.algorithm.DailyAction"></bean>
 
 	<!-- 引入property属性配置文件 -->  
 	<bean id="propertyConfig"
