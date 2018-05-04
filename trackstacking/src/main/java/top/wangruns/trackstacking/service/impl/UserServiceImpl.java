@@ -43,4 +43,12 @@ public class UserServiceImpl implements UserService {
 		return isInsertSuccessful;
 	}
 
+	public List<User> getAllRecords() {
+		return userDao.selectAll();
+	}
+
+	public List<Integer> getAllUserIdRecords() {
+		return userDao.selectAllUserId();
+	}
+
 }

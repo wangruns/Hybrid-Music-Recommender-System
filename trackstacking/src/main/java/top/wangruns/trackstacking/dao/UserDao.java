@@ -1,5 +1,7 @@
 package top.wangruns.trackstacking.dao;
 
+import java.util.List;
+
 import top.wangruns.trackstacking.model.User;
 
 public interface UserDao {
@@ -30,6 +32,20 @@ public interface UserDao {
 	 * 若插入成功返回1,否则返回0,即返回受影响的行数
 	 */
 	public int insert(User u);
+
+	/**
+	 * 查询所有的用户记录
+	 * @return
+	 * 若没有，则返回null
+	 */
+	public List<User> selectAll();
+
+	/**
+	 * 查询所有的用户Id记录
+	 * @return
+	 * 若没有，则返回null
+	 */
+	public List<Integer> selectAllUserId();
 	
 
 }

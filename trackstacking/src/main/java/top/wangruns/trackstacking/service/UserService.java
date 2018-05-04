@@ -1,5 +1,7 @@
 package top.wangruns.trackstacking.service;
 
+import java.util.List;
+
 import top.wangruns.trackstacking.model.User;
 
 public interface UserService {
@@ -31,5 +33,19 @@ public interface UserService {
 	 * 若插入成功返回true
 	 */
 	public boolean insert(User u);
+
+	/**
+	 * 获取所有的用户记录
+	 * @return
+	 * 若没有，则返回null
+	 */
+	public List<User> getAllRecords();
+
+	/**
+	 * 获取所有的用户Id记录
+	 * @return
+	 * 若没有，则返回null
+	 */
+	public List<Integer> getAllUserIdRecords();
 
 }

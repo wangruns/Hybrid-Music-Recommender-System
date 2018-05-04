@@ -17,5 +17,16 @@
 		insert into user(email,password) select #{email},#{password}
 		from dual where #{email} not in (select email from user)
 	</insert>
+	
+	<select id="selectAll"
+		resultType="top.wangruns.trackstacking.model.User">
+		select * from user
+	</select>
+	
+	<select id="selectAllUserId"
+		resultType="Integer">
+		select userId from user
+	</select>
+	
 
 </mapper>
