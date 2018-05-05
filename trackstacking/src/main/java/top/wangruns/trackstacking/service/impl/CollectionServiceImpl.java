@@ -39,7 +39,7 @@ public class CollectionServiceImpl implements CollectionService {
 	}
 
 	public List<Collection> getAllRecords() {
-		return collectionDao.seletAll();
+		return collectionDao.selectAll();
 	}
 
 }

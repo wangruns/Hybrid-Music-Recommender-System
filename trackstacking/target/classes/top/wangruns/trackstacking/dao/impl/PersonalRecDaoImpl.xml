@@ -14,9 +14,21 @@
 		where recb.userId=#{userId} and recb.songId=song.songId
 	</select>
 	
-	<select id="insertRecA" parameterType="int">
+	<insert id="insertRecA" parameterType="int">
 		insert into reca(userId,songId) values(#{0},#{1})
-	</select>
+	</insert>
+	
+	<insert id="insertRecB" parameterType="int">
+		insert into recb(userId,songId) values(#{0},#{1})
+	</insert>
+	
+	<delete id="deleteBByUserId" parameterType="int">
+		delete from recb where userId=#{userId}
+	</delete>
+	
+	<delete id="deleteAByUserId" parameterType="int">
+		delete from reca where userId=#{userId}
+	</delete>
 	
 	
 	

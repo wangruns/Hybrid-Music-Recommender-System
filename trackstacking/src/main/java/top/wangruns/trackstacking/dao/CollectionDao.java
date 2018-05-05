@@ -32,6 +32,6 @@ public interface CollectionDao {
 	 * 查询所有用户的收藏记录
 	 * @return
 	 */
-	public List<Collection> seletAll();
+	public List<Collection> selectAll();
 
 }

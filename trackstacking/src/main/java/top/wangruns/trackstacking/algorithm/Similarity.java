@@ -2,12 +2,12 @@ package top.wangruns.trackstacking.algorithm;
 
 public class Similarity {
 
-	public static float calculateSimilarity(Float[] floats, Float[] floats2) {
+	public static float calculateSimilarity(float[] fs, float[] fs2) {
 		// TODO Auto-generated method stub
 		float similarity=0f;
-		int len=floats.length;
+		int len=fs.length;
 		for(int i=0;i<len;i++) {
-			similarity+=Math.pow(floats[i]-floats2[i], 2);
+			similarity+=Math.pow(fs[i]-fs2[i], 2);
 		}
 		similarity/=len;
 		

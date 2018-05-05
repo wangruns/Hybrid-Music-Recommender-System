@@ -17,22 +17,22 @@ public class UserKNN {
 	 * @param k
 	 * 参数k,k个邻居
 	 * @return
-	 * <userId,[neighborAId,neighborBId...neighborKId]>
+	 * userId,[neighborAId,neighborBId...neighborKId]
 	 */
-	public static Map<Integer, Integer[]> getKNN(List<Integer> userIdList, final Map<Integer, Float[]> user2songRatingMatrix, final int k) {
+	public static Map<Integer, Integer[]> getKNN(List<Integer> userIdList, final Map<Integer, float[]> user2songRatingMatrix, final int k) {
 		// TODO Auto-generated method stub
 		final Map<Integer,Integer[]> userKNNMatrix=new HashMap<Integer,Integer[]>();
 		userIdList.forEach(new Consumer<Integer>() {
 
 			public void accept(final Integer curUserId) {
 				// TODO Auto-generated method stub
-				Integer[] knn=new Integer[k];
+				Integer[] knnId=new Integer[k];
 				//为用户建立一个最小堆来存放相似性最大的k个邻居
 				final MininumHeap mininumHeap=new MininumHeap(k);
 				//获取K Nearest Neighbors
-				user2songRatingMatrix.forEach(new BiConsumer<Integer, Float[]>() {
+				user2songRatingMatrix.forEach(new BiConsumer<Integer, float[]>() {
 
-					public void accept(Integer otherUserId, Float[] userRatingArray) {
+					public void accept(Integer otherUserId, float[] userRatingArray) {
 						// TODO Auto-generated method stub
 						//排除自己
 						if(otherUserId!=curUserId) {
@@ -47,9 +47,9 @@ public class UserKNN {
 				});
 				//从堆中获取相似性最大的k的邻居
 				for(int i=0;i<k;i++) {
-					knn[i]=mininumHeap.getArray()[i].id;
+					knnId[i]=mininumHeap.getArray()[i].id;
 				}
-				userKNNMatrix.put(curUserId, knn);
+				userKNNMatrix.put(curUserId, knnId);
 			}
 			
 		});

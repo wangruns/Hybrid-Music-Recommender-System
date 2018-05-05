@@ -34,10 +34,10 @@ public class DataTranslate {
 	 * @return
 	 * 用户Id-歌曲Id 频率矩阵
 	 */
-	public static Map<Integer, Float[]> getFrequencyMatrix(List<Integer> userIdList, final List<Integer> songIdList,
+	public static Map<Integer, float[]> getFrequencyMatrix(List<Integer> userIdList, final List<Integer> songIdList,
 			List<DownloadRecord> downloadList, List<PlayRecord> playList, List<Collection> collectionList) {
 		// TODO Auto-generated method stub
-		final Map<Integer,Float[]> user2songRatingMatrix=new HashMap<Integer, Float[]>();
+		final Map<Integer,float[]> user2songRatingMatrix=new HashMap<Integer, float[]>();
 		final int songLen=songIdList.size();
 		//获取用户-歌曲 下载映射
 		final Map<Integer,Integer[]> userId2songIdDownloadMap=getUserId2songIdRecordMap(downloadList,false);
@@ -50,7 +50,7 @@ public class DataTranslate {
 
 			public void accept(Integer userId) {
 				// TODO Auto-generated method stub
-				Float[] curUserRatingArray=new Float[songLen];
+				float[] curUserRatingArray=new float[songLen];
 				int songIndex=0;
 				//处理每一首歌曲
 				for(Integer songId:songIdList) {
@@ -115,8 +115,8 @@ public class DataTranslate {
 				// TODO Auto-generated method stub
 				try {
 					//利用反射获和泛型获取不同类型表的相同属性
-					Field userIdField=t.getClass().getField("userId");
-					Field songIdField=t.getClass().getField("songId");
+					Field userIdField=t.getClass().getDeclaredField("userId");
+					Field songIdField=t.getClass().getDeclaredField("songId");
 					userIdField.setAccessible(true);
 					songIdField.setAccessible(true);
 					int userId=userIdField.getInt(t);

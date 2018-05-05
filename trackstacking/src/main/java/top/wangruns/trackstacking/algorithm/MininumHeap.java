@@ -68,4 +68,12 @@ public class MininumHeap {
 		return array;
 	}
 
+	/**
+	 * 获取当前堆的真实大小
+	 * @return
+	 */
+	public int getCurHeapSize() {
+		return curHeapSize;
+	}
+	
 }

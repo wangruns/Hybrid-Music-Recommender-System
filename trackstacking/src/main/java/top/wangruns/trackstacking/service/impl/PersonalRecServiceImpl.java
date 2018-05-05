@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 import javax.servlet.http.HttpServletRequest;
@@ -93,13 +94,37 @@ public class PersonalRecServiceImpl implements PersonalRecService {
 		});
 	}
 
-	public void updatePersonalRecIntoB(Map<Integer, List<Integer>> user2song) {
+	public void updatePersonalRecIntoB(Map<Integer, Integer[]> user2song) {
 		// TODO Auto-generated method stub
+		user2song.forEach(new BiConsumer<Integer,Integer[]>(){
+
+			public void accept(Integer userId, Integer[] recSongIds) {
+				// TODO Auto-generated method stub
+				personalRecDao.deleteBByUserId(userId);
+				for(int i=0;i<recSongIds.length;i++) {
+					personalRecDao.insertRecB(userId,recSongIds[i]);
+				}
+				
+			}
+			
+		});
 		
 	}
 
-	public void updatePersonalRecIntoA(Map<Integer, List<Integer>> user2song) {
+	public void updatePersonalRecIntoA(Map<Integer, Integer[]> user2song) {
 		// TODO Auto-generated method stub
+		user2song.forEach(new BiConsumer<Integer,Integer[]>(){
+
+			public void accept(Integer userId, Integer[] recSongIds) {
+				// TODO Auto-generated method stub
+				personalRecDao.deleteAByUserId(userId);
+				for(int i=0;i<recSongIds.length;i++) {
+					personalRecDao.insertRecA(userId,recSongIds[i]);
+				}
+				
+			}
+			
+		});
 		
 	}
 

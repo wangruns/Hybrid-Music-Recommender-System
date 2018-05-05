@@ -30,8 +30,13 @@ public interface PersonalRecService {
 	 * @param user2song
 	 * userId to songId matrix
 	 */
-	void updatePersonalRecIntoB(Map<Integer, List<Integer>> user2song);
+	void updatePersonalRecIntoB(Map<Integer, Integer[]> user2song);
 
-	void updatePersonalRecIntoA(Map<Integer, List<Integer>> user2song);
+	/**
+	 * 更新个性化推荐列表A
+	 * @param user2song
+	 * userId to songId matrix
+	 */
+	void updatePersonalRecIntoA(Map<Integer, Integer[]> user2song);
 
 }

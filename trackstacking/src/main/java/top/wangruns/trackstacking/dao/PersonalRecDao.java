@@ -32,4 +32,25 @@ public interface PersonalRecDao {
 	 */
 	void insertRecA(int userId, int songId);
 
+	/**
+	 * 像recb表中插入数据
+	 * @param userId
+	 * 用户id
+	 * @param songId
+	 * 歌曲id
+	 */
+	void insertRecB(int userId, int songId);
+
+	/**
+	 * 根据id从recB表中删除数据
+	 * @param userId
+	 */
+	void deleteBByUserId(int userId);
+	
+	/**
+	 * 根据id从recA表中删除数据
+	 * @param userId
+	 */
+	void deleteAByUserId(int userId);
+
 }
