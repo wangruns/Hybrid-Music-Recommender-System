@@ -28,6 +28,11 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/demo.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/cool.css">
 	
+	<style>
+	body{
+		padding-bottom: 6rem;
+	}
+	</style>
 	
   </head>
   <body>
@@ -48,9 +53,11 @@
 		      <!-- <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
 		      <h1 class="h3 mb-3 font-weight-normal">请输入帐号和密码</h1>
 		      <label for="inputEmail" class="sr-only">Email address</label>
-		      <input type="email" id="inputEmail" class="form-control" placeholder="邮箱帐号" required autofocus>
+		      <input type="email" id="inputEmail" class="form-control" placeholder="邮箱帐号" required autofocus oninvalid="this.setCustomValidity('请输入正确的邮箱')"
+ oninput="setCustomValidity('')">
 		      <label for="inputPassword" class="sr-only">Password</label>
-		      <input type="password" id="inputPassword" class="form-control" placeholder="密码" required>
+		      <input type="password" id="inputPassword" class="form-control" placeholder="密码" required oninvalid="this.setCustomValidity('密码不能为空')"
+ oninput="setCustomValidity('')">
 		      
 		      <div class="collapse" id="collapse-error-hint">
 					<div class="card card-body">帐号或者密码错误</div>
@@ -90,13 +97,16 @@
 		      <!-- <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
 		      <h1 class="h3 mb-3 font-weight-normal">请输入帐号和密码</h1>
 		      <label for="inputEmail" class="sr-only">Email address</label>
-		      <input type="email" id="inputEmail-signup" class="form-control" placeholder="邮箱帐号" required autofocus>
+		      <input type="email" id="inputEmail-signup" class="form-control" placeholder="邮箱帐号" required autofocus oninvalid="this.setCustomValidity('请输入正确的邮箱')"
+ oninput="setCustomValidity('')">
 		     
 		      <button type="button"  class="btn btn-md btn-primary" id="get-validate-code">获取验证码</button>
-		      <input type="number" class="form-control" id="validate-code-signup" placeholder="验证码" required> 
+		      <input type="number" class="form-control" id="validate-code-signup" placeholder="验证码" required oninvalid="this.setCustomValidity('请输入验证码')"
+ oninput="setCustomValidity('')"> 
 		      
 		      <label for="inputPassword" class="sr-only">Password</label>
-		      <input type="password" id="inputPassword-signup" class="form-control" placeholder="密码" required>
+		      <input type="password" id="inputPassword-signup" class="form-control" placeholder="密码" required oninvalid="this.setCustomValidity('密码不能为空')"
+ oninput="setCustomValidity('')">
 		      
 		      <div class="collapse" id="collapse-error-hint-signup">
 					<div class="card card-body">两次密码不一致</div>
@@ -151,8 +161,8 @@
 			</ul>
 			
 			 <ul class="navbar-nav">
-				<li id="logout" class="nav-item dropdown" <c:if test="${sessionScope.user==null}">style="display:none;"</c:if>><a
-					class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/logout.do" 
+				<li id="logout" class="nav-item " <c:if test="${sessionScope.user==null}">style="display:none;"</c:if>><a
+					class="nav-link" href="${pageContext.request.contextPath}/logout.do" 
 					role="button"> 退出 </a>
 					</li>
 			</ul>
@@ -166,7 +176,7 @@
       
       <div class="container" id="hot">
       	<h1></h1>
-      	<h3>排行榜+${test}</h3>
+      	<h3>排行榜 百尺竿头</h3>
       	<div class="row content hot-content">
       	    <!-- 前DIV -->
       	    <div class="col-sm-1">
@@ -194,7 +204,7 @@
 		      <a class="list-group-item list-group-item-action " id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">月榜</a>
 		    </div>
 		  </div>
-		  <div class="col-8">
+		  <div class="col-8 border">
 			    <div class="tab-content" id="nav-tabContent">
 			      <!-- 周榜单 -->
 			      <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
@@ -340,19 +350,19 @@
           <div class="col-lg-4">
             <img class="rounded-circle" src="${pageContext.request.contextPath}/image/5.jpeg" alt="Generic placeholder image" width="140" height="140">
             <h2>热门推荐</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+            <p>聆听潮流的声音</p>
             <p><a class="btn btn-secondary" href="${pageContext.request.contextPath}/trendingRecPage.do" role="button">查看详情 &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="rounded-circle" src="${pageContext.request.contextPath}/image/1.jpg" alt="Generic placeholder image" width="140" height="140">
             <h2>新碟上架</h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+            <p>发现你的新世界</p>
             <p><a class="btn btn-secondary" href="${pageContext.request.contextPath}/newTrackOnShelfPage.do" role="button">查看详情 &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="rounded-circle" src="${pageContext.request.contextPath}/image/2.jpg" alt="Generic placeholder image" width="140" height="140">
             <h2>个性化推荐</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p>每天早上6点更新</p>
             <p><a class="btn btn-secondary" href="${pageContext.request.contextPath}/personalRecPage.do" role="button">查看详情	 &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
@@ -363,8 +373,8 @@
 
       <!-- FOOTER -->
       <footer class="container">
-        <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p class="float-right"><a href="#">返回顶部</a></p>
+        <p>&copy; 2017-2018 WangRuns, School of Big Data & Software Engineering. &middot; <a href="https://github.com/wangruns/Hybrid-Music-Recommender-System">GitHub</a></p>
       </footer>
     <%--main End--%>
 
@@ -374,11 +384,6 @@
 	<script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.bundle.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-	
-	<%-- <script src="${pageContext.request.contextPath}/js/index.js"></script> --%>
-	<%-- <script src="${pageContext.request.contextPath}/js/Song.js"></script>
-	<script src="${pageContext.request.contextPath}/js/Player.js"></script>
-	<script src="${pageContext.request.contextPath}/js/listener.js"></script> --%>
 	
 	<script src="${pageContext.request.contextPath}/js/audio.js"></script>
 	<script src="${pageContext.request.contextPath}/js/add2list.js"></script>
@@ -495,7 +500,7 @@
 	
 	
 	//限制60s获取一次验证码
-	var waitTime=6;
+	var waitTime=60;
 	var cnt=waitTime;
 	function settime(val) {
 		if (cnt == 0) {
