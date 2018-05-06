@@ -1,13 +1,4 @@
-var collectBnts=null;
-var commentBtns=null;
 $(function(){
-    //给热门推荐里的播放按钮添加监听
-    musics=$("#hot .hot-content .h-item ul li");
-    playBtns=musics.find(".option .play");
-    
-    //喜欢按钮添加监听
-    collectBtns=musics.find(".option .collect");
-    
     var song = [
 		{
 			'cover' : 'images/cover.jpg',
@@ -27,33 +18,26 @@ $(function(){
 		'title' : 'I Knew You Were Trouble'
 	},false);
 
-    
-    hotBtnsEvent();
 });
 
 /**
  * 将点击的歌曲添加到播放列表并播放
+ * @param songId
  * @returns
  */
-function hotBtnsEvent(){
-    var len=playBtns.length;
-    for(var i=0;i<len;i++){
-        playBtns[i].index=i;
-        playBtns[i].onclick=function(){
-        	var src=musics[this.index].getAttribute("title");
-            var name=musics[this.index].getAttribute("data-name");
-            var id=musics[this.index].getAttribute("idd");
-            //记录播放信息
-            recordPlayInfo(id);
-            //添加新歌并立即播放
-            audioFn.newSong({
-    			'cover' : 'images/cover4.jpg',
-    			'src' : src,
-    			'title' : name
-    		},true);
-            
-        };
-    };
+function playFunc(songId){
+	var collectElement=$("#play"+songId);
+	var name=collectElement.attr("name");
+	var address=collectElement.attr("address");
+	//记录播放信息
+    recordPlayInfo(songId);
+    //添加新歌并立即播放
+    audioFn.newSong({
+		'cover' : 'images/cover4.jpg',
+		'src' : address,
+		'title' : name
+	},true);
+	
 }
 
 
@@ -140,3 +124,4 @@ function myMusicPage(){
 	} 
 	window.location.href ="myMusicPage.do";
 }
+

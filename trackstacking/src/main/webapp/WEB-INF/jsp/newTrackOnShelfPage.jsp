@@ -204,22 +204,22 @@
 				
 				<c:forEach items="${newTrackSongList}" var="song" varStatus="status">
 				
-                      <li class="list-group-item list-group-item-light " idd="${song.songId}" title="${song.songAddress}"  data-duration="${song.songLength}" data-name="${song.songName}">
+                      <li class="list-group-item list-group-item-light " idd="${song.songId}" title="${song.songName}">
                       	<!-- 歌曲信息区 -->
                       	<div class="clear text-ellipsis">
                           <span>${status.index+1}.${song.songName}</span>
-                          <span class="text-muted"> -- 04:35</span>
+                          <span class="text-muted"> -- _ _ -- </span>
                           <span class="text-danger icon-fire"></span>
                         </div>
                         <!-- 播放控制区 downloadFun(${song.songAddress})-->
-                        <div class="pull-right m-l option fr">
-	                        <a href="javascript:;" class="play m-r-sm" title="播放">
+                        <div class="pull-right m-l fr">
+	                        <a href="javascript:;" class="play m-r-sm" title="播放" onclick="playFunc(${song.songId})" id="play${song.songId}" name="${song.songName}" address="${song.songAddress}">
 	                          <i class="icon-control-play text  "></i>
 	                          <!-- <i class="icon-control-pause text-active"></i> -->
 	                        </a>
 	                        <a href="${pageContext.request.contextPath}/download.do?songAddress=${song.songAddress}&songId=${song.songId}" class="m-r-sm" title="下载"><i class="icon-cloud-download"></i></a>
 	                         
-	                         <a href="#"
+	                         <a href="javascript:;"
 	                         <c:choose>
 	                         	<c:when test="${song.whetherCollected}">class="collect m-r-sm text-danger"</c:when>
 	                         	<c:otherwise>class="collect m-r-sm"</c:otherwise>
@@ -234,22 +234,6 @@
                    </c:forEach>
                       
                  </ul>
-                 
-<!--                  <nav aria-label="...">
-  <ul class="pagination">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item active">
-      <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav> -->
       		
    			 </div><!--中DIV 歌曲部分 End-->
    			 <!-- 后DIV -->
@@ -367,140 +351,6 @@
 	
 	
 	<script>
-	/* $(function(){
-		
-		
-		//处理登录
-		$("#login-submit").submit(function(){
-			var email=$("#inputEmail").val();
-	        var password=$("#inputPassword").val();
-	        var data = {        
-			        "email": email,
-			        "password":password,
-			 };
-	        url = "${pageContext.request.contextPath}/login.do";
-	        $.ajax({
-	            type:"POST",
-	            url:url,
-	            data:data,
-	            success:function(data){
-	            	var res=JSON.parse(data);
-	                if(res.status==200){
-	                    $("#SignInModalCenter").modal('hide');
-	                    location.reload();
-	                }else{
-	                	$('#collapse-error-hint').html(res.msg);
-	                	$('#collapse-error-hint').collapse()
-	                }
-	            }
-	        });
-	        return false;
-	        
-		});//处理登录 End
-
-	
-	
-	//获取验证码
-	$("#get-validate-code").click(function(){
-		var email=$("#inputEmail-signup").val();
-		var btn=$(this);
-		if(!checkEmail(email)){
-			$('#collapse-error-hint-signup').html("请输入正确的邮箱");
-        	$('#collapse-error-hint-signup').collapse()
-			return;
-		}
-        var data = {        
-		        "email": email,
-		 };
-        url = "${pageContext.request.contextPath}/getValidateCode.do";
-        $.ajax({
-            type:"POST",
-            url:url,
-            data:data,
-            success:function(data){
-            	var res=JSON.parse(data);
-            	if(res.status==200){
-            		settime(btn);
-            	}
-            	$('#collapse-error-hint-signup').html(res.msg);
-            	$('#collapse-error-hint-signup').collapse();
-            }
-        });
-        
-	  });//获取验证码 End
-	
-	
-	
-	//处理注册
-	$("#register-submit").submit(function(){
-			var email=$("#inputEmail-signup").val();
-	        var password=$("#inputPassword-signup").val();
-	        var validateCode=$("#validate-code-signup").val();
-	        var data = {        
-			        "email": email,
-			        "password":password,
-			        "validateCode":validateCode,
-			 };
-	        url = "${pageContext.request.contextPath}/register.do";
-	        $.ajax({
-	            type:"POST",
-	            url:url,
-	            data:data,
-	            success:function(data){
-	            	var res=JSON.parse(data);
-	                if(res.status==200){
-	                    $("#SignUpModalCenter").modal('hide');
-	                    location.reload();
-	                }else{
-	                	$('#collapse-error-hint-signup').html(res.msg);
-	                	$('#collapse-error-hint-signup').collapse()
-	                }
-	            }
-	        });
-	        return false;
-	        
-		});//处理注册 End
-		
-	
-	});
-	
-	
-	//验证邮箱
-	function checkEmail(str){
-		   var re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
-		   if(re.test(str)){
-			   return true;
-		   }else{
-			   return false;
-		   }
-	}//验证邮箱 End
-	
-	
-	//限制60s获取一次验证码
-	var waitTime=60;
-	var cnt=waitTime;
-	function settime(val) {
-		if (cnt == 0) {
-			val.attr("disabled", false);
-			val.html("重新获取");
-			val.css({
-			"background":"#007BFF"
-			}); 
-			cnt = waitTime;
-			return false;
-		} else {
-			val.attr("disabled", true);
-			val.html("正在获取"+cnt);
-			val.css({
-			"background":"#ccc"
-			});
-			cnt--;
-		}
-		setTimeout(function() {
-			settime(val)
-		},1000);
-	}//限制60s获取一次验证码 End */
-	
 	</script>
   </body>
 </html>
