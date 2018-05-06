@@ -228,7 +228,7 @@
 				                          <!-- <i class="icon-control-pause text-active"></i> -->
 				                        </a>
 				                        <a href="${pageContext.request.contextPath}/download.do?songAddress=${song.songAddress}&songId=${song.songId}" class="m-r-sm" title="下载"><i class="icon-cloud-download"></i></a>
-				                         <a href="#"
+				                         <a href="javascript:;"
 				                         <c:choose>
 				                         	<c:when test="${song.whetherCollected}">class="collect m-r-sm text-danger"</c:when>
 				                         	<c:otherwise>class="collect m-r-sm"</c:otherwise>
@@ -240,7 +240,7 @@
 			                      </li>
 			                   </c:forEach>
 			                 </ul>
-			      </div><!-- 总榜单 End-->
+			      </div><!-- 周榜单 End-->
 			      <!-- 月榜单 -->
 			      <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
 			      		<ul class="list-group list-group-flush" >
@@ -259,7 +259,7 @@
 				                          <!-- <i class="icon-control-pause text-active"></i> -->
 				                        </a>
 				                        <a href="${pageContext.request.contextPath}/download.do?songAddress=${song.songAddress}&songId=${song.songId}" class="m-r-sm" title="下载"><i class="icon-cloud-download"></i></a>
-				                         <a href="#"
+				                         <a href="javascript:;"
 				                         <c:choose>
 				                         	<c:when test="${song.whetherCollected}">class="collect m-r-sm text-danger"</c:when>
 				                         	<c:otherwise>class="collect m-r-sm"</c:otherwise>

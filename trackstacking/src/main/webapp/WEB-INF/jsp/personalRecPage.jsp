@@ -197,7 +197,7 @@
       	    </div><!-- 该前DIV为了中DIV居中 -->
       	    
       		<!--中DIV 歌曲部分-->
-            <div class="col-sm-10 h-item"><!-- 中DIV -->
+            <div class="col-sm-10 h-item border"><!-- 中DIV -->
                
       		  <!-- One of three columns -->
       		  <ul class="list-group list-group-flush" >
@@ -219,7 +219,7 @@
 	                        </a>
 	                        <a href="${pageContext.request.contextPath}/download.do?songAddress=${song.songAddress}&songId=${song.songId}" class="m-r-sm" title="下载"><i class="icon-cloud-download"></i></a>
 	                         
-	                         <a href="#"
+	                         <a href="javascript:;"
 	                         <c:choose>
 	                         	<c:when test="${song.whetherCollected}">class="collect m-r-sm text-danger"</c:when>
 	                         	<c:otherwise>class="collect m-r-sm"</c:otherwise>
