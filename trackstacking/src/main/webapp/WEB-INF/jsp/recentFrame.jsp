@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<div class="col-12 <c:if test="${ (not empty myRecentPlayList) }">border</c:if>">
+	 
 	<ul class="list-group list-group-flush">
 		<c:forEach items="${myRecentPlayList}" var="song" varStatus="status">
 			<li class="list-group-item list-group-item-light "
@@ -36,6 +37,6 @@
 			</li>
 		</c:forEach>
 	</ul>
-
+</div>
 </body>
 </html>

@@ -22,7 +22,6 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/simple-line-icons.css" >
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/player.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/iconfont/iconfont.css">
-    <%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css"> --%>
     
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/audio.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/demo.css">
@@ -197,7 +196,7 @@
       	    </div><!-- 该前DIV为了中DIV居中 -->
       	    
       		<!--中DIV 歌曲部分-->
-            <div class="col-sm-10 h-item border"><!-- 中DIV -->
+            <div class="col-sm-10 h-item <c:if test="${not empty personalRecSongList}">border</c:if>"><!-- 中DIV -->
                
       		  <!-- One of three columns -->
       		  <ul class="list-group list-group-flush" >
@@ -351,11 +350,7 @@
 	
 	
 	<script>
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> 02992329a6cad3b959aab322a95ae014331f20e1
 	</script>
   </body>
 </html>

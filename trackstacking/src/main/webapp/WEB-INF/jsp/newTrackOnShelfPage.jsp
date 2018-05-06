@@ -22,7 +22,6 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/simple-line-icons.css" >
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/player.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/iconfont/iconfont.css">
-    <%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css"> --%>
     
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/audio.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/demo.css">
@@ -351,10 +350,7 @@
 	
 	
 	<script>
-<<<<<<< HEAD
-=======
 	
->>>>>>> 02992329a6cad3b959aab322a95ae014331f20e1
 	</script>
   </body>
 </html>

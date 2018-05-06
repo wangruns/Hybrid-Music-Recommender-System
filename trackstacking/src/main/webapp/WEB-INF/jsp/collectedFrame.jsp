@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div class="col-12 <c:if test="${ (not empty myCollectionList) }">border</c:if>">
 
 	<ul class="list-group list-group-flush">
 		<c:forEach items="${myCollectionList}" var="song" varStatus="status">
@@ -37,5 +38,6 @@
 		</c:forEach>
 	</ul>
 	
+</div>
 </body>
 </html>
