@@ -89,6 +89,10 @@
 		      <label for="inputPassword" class="sr-only">Password</label>
 		      <input type="password" id="inputPassword-signup" class="form-control" placeholder="密码" required oninvalid="this.setCustomValidity('密码不能为空')"
  oninput="setCustomValidity('')">
+ 
+			  <label for="inputPasswordAgain" class="sr-only">Password Again</label>
+			  <input type="password" id="inputPasswordAgain-signup" class="form-control" placeholder="再次输入密码" required oninvalid="this.setCustomValidity('密码不能为空')"
+			 oninput="setCustomValidity('')">
 		      
 		      <div class="collapse" id="collapse-error-hint-signup">
 					<div class="card card-body">两次密码不一致</div>
@@ -249,9 +253,10 @@
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	
 	<script src="${pageContext.request.contextPath}/js/add2list.js"></script>
+	<script src="${pageContext.request.contextPath}/js/navbar.js"></script>
 	
 	<script>
-	$(function(){
+	/* $(function(){
 		
 		
 		//处理登录
@@ -319,6 +324,12 @@
 	$("#register-submit").submit(function(){
 			var email=$("#inputEmail-signup").val();
 	        var password=$("#inputPassword-signup").val();
+	        var passwordAgain=$("#inputPasswordAgain-signup").val();
+	        if(passwordAgain!=password){
+	        	$('#collapse-error-hint-signup').html("两次密码不一致");
+	        	$('#collapse-error-hint-signup').collapse();
+	        	return false;
+	        }
 	        var validateCode=$("#validate-code-signup").val();
 	        var data = {        
 			        "email": email,
@@ -383,7 +394,7 @@
 		setTimeout(function() {
 			settime(val)
 		},1000);
-	}//限制60s获取一次验证码 End
+	}//限制60s获取一次验证码 End */
 	
 	</script>
   </body>

@@ -107,6 +107,10 @@
 		      <input type="password" id="inputPassword-signup" class="form-control" placeholder="密码" required oninvalid="this.setCustomValidity('密码不能为空')"
  oninput="setCustomValidity('')">
 		      
+		      <label for="inputPasswordAgain" class="sr-only">Password Again</label>
+			  <input type="password" id="inputPasswordAgain-signup" class="form-control" placeholder="再次输入密码" required oninvalid="this.setCustomValidity('密码不能为空')"
+			 oninput="setCustomValidity('')">
+		      
 		      <div class="collapse" id="collapse-error-hint-signup">
 					<div class="card card-body">两次密码不一致</div>
 			 	</div>
@@ -358,9 +362,10 @@
 	
 	<script src="${pageContext.request.contextPath}/js/audio.js"></script>
 	<script src="${pageContext.request.contextPath}/js/add2list.js"></script>
+	<script src="${pageContext.request.contextPath}/js/navbar.js"></script>
 	
 	<script>
-	$(function(){
+	/* $(function(){
 		
 		
 		//处理登录
@@ -492,7 +497,7 @@
 		setTimeout(function() {
 			settime(val)
 		},1000);
-	}//限制60s获取一次验证码 End
+	}//限制60s获取一次验证码 End */
 	
 	</script>
   </body>
