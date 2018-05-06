@@ -240,7 +240,7 @@
 			                      </li>
 			                   </c:forEach>
 			                 </ul>
-			      </div><!-- 总榜单 End-->
+			      </div><!-- 周榜单 End-->
 			      <!-- 月榜单 -->
 			      <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
 			      		<ul class="list-group list-group-flush" >

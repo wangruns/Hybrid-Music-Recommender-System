@@ -197,7 +197,7 @@
       	    </div><!-- 该前DIV为了中DIV居中 -->
       	    
       		<!--中DIV 歌曲部分-->
-            <div class="col-sm-10 h-item"><!-- 中DIV -->
+            <div class="col-sm-10 h-item border"><!-- 中DIV -->
                
       		  <!-- One of three columns -->
       		  <ul class="list-group list-group-flush" >
@@ -351,7 +351,11 @@
 	
 	
 	<script>
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 02992329a6cad3b959aab322a95ae014331f20e1
 	</script>
   </body>
 </html>

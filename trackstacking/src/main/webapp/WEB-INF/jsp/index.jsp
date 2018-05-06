@@ -256,7 +256,11 @@
 	<script src="${pageContext.request.contextPath}/js/navbar.js"></script>
 	
 	<script>
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 02992329a6cad3b959aab322a95ae014331f20e1
 	</script>
   </body>
 </html>

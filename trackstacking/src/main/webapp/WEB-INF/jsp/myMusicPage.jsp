@@ -259,7 +259,7 @@
 				                          <!-- <i class="icon-control-pause text-active"></i> -->
 				                        </a>
 				                        <a href="${pageContext.request.contextPath}/download.do?songAddress=${song.songAddress}&songId=${song.songId}" class="m-r-sm" title="下载"><i class="icon-cloud-download"></i></a>
-				                         <a href="#"
+				                         <a href="javascript:;"
 				                         <c:choose>
 				                         	<c:when test="${song.whetherCollected}">class="collect m-r-sm text-danger"</c:when>
 				                         	<c:otherwise>class="collect m-r-sm"</c:otherwise>
@@ -395,6 +395,7 @@
 	
 	<script>
 	
+<<<<<<< HEAD
 	$(function(){
 		//处理我的收藏tab切换
 		$('#list-tab a[href="#list-home"]').on('click', function (e) {
@@ -405,6 +406,8 @@
 			$('#list-profile').load("recentFrameLoad.do");
 		});
 	});
+=======
+>>>>>>> 02992329a6cad3b959aab322a95ae014331f20e1
 	</script>
   </body>
 </html>
