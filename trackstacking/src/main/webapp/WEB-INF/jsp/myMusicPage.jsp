@@ -353,19 +353,19 @@
           <div class="col-lg-4">
             <img class="rounded-circle" src="${pageContext.request.contextPath}/image/5.jpeg" alt="Generic placeholder image" width="140" height="140">
             <h2>热门推荐</h2>
-            <p></p>
+            <p>聆听潮流的声音</p>
             <p><a class="btn btn-secondary" href="${pageContext.request.contextPath}/trendingRecPage.do" role="button">查看详情 &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="rounded-circle" src="${pageContext.request.contextPath}/image/1.jpg" alt="Generic placeholder image" width="140" height="140">
             <h2>新碟上架</h2>
-            <p></p>
+            <p>发现你的新世界</p>
             <p><a class="btn btn-secondary" href="${pageContext.request.contextPath}/newTrackOnShelfPage.do" role="button">查看详情 &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
             <img class="rounded-circle" src="${pageContext.request.contextPath}/image/2.jpg" alt="Generic placeholder image" width="140" height="140">
             <h2>个性化推荐</h2>
-            <p></p>
+            <p>每天早上6点更新</p>
             <p><a class="btn btn-secondary" href="${pageContext.request.contextPath}/personalRecPage.do" role="button">查看详情	 &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
@@ -394,149 +394,6 @@
 	
 	
 	<script>
-	/* $(function(){
-		
-		
-		//处理登录
-		$("#login-submit").submit(function(){
-			var email=$("#inputEmail").val();
-	        var password=$("#inputPassword").val();
-	        var data = {        
-			        "email": email,
-			        "password":password,
-			 };
-	        url = "${pageContext.request.contextPath}/login.do";
-	        $.ajax({
-	            type:"POST",
-	            url:url,
-	            data:data,
-	            success:function(data){
-	            	var res=JSON.parse(data);
-	                if(res.status==200){
-	                    $("#SignInModalCenter").modal('hide');
-	                    location.reload();
-	                }else{
-	                	$('#collapse-error-hint').html(res.msg);
-	                	$('#collapse-error-hint').collapse()
-	                }
-	            }
-	        });
-	        return false;
-	        
-		});//处理登录 End
-
-	
-	
-	//获取验证码
-	$("#get-validate-code").click(function(){
-		var email=$("#inputEmail-signup").val();
-		var btn=$(this);
-		if(!checkEmail(email)){
-			$('#collapse-error-hint-signup').html("请输入正确的邮箱");
-        	$('#collapse-error-hint-signup').collapse()
-			return;
-		}
-        var data = {        
-		        "email": email,
-		 };
-        url = "${pageContext.request.contextPath}/getValidateCode.do";
-        $.ajax({
-            type:"POST",
-            url:url,
-            data:data,
-            success:function(data){
-            	var res=JSON.parse(data);
-            	if(res.status==200){
-            		settime(btn);
-            	}
-            	$('#collapse-error-hint-signup').html(res.msg);
-            	$('#collapse-error-hint-signup').collapse();
-            }
-        });
-        
-	  });//获取验证码 End
-	
-	
-	
-	//处理注册
-	$("#register-submit").submit(function(){
-			var email=$("#inputEmail-signup").val();
-	        var password=$("#inputPassword-signup").val();
-	        var validateCode=$("#validate-code-signup").val();
-	        var data = {        
-			        "email": email,
-			        "password":password,
-			        "validateCode":validateCode,
-			 };
-	        url = "${pageContext.request.contextPath}/register.do";
-	        $.ajax({
-	            type:"POST",
-	            url:url,
-	            data:data,
-	            success:function(data){
-	            	var res=JSON.parse(data);
-	                if(res.status==200){
-	                    $("#SignUpModalCenter").modal('hide');
-	                    location.reload();
-	                }else{
-	                	$('#collapse-error-hint-signup').html(res.msg);
-	                	$('#collapse-error-hint-signup').collapse()
-	                }
-	            }
-	        });
-	        return false;
-	        
-		});//处理注册 End
-		
-		
-		//处理我的收藏tab切换
-		$('#list-tab a[href="#list-home"]').on('click', function (e) {
-			$('#list-home').load("collectedFrameLoad.do");
-		});
-		//处理最近播放tab切换
-		$('#list-tab a[href="#list-profile"]').on('click', function (e) {
-			$('#list-profile').load("recentFrameLoad.do");
-		});
-		
-	
-	});
-	
-	
-	//验证邮箱
-	function checkEmail(str){
-		   var re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
-		   if(re.test(str)){
-			   return true;
-		   }else{
-			   return false;
-		   }
-	}//验证邮箱 End
-	
-	
-	//限制60s获取一次验证码
-	var waitTime=60;
-	var cnt=waitTime;
-	function settime(val) {
-		if (cnt == 0) {
-			val.attr("disabled", false);
-			val.html("重新获取");
-			val.css({
-			"background":"#007BFF"
-			}); 
-			cnt = waitTime;
-			return false;
-		} else {
-			val.attr("disabled", true);
-			val.html("正在获取"+cnt);
-			val.css({
-			"background":"#ccc"
-			});
-			cnt--;
-		}
-		setTimeout(function() {
-			settime(val)
-		},1000);
-	}//限制60s获取一次验证码 End */
 	
 	</script>
   </body>
