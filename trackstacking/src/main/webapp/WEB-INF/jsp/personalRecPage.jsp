@@ -180,7 +180,7 @@
       
       <div class="container" id="hot">
       	<h1></h1>
-      	<h3>个性化推荐 更懂你的心</h3>
+      	<h3>个性化推荐 ${oneDayOneWord}</h3>
       	<div class="row content hot-content">
       	    <!-- 前DIV -->
       	    <div class="col-sm-1">

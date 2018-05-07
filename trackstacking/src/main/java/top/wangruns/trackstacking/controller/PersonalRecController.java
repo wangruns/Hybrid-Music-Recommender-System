@@ -27,7 +27,12 @@ public class PersonalRecController {
 		List<TrendingSong> personalRecSongList=personalRecService.getPersonalDailyRecWithCollectionFlag(request);
 		
 		modelAndView.addObject("personalRecSongList",personalRecSongList);
-		modelAndView.addObject("test","Name");
+		if(personalRecSongList==null) {
+			modelAndView.addObject("oneDayOneWord","登录即享——遇见不一样的自己");
+		}else {
+			modelAndView.addObject("oneDayOneWord","更懂你的心");
+		}
+		
 		
 		return modelAndView;
 		

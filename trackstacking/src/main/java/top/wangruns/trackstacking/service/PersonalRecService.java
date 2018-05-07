@@ -15,6 +15,7 @@ public interface PersonalRecService {
 	 * @param request
 	 * HttpServletRequest
 	 * @return
+	 * 若没有获取到，返回null
 	 */
 	List<TrendingSong> getPersonalDailyRecWithCollectionFlag(HttpServletRequest request);
 
