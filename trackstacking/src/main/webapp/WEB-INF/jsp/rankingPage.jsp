@@ -146,8 +146,9 @@
               <a class="nav-link" href="#" onclick="myMusicPage()">我的音乐</a>
             </li>
           </ul>
-          <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="音乐" aria-label="Search">
+           <form class="form-inline mt-2 mt-md-0" action="${pageContext.request.contextPath}/search.do">
+            <input class="form-control mr-sm-2" type="text" placeholder="音乐" aria-label="Search" name="keyword" required autofocus oninvalid="this.setCustomValidity('搜索内容不能为空')"
+ oninput="setCustomValidity('')">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
           </form>
           <ul class="navbar-nav mr-auto">
@@ -293,7 +294,7 @@
 			<div class="audio-container">
 				<div class="audio-cover" style="background-image: url(&quot;images/cover.jpg&quot;);"></div>
 				<div class="audio-view">
-					<h3 class="audio-title">the xx</h3>
+					<h3 class="audio-title">track stacking</h3>
 					<!-- 进度条 -->
 					<div class="audio-body">
 						<div class="audio-backs">

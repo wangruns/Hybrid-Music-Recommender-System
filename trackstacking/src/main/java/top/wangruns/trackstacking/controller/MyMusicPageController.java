@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import top.wangruns.trackstacking.model.TrendingSong;
 import top.wangruns.trackstacking.service.MyMusicService;
+import top.wangruns.trackstacking.utils.OneDayOneWord;
 import top.wangruns.trackstacking.utils.Static;
 
 @Controller
@@ -28,7 +29,7 @@ public class MyMusicPageController {
 		
 		modelAndView.addObject("myCollectionList",myCollectionList);
 		modelAndView.addObject("myRecentPlayList",myRecentPlayList);
-		modelAndView.addObject("oneDayOneWord",getOneDayOneWord());
+		modelAndView.addObject("oneDayOneWord",OneDayOneWord.getOneDayOneWord(Static.MY_MUSIC_WORD_ARRAY));
 		
 		return modelAndView;
 		
@@ -41,7 +42,7 @@ public class MyMusicPageController {
 		List<TrendingSong> myRecentPlayList=myMusicService.getMyRecentPlayListWithCollectionFlag(request);
 		
 		modelAndView.addObject("myRecentPlayList",myRecentPlayList);
-		modelAndView.addObject("oneDayOneWord",getOneDayOneWord());
+		modelAndView.addObject("oneDayOneWord",OneDayOneWord.getOneDayOneWord(Static.MY_MUSIC_WORD_ARRAY));
 		
 		return modelAndView;
 		
@@ -54,18 +55,10 @@ public class MyMusicPageController {
 		List<TrendingSong> myCollectionList=myMusicService.getMyCollectionWithCollectionFlag(request);
 		
 		modelAndView.addObject("myCollectionList",myCollectionList);
-		modelAndView.addObject("oneDayOneWord",getOneDayOneWord());
+		modelAndView.addObject("oneDayOneWord",OneDayOneWord.getOneDayOneWord(Static.MY_MUSIC_WORD_ARRAY));
 		
 		return modelAndView;
 		
 	}
-	
-	private String getOneDayOneWord() {
-		Random random=new Random();
-		String oneDayOneWord=Static.MY_MUSIC_WORD_ARRAY[random.nextInt(Static.MY_MUSIC_WORD_ARRAY.length)];
-		return oneDayOneWord;
-	}
-	
-
 
 }

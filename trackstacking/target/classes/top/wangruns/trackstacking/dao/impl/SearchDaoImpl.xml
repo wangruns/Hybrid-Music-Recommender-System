@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.wangruns.trackstacking.dao.SearchDao">
+
+	<select id="selectSongLikeKeyword" parameterType="String"
+		resultType="top.wangruns.trackstacking.model.TrendingSong">
+		select * from song where songName like concat('%',#{keyword},'%')
+	</select>
+
+</mapper>

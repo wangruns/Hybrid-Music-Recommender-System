@@ -146,8 +146,9 @@
               <a class="nav-link" href="#" onclick="myMusicPage()">我的音乐</a>
             </li>
           </ul>
-          <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="音乐" aria-label="Search">
+          <form class="form-inline mt-2 mt-md-0" action="${pageContext.request.contextPath}/search.do">
+            <input class="form-control mr-sm-2" type="text" placeholder="音乐" aria-label="Search" name="keyword" required autofocus oninvalid="this.setCustomValidity('搜索内容不能为空')"
+ oninput="setCustomValidity('')">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
           </form>
           <ul class="navbar-nav mr-auto">
@@ -249,7 +250,7 @@
 			<div class="audio-container">
 				<div class="audio-cover" style="background-image: url(&quot;images/cover.jpg&quot;);"></div>
 				<div class="audio-view">
-					<h3 class="audio-title">the xx</h3>
+					<h3 class="audio-title">track stacking</h3>
 					<!-- 进度条 -->
 					<div class="audio-body">
 						<div class="audio-backs">
@@ -285,7 +286,7 @@
 								<p>播放列表</p>
 								<span class="menu-close">关闭</span>
 							</div>
-							<ul class="audio-inline"><li><a href="javascript:;">the xx</a></li><li><a href="javascript:;">不该 - 周杰伦、张惠妹</a></li><li><a href="javascript:;">再见 - 邓紫棋</a></li><li><a href="javascript:;">最后一次 - 庄心妍</a></li><li><a href="javascript:;">远走高飞 - 金志文、徐佳莹</a></li><li><a href="javascript:;">极乐净土 - GARNiDELiA</a></li></ul>
+							<ul class="audio-inline"><li><a href="javascript:;">track stacking</a></li><li><a href="javascript:;">不该 - 周杰伦、张惠妹</a></li><li><a href="javascript:;">再见 - 邓紫棋</a></li><li><a href="javascript:;">最后一次 - 庄心妍</a></li><li><a href="javascript:;">远走高飞 - 金志文、徐佳莹</a></li><li><a href="javascript:;">极乐净土 - GARNiDELiA</a></li></ul>
 						</div>
 					</div><!-- 控制选项 End-->
 					

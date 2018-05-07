@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import top.wangruns.trackstacking.model.TrendingSong;
 import top.wangruns.trackstacking.service.RankingPageService;
+import top.wangruns.trackstacking.utils.OneDayOneWord;
 import top.wangruns.trackstacking.utils.Static;
 
 @Controller
@@ -29,9 +30,7 @@ public class RankingPageCotroller {
 		modelAndView.addObject("weekRankingList",weekRankingList);
 		modelAndView.addObject("monthRankingList",monthRankingList);
 		
-		Random random=new Random();
-		String oneDayOneWord=Static.RANKING_WORD_ARRAY[random.nextInt(Static.RANKING_WORD_ARRAY.length)];
-		modelAndView.addObject("oneDayOneWord",oneDayOneWord);
+		modelAndView.addObject("oneDayOneWord",OneDayOneWord.getOneDayOneWord(Static.RANKING_WORD_ARRAY));
 		
 		return modelAndView;
 		

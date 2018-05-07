@@ -57,5 +57,12 @@ public class Static {
 	public static final String [] MY_MUSIC_WORD_ARRAY= {"四面楚歌","余音绕梁","靡靡之音",
 			"扣人心弦","高山流水","四面楚歌","曲高和寡","余音袅袅","一唱三叹","四面楚歌","绕梁三日","游鱼出听"};
 	
+	/**
+	 * 搜索结果，每次一词
+	 */
+	public static final String [] SEARCH_WORD_ARRAY= {"众里寻他","计获事足","望眼欲穿",
+			"踏破铁鞋","如愿以偿","东寻西觅","摸索门径","寻踪觅迹"};
+	
+	
 	
 }
