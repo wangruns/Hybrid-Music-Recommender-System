@@ -179,7 +179,7 @@
       
       <div class="container" id="hot">
       	<h1></h1>
-      	<h3>我的音乐 四面楚歌</h3>
+      	<h3>我的音乐 ${oneDayOneWord}</h3>
       	<div class="row content hot-content">
       	    <!-- 前DIV -->
       	    <div class="col-sm-1">

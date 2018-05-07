@@ -1,19 +1,18 @@
 package top.wangruns.trackstacking.controller;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import top.wangruns.trackstacking.model.TrendingSong;
 import top.wangruns.trackstacking.service.RankingPageService;
-import top.wangruns.trackstacking.service.TrendingRecService;
+import top.wangruns.trackstacking.utils.Static;
 
 @Controller
 public class RankingPageCotroller {
@@ -29,7 +28,10 @@ public class RankingPageCotroller {
 		
 		modelAndView.addObject("weekRankingList",weekRankingList);
 		modelAndView.addObject("monthRankingList",monthRankingList);
-		modelAndView.addObject("test","Name");
+		
+		Random random=new Random();
+		String oneDayOneWord=Static.RANKING_WORD_ARRAY[random.nextInt(Static.RANKING_WORD_ARRAY.length)];
+		modelAndView.addObject("oneDayOneWord",oneDayOneWord);
 		
 		return modelAndView;
 		

@@ -1,6 +1,7 @@
 package top.wangruns.trackstacking.controller;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import top.wangruns.trackstacking.model.TrendingSong;
 import top.wangruns.trackstacking.service.MyMusicService;
+import top.wangruns.trackstacking.utils.Static;
 
 @Controller
 public class MyMusicPageController {
@@ -26,22 +28,7 @@ public class MyMusicPageController {
 		
 		modelAndView.addObject("myCollectionList",myCollectionList);
 		modelAndView.addObject("myRecentPlayList",myRecentPlayList);
-		modelAndView.addObject("test","Name");
-		
-		return modelAndView;
-		
-	}
-	
-	@GetMapping(value = "myRecentLoad.do")
-	public ModelAndView myRecentLoad(HttpServletRequest request) {
-		ModelAndView modelAndView=new ModelAndView();
-		modelAndView.setViewName("myMusicPage");
-		List<TrendingSong> myCollectionList=myMusicService.getMyCollectionWithCollectionFlag(request);
-		List<TrendingSong> myRecentPlayList=myMusicService.getMyRecentPlayListWithCollectionFlag(request);
-		
-		modelAndView.addObject("myCollectionList",myCollectionList);
-		modelAndView.addObject("myRecentPlayList",myRecentPlayList);
-		modelAndView.addObject("test","Name");
+		modelAndView.addObject("oneDayOneWord",getOneDayOneWord());
 		
 		return modelAndView;
 		
@@ -54,6 +41,7 @@ public class MyMusicPageController {
 		List<TrendingSong> myRecentPlayList=myMusicService.getMyRecentPlayListWithCollectionFlag(request);
 		
 		modelAndView.addObject("myRecentPlayList",myRecentPlayList);
+		modelAndView.addObject("oneDayOneWord",getOneDayOneWord());
 		
 		return modelAndView;
 		
@@ -66,9 +54,16 @@ public class MyMusicPageController {
 		List<TrendingSong> myCollectionList=myMusicService.getMyCollectionWithCollectionFlag(request);
 		
 		modelAndView.addObject("myCollectionList",myCollectionList);
+		modelAndView.addObject("oneDayOneWord",getOneDayOneWord());
 		
 		return modelAndView;
 		
+	}
+	
+	private String getOneDayOneWord() {
+		Random random=new Random();
+		String oneDayOneWord=Static.MY_MUSIC_WORD_ARRAY[random.nextInt(Static.MY_MUSIC_WORD_ARRAY.length)];
+		return oneDayOneWord;
 	}
 	
 

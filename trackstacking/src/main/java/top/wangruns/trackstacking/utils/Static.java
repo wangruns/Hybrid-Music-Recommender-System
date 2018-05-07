@@ -45,5 +45,17 @@ public class Static {
 	 */
 	public static final int N = 10;
 	
+	/**
+	 * 排行榜的，每日一词
+	 */
+	public static final String [] RANKING_WORD_ARRAY= {"百尺竿头","步步高升","精益求精",
+			"登堂入室","登峰造极","泰山北斗","功成名就","大展鸿图","炉火纯青"};
+	
+	/**
+	 * 我的音乐的，每日一词
+	 */
+	public static final String [] MY_MUSIC_WORD_ARRAY= {"四面楚歌","余音绕梁","靡靡之音",
+			"扣人心弦","高山流水","四面楚歌","曲高和寡","余音袅袅","一唱三叹","四面楚歌","绕梁三日","游鱼出听"};
+	
 	
 }
