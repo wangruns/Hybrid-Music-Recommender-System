@@ -24,11 +24,6 @@ public class MyMusicPageController {
 	public ModelAndView myMusicPage(HttpServletRequest request) {
 		ModelAndView modelAndView=new ModelAndView();
 		modelAndView.setViewName("myMusicPage");
-		List<TrendingSong> myCollectionList=myMusicService.getMyCollectionWithCollectionFlag(request);
-		List<TrendingSong> myRecentPlayList=myMusicService.getMyRecentPlayListWithCollectionFlag(request);
-		
-		modelAndView.addObject("myCollectionList",myCollectionList);
-		modelAndView.addObject("myRecentPlayList",myRecentPlayList);
 		modelAndView.addObject("oneDayOneWord",OneDayOneWord.getOneDayOneWord(Static.MY_MUSIC_WORD_ARRAY));
 		
 		return modelAndView;

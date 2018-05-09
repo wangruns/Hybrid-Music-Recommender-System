@@ -31,6 +31,38 @@
 	</delete>
 	
 	
+	<!-- 多个不同类型的传参，会被MyBatis自动解析成param1，param2...
+	https://blog.csdn.net/woshi74/article/details/38397807
+	 -->
+	<insert id="insertListIntoRecA">
+		insert into reca(userId,songId) values
+		<foreach collection="param1" item="song" open="" close="" separator=",">  
+           (#{param2},#{song.songId})
+        </foreach>
+	</insert>
+	
+	<insert id="insertListIntoRecB">
+		insert into recb(userId,songId) values
+		<foreach collection="param1" item="song" open="" close="" separator=",">  
+           (#{param2},#{song.songId})
+        </foreach>
+	</insert>
+	
+	<insert id="insertArrayIntoRecB">
+		insert into recb(userId,songId) values
+		<foreach collection="param1" item="songId" open="" close="" separator=",">  
+           (#{param2},#{songId})
+        </foreach>
+	</insert>
+	
+	<insert id="insertArrayIntoRecA">
+		insert into reca(userId,songId) values
+		<foreach collection="param1" item="songId" open="" close="" separator=",">  
+           (#{param2},#{songId})
+        </foreach>
+	</insert>
+	
+	
 	
 
 </mapper>

@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import top.wangruns.trackstacking.model.TrendingSong;
 import top.wangruns.trackstacking.service.PersonalRecService;
 import top.wangruns.trackstacking.service.TrendingRecService;
+import top.wangruns.trackstacking.utils.Static;
 
 @Controller
 public class PersonalRecController {

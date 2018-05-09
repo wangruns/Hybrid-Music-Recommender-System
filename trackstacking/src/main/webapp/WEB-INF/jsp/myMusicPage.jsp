@@ -208,7 +208,7 @@
 		      <a class="list-group-item list-group-item-action " id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">最近播放</a>
 		    </div>
 		  </div>
-		  <div class="col-8 <c:if test="${ (not empty myCollectionList) }">border</c:if>">
+		  <div class="col-8">
 			    <div class="tab-content" id="nav-tabContent">
 			      <!-- 我的收藏 -->
 			      <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
@@ -395,6 +395,7 @@
 	
 	<script>
 	$(function(){
+		$('#list-home').load("collectedFrameLoad.do");
 		//处理我的收藏tab切换
 		$('#list-tab a[href="#list-home"]').on('click', function (e) {
 			$('#list-home').load("collectedFrameLoad.do");

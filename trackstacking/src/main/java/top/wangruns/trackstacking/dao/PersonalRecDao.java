@@ -53,4 +53,40 @@ public interface PersonalRecDao {
 	 */
 	void deleteAByUserId(int userId);
 
+	/**
+	 * 将List里面的songId和userId批量插入A表
+	 * @param songList
+	 * 包含歌曲Id的信息列表
+	 * @param userId
+	 * 用户的Id
+	 */
+	void insertListIntoRecA(List<TrendingSong> songList, int userId);
+	
+	/**
+	 * 将List里面的songId和userId批量插入B表
+	 * @param songList
+	 * 包含歌曲Id的信息列表
+	 * @param userId
+	 * 用户的Id
+	 */
+	void insertListIntoRecB(List<TrendingSong> songList, int userId);
+
+	/***
+	 * 将数组里面的songId和userId批量插入B表
+	 * @param recSongIds
+	 * songId数组
+	 * @param userId
+	 * 用户的Id
+	 */
+	void insertArrayIntoRecB(Integer[] recSongIds, Integer userId);
+
+	/***
+	 * 将数组里面的songId和userId批量插入A表
+	 * @param recSongIds
+	 * songId数组
+	 * @param userId
+	 * 用户的Id
+	 */
+	void insertArrayIntoRecA(Integer[] recSongIds, Integer userId);
+
 }

@@ -78,20 +78,26 @@ public class PersonalRecServiceImpl implements PersonalRecService {
 
 	public void initializePersonalRecList(HttpServletRequest request) {
 		final User user = userDao.selectByUser(Request.getUserFromHttpServletRequest(request));
-		List<TrendingSong> initialRecList = new ArrayList<TrendingSong>();
+		List<TrendingSong> initialRecListA = new ArrayList<TrendingSong>();
+		List<TrendingSong> initialRecListB = new ArrayList<TrendingSong>();
 		//从新歌中随机获取10首，作为初始化列表
-		initialRecList=newTrackOnShelfDao.selecNewSong();
+		initialRecListA=newTrackOnShelfDao.selecNewSong();
 		for(int i=0;i<40;i++) {
-			int len=initialRecList.size();
+			int len=initialRecListA.size();
 			Random random=new Random();
 			int index=random.nextInt(len);
-			initialRecList.remove(index);
-		}
-		initialRecList.forEach(new Consumer<TrendingSong>() {
-			public void accept(TrendingSong t) {
-				personalRecDao.insertRecA(user.getUserId(),t.getSongId());
+			if(i<10) {
+				initialRecListB.add(initialRecListA.get((index+1)%len));
 			}
-		});
+			initialRecListA.remove(index);
+		}
+		//批量插入
+		if(Static.isFromA) {
+			personalRecDao.insertListIntoRecA(initialRecListA,user.getUserId());
+		}else {
+			personalRecDao.insertListIntoRecB(initialRecListB,user.getUserId());
+		}
+		
 	}
 
 	public void updatePersonalRecIntoB(Map<Integer, Integer[]> user2song) {
@@ -101,9 +107,8 @@ public class PersonalRecServiceImpl implements PersonalRecService {
 			public void accept(Integer userId, Integer[] recSongIds) {
 				// TODO Auto-generated method stub
 				personalRecDao.deleteBByUserId(userId);
-				for(int i=0;i<recSongIds.length;i++) {
-					personalRecDao.insertRecB(userId,recSongIds[i]);
-				}
+				//批量插入
+				personalRecDao.insertArrayIntoRecB(recSongIds,userId);
 				
 			}
 			
@@ -118,9 +123,8 @@ public class PersonalRecServiceImpl implements PersonalRecService {
 			public void accept(Integer userId, Integer[] recSongIds) {
 				// TODO Auto-generated method stub
 				personalRecDao.deleteAByUserId(userId);
-				for(int i=0;i<recSongIds.length;i++) {
-					personalRecDao.insertRecA(userId,recSongIds[i]);
-				}
+				//批量插入
+				personalRecDao.insertArrayIntoRecA(recSongIds,userId);
 				
 			}
 			

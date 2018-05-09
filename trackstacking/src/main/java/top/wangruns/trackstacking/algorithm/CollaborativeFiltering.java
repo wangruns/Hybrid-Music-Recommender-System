@@ -1,10 +1,8 @@
 package top.wangruns.trackstacking.algorithm;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.function.Consumer;
 
 public class CollaborativeFiltering {
@@ -44,7 +42,11 @@ public class CollaborativeFiltering {
 				MininumHeap mininumHeap=new MininumHeap(n);
 				for(int i=0;i<curUserRatings.length;i++) {
 					//对于没有听过的歌曲
-					if(curUserRatings[i]==0f) {
+					/**
+					 * 这里需要注意的是，浮点数不能用==来比较...之前竟然犯了这个低级的错误...
+					 * 故这里用 curUserRatings[i]<0.01f 来表示 curUserRatings[i]==0f
+					 */
+					if(curUserRatings[i]<0.01f) {
 						for(int knnIndex=0;knnIndex<knnIdArray.length;knnIndex++) {
 							int knnId=knnIdArray[knnIndex];
 							float[] knnUserRatings=user2songRatingMatrix.get(knnId);
