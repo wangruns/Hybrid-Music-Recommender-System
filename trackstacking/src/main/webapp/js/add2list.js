@@ -9,7 +9,7 @@ $(function(){
 
     audioFn = audioPlay({
 		song : song,
-		autoPlay : true  //是否立即播放第一首，autoPlay为true且song为空，会alert文本提示并退出
+		autoPlay : false  //是否立即播放第一首，autoPlay为true且song为空，会alert文本提示并退出
 	});
 	/* 向歌单中添加新曲目，第二个参数true为新增后立即播放该曲目，false则不播放 */
 	audioFn.newSong({
@@ -122,6 +122,8 @@ function myMusicPage(){
 		$("#SignInModalCenter").modal("show");
 		return;
 	} 
-	window.location.href ="myMusicPage.do";
+	//window.location.href ="myMusicPage.do";
+	$('#hot').load("myMusicFrameLoad.do");
+	$("#playerId").show();
 }
 

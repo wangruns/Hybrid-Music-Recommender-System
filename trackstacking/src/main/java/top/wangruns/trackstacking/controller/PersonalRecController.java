@@ -20,7 +20,6 @@ public class PersonalRecController {
 	@Autowired
 	private PersonalRecService personalRecService;
 	
-	
 	@RequestMapping(value = "personalRecPage.do",method = { RequestMethod.GET })
 	public ModelAndView personalRecPage(HttpServletRequest request) {
 		ModelAndView modelAndView=new ModelAndView();
@@ -33,10 +32,22 @@ public class PersonalRecController {
 		}else {
 			modelAndView.addObject("oneDayOneWord","更懂你的心");
 		}
-		
-		
 		return modelAndView;
+	}
+	
+	@RequestMapping(value = "personalizedRecFrameLoad.do",method = { RequestMethod.GET })
+	public ModelAndView personalizedRecFrameLoad(HttpServletRequest request) {
+		ModelAndView modelAndView=new ModelAndView();
+		modelAndView.setViewName("personalizedRecFrame");
+		List<TrendingSong> personalRecSongList=personalRecService.getPersonalDailyRecWithCollectionFlag(request);
 		
+		modelAndView.addObject("personalRecSongList",personalRecSongList);
+		if(personalRecSongList==null) {
+			modelAndView.addObject("oneDayOneWord","登录即享——遇见不一样的自己");
+		}else {
+			modelAndView.addObject("oneDayOneWord","更懂你的心");
+		}
+		return modelAndView;
 	}
 
 }

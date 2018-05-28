@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Track Stacking</title>
 </head>
 <body>
 <div class="col-12 <c:if test="${ (not empty myRecentPlayList) }">border</c:if>">

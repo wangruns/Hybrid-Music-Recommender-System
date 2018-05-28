@@ -30,6 +30,16 @@ public class MyMusicPageController {
 		
 	}
 	
+	@GetMapping(value = "myMusicFrameLoad.do")
+	public ModelAndView myMusicFrameLoad(HttpServletRequest request) {
+		ModelAndView modelAndView=new ModelAndView();
+		modelAndView.setViewName("myMusicFrame");
+		modelAndView.addObject("oneDayOneWord",OneDayOneWord.getOneDayOneWord(Static.MY_MUSIC_WORD_ARRAY));
+		
+		return modelAndView;
+		
+	}
+	
 	@GetMapping(value = "recentFrameLoad.do")
 	public ModelAndView recentFrameLoad(HttpServletRequest request) {
 		ModelAndView modelAndView=new ModelAndView();

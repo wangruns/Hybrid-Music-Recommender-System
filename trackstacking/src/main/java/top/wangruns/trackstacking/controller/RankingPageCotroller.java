@@ -36,5 +36,22 @@ public class RankingPageCotroller {
 		
 	}
 	
+	@GetMapping(value = "rankingFrameLoad.do")
+	public ModelAndView rankingFrameLoad(HttpServletRequest request) {
+		ModelAndView modelAndView=new ModelAndView();
+		modelAndView.setViewName("rankingFrame");
+		List<TrendingSong> weekRankingList=rankingPageService.getRankWithCollectionFlag(request,1);
+		List<TrendingSong> monthRankingList=rankingPageService.getRankWithCollectionFlag(request,2);
+		
+		modelAndView.addObject("weekRankingList",weekRankingList);
+		modelAndView.addObject("monthRankingList",monthRankingList);
+		
+		modelAndView.addObject("oneDayOneWord",OneDayOneWord.getOneDayOneWord(Static.RANKING_WORD_ARRAY));
+		
+		return modelAndView;
+		
+	}
+	
+	
 
 }

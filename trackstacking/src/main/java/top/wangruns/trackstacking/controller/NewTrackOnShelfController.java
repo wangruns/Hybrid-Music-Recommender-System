@@ -31,5 +31,19 @@ public class NewTrackOnShelfController {
 		return modelAndView;
 
 	}
+	
+	
+	@RequestMapping(value = "newTrackOnShelfFrameLoad.do", method = { RequestMethod.GET })
+	public ModelAndView newTrackOnShelfFrameLoad(HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("newTrackOnShelfFrame");
+		List<TrendingSong> newTrackSongList = newTrackOnShelfService.getNewTrackWithCollectionFlag(request);
+
+		modelAndView.addObject("newTrackSongList", newTrackSongList);
+		modelAndView.addObject("test", "Name");
+
+		return modelAndView;
+
+	}
 
 }

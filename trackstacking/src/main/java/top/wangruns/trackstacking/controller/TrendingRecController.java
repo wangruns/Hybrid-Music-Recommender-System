@@ -31,5 +31,19 @@ public class TrendingRecController {
 		return modelAndView;
 		
 	}
+	
+	
+	@RequestMapping(value = "trendingRecFrameLoad.do",method = { RequestMethod.GET })
+	public ModelAndView trendingRecFrameLoad(HttpServletRequest request) {
+		ModelAndView modelAndView=new ModelAndView();
+		modelAndView.setViewName("trendingRecFrame");
+		List<TrendingSong> trendingSongList=trendingRecService.getTrendingSongWithCollectionFlag(request);
+		
+		modelAndView.addObject("trendingSongList",trendingSongList);
+		modelAndView.addObject("test","Name");
+		
+		return modelAndView;
+		
+	}
 
 }

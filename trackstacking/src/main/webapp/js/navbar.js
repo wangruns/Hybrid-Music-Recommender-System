@@ -17,7 +17,8 @@ $(function(){
 	            	var res=JSON.parse(data);
 	                if(res.status==200){
 	                    $("#SignInModalCenter").modal('hide');
-	                    location.reload();
+	                    //location.reload();
+	                    $('#headerId').load("headerFrameLoad.do");
 	                }else{
 	                	$('#collapse-error-hint').html(res.msg);
 	                	$('#collapse-error-hint').collapse()
