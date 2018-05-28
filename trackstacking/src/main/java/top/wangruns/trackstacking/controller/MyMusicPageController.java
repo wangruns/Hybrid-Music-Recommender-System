@@ -20,16 +20,6 @@ public class MyMusicPageController {
 	@Autowired
 	private MyMusicService myMusicService;
 	
-	@GetMapping(value = "myMusicPage.do")
-	public ModelAndView myMusicPage(HttpServletRequest request) {
-		ModelAndView modelAndView=new ModelAndView();
-		modelAndView.setViewName("myMusicPage");
-		modelAndView.addObject("oneDayOneWord",OneDayOneWord.getOneDayOneWord(Static.MY_MUSIC_WORD_ARRAY));
-		
-		return modelAndView;
-		
-	}
-	
 	@GetMapping(value = "myMusicFrameLoad.do")
 	public ModelAndView myMusicFrameLoad(HttpServletRequest request) {
 		ModelAndView modelAndView=new ModelAndView();

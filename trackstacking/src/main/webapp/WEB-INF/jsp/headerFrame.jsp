@@ -31,7 +31,7 @@
               <a class="nav-link" href="#" onclick="myMusicPage()">我的音乐</a>
             </li>
           </ul>
-          <form class="form-inline mt-2 mt-md-0" action="${pageContext.request.contextPath}/search.do" id="searchFormId">
+          <form class="form-inline mt-2 mt-md-0" id="searchFormId">
             <input class="form-control mr-sm-2" type="text" placeholder="音乐" aria-label="Search" name="keyword" required autofocus oninvalid="this.setCustomValidity('搜索内容不能为空')"
  oninput="setCustomValidity('')">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>

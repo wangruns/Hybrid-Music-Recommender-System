@@ -19,20 +19,6 @@ public class NewTrackOnShelfController {
 	@Autowired
 	private NewTrackOnShelfService newTrackOnShelfService;
 
-	@RequestMapping(value = "newTrackOnShelfPage.do", method = { RequestMethod.GET })
-	public ModelAndView newTrackOnShelfPage(HttpServletRequest request) {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("newTrackOnShelfPage");
-		List<TrendingSong> newTrackSongList = newTrackOnShelfService.getNewTrackWithCollectionFlag(request);
-
-		modelAndView.addObject("newTrackSongList", newTrackSongList);
-		modelAndView.addObject("test", "Name");
-
-		return modelAndView;
-
-	}
-	
-	
 	@RequestMapping(value = "newTrackOnShelfFrameLoad.do", method = { RequestMethod.GET })
 	public ModelAndView newTrackOnShelfFrameLoad(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();

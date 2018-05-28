@@ -20,22 +20,6 @@ public class RankingPageCotroller {
 	@Autowired
 	private RankingPageService rankingPageService;
 	
-	@GetMapping(value = "rankingPage.do")
-	public ModelAndView rankingPage(HttpServletRequest request) {
-		ModelAndView modelAndView=new ModelAndView();
-		modelAndView.setViewName("rankingPage");
-		List<TrendingSong> weekRankingList=rankingPageService.getRankWithCollectionFlag(request,1);
-		List<TrendingSong> monthRankingList=rankingPageService.getRankWithCollectionFlag(request,2);
-		
-		modelAndView.addObject("weekRankingList",weekRankingList);
-		modelAndView.addObject("monthRankingList",monthRankingList);
-		
-		modelAndView.addObject("oneDayOneWord",OneDayOneWord.getOneDayOneWord(Static.RANKING_WORD_ARRAY));
-		
-		return modelAndView;
-		
-	}
-	
 	@GetMapping(value = "rankingFrameLoad.do")
 	public ModelAndView rankingFrameLoad(HttpServletRequest request) {
 		ModelAndView modelAndView=new ModelAndView();

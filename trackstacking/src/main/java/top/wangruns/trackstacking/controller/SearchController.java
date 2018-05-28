@@ -20,23 +20,6 @@ public class SearchController {
 	@Autowired
 	private SearchService searchService;
 	
-	
-	@RequestMapping(value = "search.do",method = { RequestMethod.GET })
-	public ModelAndView search(HttpServletRequest request,String keyword) {
-		ModelAndView modelAndView=new ModelAndView();
-		modelAndView.setViewName("searchResult");
-		List<TrendingSong> searchSongList=searchService.getSearchSongWithCollectionFlag(request,keyword);
-		
-		modelAndView.addObject("searchSongList",searchSongList);
-		if(searchSongList.size()==0) {
-			modelAndView.addObject("oneDayOneWord","下落不明");
-		}else {
-			modelAndView.addObject("oneDayOneWord",OneDayOneWord.getOneDayOneWord(Static.SEARCH_WORD_ARRAY));
-		}
-		return modelAndView;
-	}
-	
-	
 	@RequestMapping(value = "searchFrameLoad.do",method = { RequestMethod.GET })
 	public ModelAndView searchFrameLoad(HttpServletRequest request,String keyword) {
 		ModelAndView modelAndView=new ModelAndView();
