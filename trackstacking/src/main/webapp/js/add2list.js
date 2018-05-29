@@ -127,3 +127,29 @@ function myMusicPage(){
 	$("#playerId").show();
 }
 
+/**
+ * 评论加载
+ * @param songId
+ * @returns
+ */
+function reviewLoad(songId){
+	$('#hot').load("reviewFrameLoad.do?songId="+songId);
+}
+
+/**
+ * 评论计数，不超过140字
+ * @param input
+ * @returns
+ */
+function wordCount(input) {  
+    var content = $("#num-cnt");
+    if (content && input) {  
+        // 获取输入框输入内容长度并更新到界面  
+        var value = input.value;  
+        // 将换行符不计算为单词数  
+       // value = value.replace(/\n|\r/gi,"");  
+        // 更新计数  
+        content.text(140-value.length); 
+    }  
+}
+

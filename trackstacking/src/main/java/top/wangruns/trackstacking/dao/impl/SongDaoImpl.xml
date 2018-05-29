@@ -7,5 +7,16 @@
 		resultType="Integer">
 		select songId from song
 	</select>
+	
+	<select id="selectSongById" parameterType="int"
+		resultType="top.wangruns.trackstacking.model.TrendingSong">
+		select * from song where songId = #{songId}
+	</select>
+	
+	<select id="selectCoefficientById" parameterType="int"
+		resultType="int">
+		select count(songId) as trendingCoefficient from play 
+		where songId = #{songId} 
+	</select>
 
 </mapper>

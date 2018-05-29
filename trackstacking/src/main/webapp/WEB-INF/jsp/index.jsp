@@ -34,6 +34,37 @@
 	.hide{
 		display: none;
 	}
+	.ahover{
+		color:#818182;
+	}
+	.img-logo{
+		height:50px;
+		width:50px;
+		margin-top:1px;
+	}
+	.fl{
+		float:left;
+	}
+	.float-right{
+		float:right;
+	}
+	.media-left, .media-right, .media-body{
+		display: table-cell;
+		vertical-align: top;
+	}
+	.media-heading {
+	   margin-top: 0;
+	   margin-bottom: 5px;
+	}
+	.ds-time{
+		color: #999;
+	}
+	.border-line{
+		border-bottom: 1px solid #cfcfcf;
+	}
+	.border-line-color{
+		border-bottom: 2px solid #2AD980;
+	}
 	</style>
     
   </head>
@@ -166,7 +197,7 @@
 			<div class="audio-container">
 				<div class="audio-cover" style="background-image: url(&quot;images/cover.jpg&quot;);"></div>
 				<div class="audio-view">
-					<h3 class="audio-title">track stacking</h3>
+					<h1 class="audio-title">track stacking</h1>
 					<!-- 进度条 -->
 					<div class="audio-body">
 						<div class="audio-backs">
