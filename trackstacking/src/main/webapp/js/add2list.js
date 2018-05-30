@@ -82,8 +82,46 @@ function collectFunc(songId){
             }
         }
     });
+}
+
+/**
+ * 发表评论
+ * @param songId
+ * @returns
+ */
+function reviewFunc(songId){
+	//只有登录的用户才可以
+	if($("#logout")[0].style.display =='none'){
+		$("#SignInModalCenter").modal("show");
+		return;
+	} 
+	//不能为空评论
+	if($("#num-cnt").text()==140){
+		return;
+	}
+	//获取评论信息
+	review=$("#reviewId").val();
+	var data = {        
+	        "review": review,
+	        "songId":songId,
+	 };
+    url = "review.do";
+    $.ajax({
+        type:"POST",
+        url:url,
+        data:data,
+        success:function(data){
+        	var res=JSON.parse(data);
+            if(res.status==200){
+            	$("#reviewId").val("");
+            	//更新最近评论区域
+            	
+            }else{
+            	
+            }
+        }
+    });
 	
-    
 }
 
 /**

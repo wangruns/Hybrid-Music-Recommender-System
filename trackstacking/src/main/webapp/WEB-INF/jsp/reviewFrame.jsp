@@ -16,7 +16,7 @@
   
   <div class="container">
       	<h1></h1>
-      	<h3>歌曲评论 ${songName}</h3>
+      	<h3>歌曲评论 ${song.songName}</h3>
       	<div class="row content hot-content">
       	    <!-- 前DIV -->
       	    <div class="col-sm-1">
@@ -38,7 +38,7 @@
       		  <!-- One of three columns -->
       		  <ul class="list-group list-group-flush" >
 				
-				<c:forEach items="${clickedSongList}" var="song" varStatus="status">
+				<%-- <c:forEach items="${clickedSongList}" var="song" varStatus="status"> --%>
 				
                       <li class="list-group-item list-group-item-light " idd="${song.songId}" title="${song.songName}">
                       	<!-- 歌曲信息区 -->
@@ -67,7 +67,7 @@
                         
                       </li>
                       
-                   </c:forEach>
+                  <%--  </c:forEach> --%>
                       
                  </ul>
                  
@@ -88,8 +88,8 @@
       	    </div><!-- 该前DIV为了中DIV居中 -->
       	    
       	    
-      	    <!--中DIV 歌曲部分-->
-            <div class="col-sm-10"><!-- 中DIV -->
+      	    <!--中DIV -->
+            <div class="col-sm-10">
             	<h6>&nbsp;</h6>
             	<h3 class="border-line-color">评论</h3>
             	<!-- 发表评论 -->
@@ -100,9 +100,9 @@
             					<img src="${pageContext.request.contextPath}/image/defaultUserLogo.jpg"  alt="..." class="rounded img-logo">
             				</div>
             				<div>
-            				   <textarea rows="2" cols="15" style="resize:none" placeholder="评论" onkeyup="wordCount(this)" maxlength="140"></textarea>
+            				   <textarea id="reviewId" rows="2" cols="15" style="resize:none" placeholder="评论" onkeyup="wordCount(this)" maxlength="140"></textarea>
             				   <span id="num-cnt">140</span>
-            				   <button class="btn btn-outline-success my-2 my-sm-0 fl">发表</button>
+            				   <button onclick="reviewFunc(${song.songId})" class="btn btn-outline-success my-2 my-sm-0 fl">发表</button>
             				</div>
             				
             			</div> 
@@ -117,7 +117,7 @@
             	<div class="container">
             		<div class="row content">
 						  <ul class="list-group list-group-flush">
-								<c:forEach items="${clickedSongList}" var="song" varStatus="status">
+								<c:forEach items="${hotReviewList}" var="review" varStatus="status">
 									<li class="media list-group-item list-group-item-light">
 							                <div class="media-left">
 							                    <a href="#">
@@ -125,14 +125,14 @@
 							                    </a>
 							                </div>
 							                <div class="media-body">
-							                    <h6 class="media-heading text-primary">菜鸡一枚我不哭</h6>
+							                    <h6 class="media-heading text-primary">${review.userName}</h6>
 							
-							                    <p>呵呵，楼上的真搞笑，这个评论模板的插件好丑陋，简直丑爆了，我简单做的都比这个好，信不信，我分分钟肥腻做出来一个，吓屎你们这群都比</p>
+							                    <p>${review.review}</p>
 							
 							                    <div class="ds-comment-footer">
-							                        <span class="ds-time" datetime="2016-01-28T20:13:29+08:00" title="2016年1月28日 下午8:13:29">2016年5月10日</span>&nbsp;
+							                        <span class="ds-time" title="${review.reviewTime}">${review.reviewTime}</span>&nbsp;
 							                        <a>
-							                            <span class="icon-like" aria-hidden="true"></span> 12
+							                            <span class="icon-like" aria-hidden="true"></span> ${review.likeCoefficient}
 							                        </a>
 							                    </div>
 							
@@ -147,7 +147,7 @@
             	
             	
             	
-            </div>
+            </div><!-- 中DIV -->
             
             <!-- 后DIV -->
    		    <div class="col-sm-1">

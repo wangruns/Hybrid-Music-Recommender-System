@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.wangruns.trackstacking.dao.ReviewDao">
+
+	<insert id="insert" parameterType="top.wangruns.trackstacking.model.Review" >
+		insert into review (userId,songId,review) values(#{userId},#{songId},#{review})
+	</insert>
+	
+	<select id="selectLikeByUserId" parameterType="int"
+		resultType="top.wangruns.trackstacking.model.Like">
+		select * from review where userId = #{userId}
+	</select>
+	
+	<!-- 好久不用，一段大SQLs下来，感觉投都昏了... 
+		（可能这种时候就体现出视图的优势了吧⊙o⊙）
+		目标：获取当前歌曲带有点赞数目的评论信息
+		songReviewWithUserNameTb表：
+			（1）先从评论表中选出与当前歌曲相关的元组
+			（2）再给相关的元组中的用户关联上昵称信息
+			（3）reviewId,userId,userName,review,reviewTime
+		likeCountTb表：
+			（1）先从评论表中选中与当前歌曲相关的元组并作评论ID投影
+			（2）根据相关的评论ID统计出评论被点赞的次数
+			（3）reviewId,count(reviewId) as likeCoefficient
+		最终选择精彩评论的Top 10
+	-->
+	<select id="selectHotReviewWithLikeNumber" parameterType="int"
+		resultType="top.wangruns.trackstacking.model.Review">
+		select * from 
+			( select reviewId,user.userId,userName,review,reviewTime  
+			from ( select reviewId,userId,review,date(reviewTime) as reviewTime from review where songId=#{songId} ) as songReviewTb,user
+			where songReviewTb.userId=user.userId 
+			) as songReviewWithUserNameTb
+			
+		left join
+			
+			( select reviewId,count(reviewId) as likeCoefficient from liking 
+			where reviewId in ( select reviewId from review where songId=#{songId} ) 
+			group by reviewId
+			) as likeCountTb
+			
+		on songReviewWithUserNameTb.reviewId
+			
+		order by likeCoefficient desc limit 10
+	</select>
+	
+
+</mapper>
