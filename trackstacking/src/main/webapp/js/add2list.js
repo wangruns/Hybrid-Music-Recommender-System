@@ -97,7 +97,7 @@ function likeFunc(reviewId){
 	} 
 	var reviewLikeElement=$("#hotReviewLike"+reviewId);
 	var reviewLikeNumElement=$("#hotReviewLikeNum"+reviewId);
-	//解决最新评论和精彩评论在同一个页面更新问题
+	//解决最新评论和精彩评论在同一个页面更新问题(两个地方同时更新，这里采取)
 	var newReviewLikeElement=$("#newReviewLike"+reviewId);
 	var newReviewLikeNumElement=$("#newReviewLikeNum"+reviewId);
 	var data = {        
@@ -119,6 +119,9 @@ function likeFunc(reviewId){
             		reviewLikeNumElement.text(parseInt(likeNum) + 1);
             		//解决最新评论和精彩评论在同一个页面更新问题
             		newReviewLikeElement.addClass("text-danger");
+            		if(reviewLikeNumElement.length==0){
+            			likeNum=newReviewLikeNumElement.text();
+            		}
             		newReviewLikeNumElement.text(parseInt(likeNum) + 1);
             	}else{
             		//已经取消点赞
@@ -128,6 +131,9 @@ function likeFunc(reviewId){
             		reviewLikeNumElement.text(parseInt(likeNum) - 1);
             		//解决最新评论和精彩评论在同一个页面更新问题
             		newReviewLikeElement.removeClass("text-danger");
+            		if(reviewLikeNumElement.length==0){
+            			likeNum=newReviewLikeNumElement.text();
+            		}
             		newReviewLikeNumElement.text(parseInt(likeNum) - 1);
             	}
             }else{
@@ -170,6 +176,7 @@ function reviewFunc(songId){
             if(res.status==200){
             	$("#reviewId").val("");
             	//更新最近评论区域
+            	$('#newReviewAreaId').load("newReviewFrameLoad.do?songId="+songId);
             	
             }else{
             	

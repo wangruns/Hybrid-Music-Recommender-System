@@ -149,6 +149,7 @@
             	<h6>&nbsp;</h6>
             	<h3 class="border-line">最新评论</h3>
             	<!-- 最新评论 -->
+            	<div id="newReviewAreaId">
             	<div class="container">
             		<div class="row content">
 						  <ul class="list-group list-group-flush">
@@ -178,6 +179,7 @@
 						 </ul>
             		</div>
             	</div><!-- 最新评论  End-->
+            	</div>
             	
             	
             	

@@ -67,5 +67,18 @@ public class ReviewController {
 		boolean isLiked=reviewService.reviewLikeChange(request,reviewId);
 		return ReturnMsg.msg(HttpServletResponse.SC_OK, isLiked+"");
 	}
+	
+	@RequestMapping(value = "newReviewFrameLoad.do", method = { RequestMethod.GET })
+	public ModelAndView newReviewFrameLoad(HttpServletRequest request, int songId) {
+		//获取选中歌曲的最新评论(目前评论数据很少，先不做分页)
+		List<Review> newReviewList = reviewService.getNewReviewBySongIdWithLikeFlag(request,songId);
+
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("newReviewFrame");
+		modelAndView.addObject("newReviewList", newReviewList);
+
+		return modelAndView;
+	}
+		
 
 }
