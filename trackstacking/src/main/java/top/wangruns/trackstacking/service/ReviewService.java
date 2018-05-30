@@ -32,4 +32,26 @@ public interface ReviewService {
 	 */
 	List<Review> getHotReviewBySongIdWithLikeFlag(HttpServletRequest request, int songId);
 
+	/**
+	 * 改变当前用户对某个评论的点赞状态
+	 * @param request
+	 * HttpServletRequest对象
+	 * @param reviewId
+	 * 需要改变点赞状态的评论Id
+	 * @return
+	 * 若改变后状态为已经点赞，则返回true
+	 */
+	boolean reviewLikeChange(HttpServletRequest request, int reviewId);
+
+	/**
+	 * 获取当前歌曲的最新评论，并加上是否被当前用户点赞的标记
+	 * @param request
+	 * HttpServletRequest
+	 * @param songId
+	 * 歌曲Id
+	 * @return
+	 * 评论信息列表
+	 */
+	List<Review> getNewReviewBySongIdWithLikeFlag(HttpServletRequest request, int songId);
+
 }

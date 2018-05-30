@@ -8,7 +8,7 @@
 	
 	<select id="selectLikeByUserId" parameterType="int"
 		resultType="top.wangruns.trackstacking.model.Like">
-		select * from review where userId = #{userId}
+		select * from liking where userId = #{userId}
 	</select>
 	
 	<!-- 好久不用，一段大SQLs下来，感觉投都昏了... 
@@ -22,11 +22,16 @@
 			（1）先从评论表中选中与当前歌曲相关的元组并作评论ID投影
 			（2）根据相关的评论ID统计出评论被点赞的次数
 			（3）reviewId,count(reviewId) as likeCoefficient
+		songReviewWithUserNameTb左连接likeCountTb：
+			（1）将上面两个表在reviewId上面做左连接
+			（2）[mysql]用ifnull(字段名,默认值)填充连接的空缺值NULL
+			（3）[oracle]用nvl(字段名,默认值)填充连接的空缺值NULL
 		最终选择精彩评论的Top 10
 	-->
 	<select id="selectHotReviewWithLikeNumber" parameterType="int"
 		resultType="top.wangruns.trackstacking.model.Review">
-		select * from 
+		select songReviewWithUserNameTb.reviewId,userName,review,reviewTime,ifnull(likeCoefficient,0) as likeCoefficient
+		 from 
 			( select reviewId,user.userId,userName,review,reviewTime  
 			from ( select reviewId,userId,review,date(reviewTime) as reviewTime from review where songId=#{songId} ) as songReviewTb,user
 			where songReviewTb.userId=user.userId 
@@ -39,9 +44,43 @@
 			group by reviewId
 			) as likeCountTb
 			
-		on songReviewWithUserNameTb.reviewId
+		on songReviewWithUserNameTb.reviewId=likeCountTb.reviewId 
 			
 		order by likeCoefficient desc limit 10
+	</select>
+	
+	<select id="selectByLike" parameterType="top.wangruns.trackstacking.model.Like"
+		resultType="top.wangruns.trackstacking.model.Like">
+		select * from liking where userId = #{userId} and reviewId =#{reviewId}
+	</select>
+	
+	<insert id="insertLikeRecord" parameterType="top.wangruns.trackstacking.model.Like" >
+		insert into liking (userId,reviewId) values(#{userId},#{reviewId})
+	</insert>
+	
+	<delete id="deleteLikeRecordById" parameterType="int" >
+		delete from liking where likeId = #{likeId}
+	</delete>
+	
+	<select id="selectNewReviewWithLikeNumber" parameterType="int"
+		resultType="top.wangruns.trackstacking.model.Review">
+		select songReviewWithUserNameTb.reviewId,userName,review,reviewTime,ifnull(likeCoefficient,0) as likeCoefficient
+		 from 
+			( select reviewId,user.userId,userName,review,reviewTime  
+			from ( select reviewId,userId,review, date(reviewTime) as reviewTime from review where songId=#{songId} ) as songReviewTb,user
+			where songReviewTb.userId=user.userId 
+			) as songReviewWithUserNameTb
+			
+		left join
+			
+			( select reviewId,count(reviewId) as likeCoefficient from liking 
+			where reviewId in ( select reviewId from review where songId=#{songId} ) 
+			group by reviewId
+			) as likeCountTb
+			
+		on songReviewWithUserNameTb.reviewId=likeCountTb.reviewId 
+			
+		order by reviewTime desc
 	</select>
 	
 

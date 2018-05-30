@@ -43,7 +43,8 @@
                       <li class="list-group-item list-group-item-light " idd="${song.songId}" title="${song.songName}">
                       	<!-- 歌曲信息区 -->
                       	<div class="clear text-ellipsis">
-                          <span>${status.index+1}.${song.songName}</span>
+                          <%-- <span>${status.index+1}.${song.songName}</span> --%>
+                          <span><a href="#" class="ahover" onclick="reviewLoad(${song.songId})">${status.index+1}.${song.songName}</a></span>
                           <span class="text-muted"> -- _ _ -- </span>
                           <span class="text-danger icon-fire"></span>
                         </div>

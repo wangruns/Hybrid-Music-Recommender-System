@@ -4,6 +4,13 @@ public class Like {
 	private int likeId;
 	private int userId;
 	private int reviewId;
+	
+	public Like() {}
+	
+	public Like(int userId,int reviewId) {
+		this.userId=userId;
+		this.reviewId=reviewId;
+	}
 
 	public int getLikeId() {
 		return likeId;

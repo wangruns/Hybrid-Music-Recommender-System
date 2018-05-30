@@ -34,4 +34,34 @@ public interface ReviewDao {
 	 */
 	List<Review> selectHotReviewWithLikeNumber(int songId);
 
+	/**
+	 * 查询当前点在是否存在
+	 * @param like
+	 * 点赞对象like（主要是根据用户userId和评论reviewId）
+	 * @return
+	 * 如果没有，返回null
+	 */
+	Like selectByLike(Like like);
+
+	/**
+	 * 插入点赞记录
+	 * @param like
+	 */
+	void insertLikeRecord(Like like);
+
+	/**
+	 * 删除点赞记录
+	 * @param likeId
+	 */
+	void deleteLikeRecordById(int likeId);
+
+	/**
+	 * 查询当前歌曲的带点赞数目的最新评论信息
+	 * @param songId
+	 * 当前歌曲Id
+	 * @return
+	 * 如果没有，返回null
+	 */
+	List<Review> selectNewReviewWithLikeNumber(int songId);
+
 }

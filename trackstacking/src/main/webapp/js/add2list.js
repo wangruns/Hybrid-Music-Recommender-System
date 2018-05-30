@@ -85,6 +85,61 @@ function collectFunc(songId){
 }
 
 /**
+ * 评论点赞
+ * @param reviewId
+ * @returns
+ */
+function likeFunc(reviewId){
+	//只有登录的用户才可以享受收藏功能
+	if($("#logout")[0].style.display =='none'){
+		$("#SignInModalCenter").modal("show");
+		return;
+	} 
+	var reviewLikeElement=$("#hotReviewLike"+reviewId);
+	var reviewLikeNumElement=$("#hotReviewLikeNum"+reviewId);
+	//解决最新评论和精彩评论在同一个页面更新问题
+	var newReviewLikeElement=$("#newReviewLike"+reviewId);
+	var newReviewLikeNumElement=$("#newReviewLikeNum"+reviewId);
+	var data = {        
+	        "reviewId": reviewId,
+	 };
+    url = "reviewLike.do";
+	$.ajax({
+        type:"GET",
+        url:url,
+        data:data,
+        success:function(data){
+        	var res=JSON.parse(data);
+            if(res.status==200){
+            	if(res.msg=="true"){
+            		//已经点赞
+            		reviewLikeElement.addClass("text-danger");
+            		//修改点赞显示次数
+            		likeNum=reviewLikeNumElement.text();
+            		reviewLikeNumElement.text(parseInt(likeNum) + 1);
+            		//解决最新评论和精彩评论在同一个页面更新问题
+            		newReviewLikeElement.addClass("text-danger");
+            		newReviewLikeNumElement.text(parseInt(likeNum) + 1);
+            	}else{
+            		//已经取消点赞
+            		reviewLikeElement.removeClass("text-danger");
+            		//修改点赞显示次数
+            		likeNum=reviewLikeNumElement.text();
+            		reviewLikeNumElement.text(parseInt(likeNum) - 1);
+            		//解决最新评论和精彩评论在同一个页面更新问题
+            		newReviewLikeElement.removeClass("text-danger");
+            		newReviewLikeNumElement.text(parseInt(likeNum) - 1);
+            	}
+            }else{
+            	alert(res.msg)
+            	/*$('#collapse-error-hint').html(res.msg);
+            	$('#collapse-error-hint').collapse()*/
+            }
+        }
+    });
+}
+
+/**
  * 发表评论
  * @param songId
  * @returns
@@ -96,7 +151,7 @@ function reviewFunc(songId){
 		return;
 	} 
 	//不能为空评论
-	if($("#num-cnt").text()==140){
+	if(parseInt($("#num-cnt").text())==140){
 		return;
 	}
 	//获取评论信息

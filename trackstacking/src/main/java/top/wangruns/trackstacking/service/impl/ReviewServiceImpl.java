@@ -48,7 +48,7 @@ public class ReviewServiceImpl implements ReviewService {
 		//获取歌曲的精彩评论列表
 		List<Review> hotReviewList= reviewDao.selectHotReviewWithLikeNumber(songId);
 		
-		//在搜索结果列表中给已经被该用户收藏的歌曲加上标记
+		//在结果列表中给已经被该用户点赞的评论加上标记
 		if(hotReviewList!=null && likeList!=null) {
 			for(Like like:likeList) {
 				for(Review review:hotReviewList) {
@@ -59,6 +59,47 @@ public class ReviewServiceImpl implements ReviewService {
 			}
 		}
 		return hotReviewList;
+	}
+
+	public boolean reviewLikeChange(HttpServletRequest request, int reviewId) {
+		boolean isLiked=true;
+		User user=userDao.selectByUser(Request.getUserFromHttpServletRequest(request));
+		//获取当前评论的点赞状态
+		Like like=reviewDao.selectByLike(new Like(user.getUserId(),reviewId));
+		if(like==null) {
+			//该评论还没有被该用户点赞
+			isLiked=false;
+			//进行点赞
+			reviewDao.insertLikeRecord(new Like(user.getUserId(),reviewId));
+		}else {
+			//已经点赞了，则取消点赞
+			reviewDao.deleteLikeRecordById(like.getLikeId());
+		}
+		//返回该评论改变后的点赞状态
+		return !isLiked;
+	}
+
+	public List<Review> getNewReviewBySongIdWithLikeFlag(HttpServletRequest request, int songId) {
+		User user = userDao.selectByUser(Request.getUserFromHttpServletRequest(request));
+		//获取用户的点赞列表
+		List<Like> likeList=null;
+		if(user!=null) {
+			likeList= reviewDao.selectLikeByUserId(user.getUserId());
+		}
+		//获取歌曲的最新评论列表
+		List<Review> newReviewList= reviewDao.selectNewReviewWithLikeNumber(songId);
+		
+		//在结果列表中给已经被该用户点赞的评论加上标记
+		if(newReviewList!=null && likeList!=null) {
+			for(Like like:likeList) {
+				for(Review review:newReviewList) {
+					if(like.getReviewId()==review.getReviewId()) {
+						review.setWhetherLiked(true);
+					}
+				}
+			}
+		}
+		return newReviewList;
 	}
 
 }
