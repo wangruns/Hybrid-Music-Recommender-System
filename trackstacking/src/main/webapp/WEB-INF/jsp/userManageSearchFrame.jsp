@@ -14,12 +14,12 @@
   </head>
   <body>
   
-	  <!-- 评论模块 -->
+	  <!-- 用户搜索模块 -->
 	  <div class="container">
 	  	<h1></h1>
 	  	<h3>搜索结果 ${oneDayOneWord}</h3>
 	  	
-	  	<c:if test="${not empty reviewManageSearchList}">
+	  	<c:if test="${not empty userManageSearchList}">
 	  	<div>
  	    		<button id="deleteSelectId" class="btn btn-outline-success my-2 my-sm-0">删除选中</button>
       	</div>
@@ -43,30 +43,31 @@
       	    <!--中DIV -->
             <div class="col-sm-10">
             	<h6>&nbsp;</h6>
-            	<h3 class="border-line">评论管理</h3>
+            	<h3 class="border-line-delete">用户管理</h3>
             	<div class="container">
             		<div class="row content">
-						  <ul class="list-group list-group-flush">
-							<c:forEach items="${reviewManageSearchList}" var="review" varStatus="status">
-								<li class="media list-group-item list-group-item-light">
-								 	<input type="checkbox" value="${review.reviewId}" aria-label="Checkbox for following text input">
-					                <div class="media-left">
-					                    <a href="#">
-					                        <img class="rounded img-logo" src="${pageContext.request.contextPath}/image/defaultUserLogo.jpg" alt="菜鸟" >
-					                    </a>
-					                </div>
-					                <div class="media-body">
-					                    <h6 class="media-heading text-primary">${review.userName}</h6>
-					
-					                    <p>${review.review}</p>
-					                    <div class="ds-comment-footer">
-					                        <span class="ds-time" title="${review.reviewTime}">${review.reviewTime}</span>&nbsp;
-					                    </div>
-					                </div>
-           						  </li>
-								
-							</c:forEach>
-						 </ul>
+            		
+            			<table class="table table-striped">
+            				<thead>
+							    <tr>
+							      <th scope="col">#</th>
+							      <th scope="col">用户ID</th>
+							      <th scope="col">用户昵称</th>
+							      <th scope="col">用户邮箱</th>
+							    </tr>
+							 </thead>
+							 <tbody>
+								 <c:forEach items="${userManageSearchList}" var="user" varStatus="status">
+								    <tr>
+								      <th scope="row">${status.index+1}<input type="checkbox" value="${user.userId}" aria-label="Checkbox for following text input"></th>
+								      <td>${user.userId}</td>
+								      <td>${user.userName}</td>
+								      <td>${user.email}</td>
+								    </tr>
+							   	 </c:forEach>
+							 </tbody>
+            			</table>
+            			
             		</div>
             	</div><!-- container  End-->
             	
@@ -90,9 +91,9 @@
 	         });
 			//删除
 			var data = {        
-			        "reviewIds": selectedIds,
+			        "userIds": selectedIds,
 			 };
-		    url = "deleteReview.do";
+		    url = "deleteUser.do";
 		    $.ajax({
 		    	//traditional: true[https://www.cnblogs.com/ybyi/p/6297600.html]
 		    	traditional: true,
@@ -104,6 +105,7 @@
 		    $('input:checkbox:checked').each(function() {
                 $(this).attr("disabled", "disabled");
 			});
+		    
 		    
 			
 		});

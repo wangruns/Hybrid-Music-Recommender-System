@@ -46,6 +46,12 @@ public interface UserDao {
 	 * 若没有，则返回null
 	 */
 	public List<Integer> selectAllUserId();
+
+	/**
+	 * 批量删除，根据数组里面的Id删除对应的用户
+	 * @param userIds
+	 */
+	public void deleteByIds(int[] userIds);
 	
 
 }

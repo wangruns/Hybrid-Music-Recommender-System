@@ -7,6 +7,15 @@ public class User {
 	private String email;
 	private String password;
 	private String validateCode;
+	private String userName;
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
 	public String getValidateCode() {
 		return validateCode;

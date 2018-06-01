@@ -54,6 +54,13 @@ public class SearchServiceImpl implements SearchService{
 		searchReviewList=searchDao.selectReviewLikeKeyword(keyword);
 		return searchReviewList;
 	}
+
+
+	public List<User> getSearchUser(String keyword) {
+		List<User> searchUserList=new ArrayList<User>();
+		searchUserList=searchDao.selectUserLikeKeyword(keyword);
+		return searchUserList;
+	}
 	
 
 }

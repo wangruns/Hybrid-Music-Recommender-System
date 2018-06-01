@@ -98,7 +98,7 @@
 			if(mode==0){
 				$('#searchInputId').attr('placeholder',"音乐");
 			}else if(mode==1){
-				$('#searchInputId').attr('placeholder',"用户");
+				$('#searchInputId').attr('placeholder',"用户/邮箱");
 			}else{
 				//mode=2
 				$('#searchInputId').attr('placeholder',"评论");

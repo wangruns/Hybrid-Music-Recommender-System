@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import top.wangruns.trackstacking.model.Review;
 import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.User;
 import top.wangruns.trackstacking.service.SearchService;
 import top.wangruns.trackstacking.service.UserService;
 import top.wangruns.trackstacking.utils.OneDayOneWord;
@@ -30,7 +31,7 @@ public class SearchController {
 	 * @param keyword
 	 * @param mode
 	 * mode =0 :音乐搜索 ;
-	 * mode =1 :用户所示 ;
+	 * mode =1 :用户搜索 ;
 	 * mode =2 :评论搜索 ;
 	 * mode =null :用户及以下身份搜索
 	 * @return
@@ -51,9 +52,17 @@ public class SearchController {
 				}else {
 					modelAndView.addObject("oneDayOneWord",OneDayOneWord.getOneDayOneWord(Static.SEARCH_WORD_ARRAY));
 				}
+				
 			}else if(modeInt==1) {
 				//用户搜索
 				modelAndView.setViewName("userManageSearchFrame");
+				List<User> userManageSearchList=searchService.getSearchUser(keyword);
+				modelAndView.addObject("userManageSearchList",userManageSearchList);
+				if(userManageSearchList.size()==0) {
+					modelAndView.addObject("oneDayOneWord","下落不明");
+				}else {
+					modelAndView.addObject("oneDayOneWord",OneDayOneWord.getOneDayOneWord(Static.SEARCH_WORD_ARRAY));
+				}
 				
 			}else {
 				//评论搜索

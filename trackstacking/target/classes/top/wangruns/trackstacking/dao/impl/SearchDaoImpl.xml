@@ -16,5 +16,12 @@
 	</select>
 	
 	
+	<select id="selectUserLikeKeyword" parameterType="String"
+		resultType="top.wangruns.trackstacking.model.User">
+		select * from user 
+		where userName like concat('%',#{keyword},'%') 
+			  or 
+			  email like concat('%',#{keyword},'%') 
+	</select>
 
 </mapper>

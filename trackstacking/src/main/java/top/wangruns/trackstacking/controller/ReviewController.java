@@ -23,6 +23,7 @@ import top.wangruns.trackstacking.model.TrendingSong;
 import top.wangruns.trackstacking.service.RecordPlayService;
 import top.wangruns.trackstacking.service.ReviewService;
 import top.wangruns.trackstacking.service.SongService;
+import top.wangruns.trackstacking.service.UserService;
 import top.wangruns.trackstacking.utils.ReturnMsg;
 
 @Controller
@@ -31,6 +32,8 @@ public class ReviewController {
 	private SongService songService;
 	@Autowired
 	private ReviewService reviewService;
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping(value = "reviewFrameLoad.do", method = { RequestMethod.GET })
 	public ModelAndView reviewFrameLoad(HttpServletRequest request, int songId) {
@@ -82,7 +85,10 @@ public class ReviewController {
 	
 	@RequestMapping(value = "deleteReview.do", method = { RequestMethod.POST })
 	public void deleteReview(HttpServletRequest request, int reviewIds[]) {
-		reviewService.batchDeleteById(reviewIds);
+		if(userService.isHasPrivilege(request)) {
+			reviewService.batchDeleteById(reviewIds);
+		}
+		
 	}
 		
 

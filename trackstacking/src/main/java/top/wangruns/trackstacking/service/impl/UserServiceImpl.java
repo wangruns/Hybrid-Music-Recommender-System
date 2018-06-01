@@ -57,4 +57,12 @@ public class UserServiceImpl implements UserService {
 		return true;
 	}
 
+	public void batchDeleteById(int[] userIds) {
+		if(userIds==null) {
+			return;
+		}
+		userDao.deleteByIds(userIds);
+		
+	}
+
 }
