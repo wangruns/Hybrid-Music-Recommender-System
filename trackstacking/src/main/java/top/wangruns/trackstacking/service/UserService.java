@@ -2,6 +2,8 @@ package top.wangruns.trackstacking.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import top.wangruns.trackstacking.model.User;
 
 public interface UserService {
@@ -47,5 +49,12 @@ public interface UserService {
 	 * 若没有，则返回null
 	 */
 	public List<Integer> getAllUserIdRecords();
+
+	/**
+	 * 判定当前用户是否具备权限
+	 * @param request
+	 * @return
+	 */
+	public boolean isHasPrivilege(HttpServletRequest request);
 
 }

@@ -12,6 +12,7 @@ import top.wangruns.trackstacking.dao.SearchDao;
 import top.wangruns.trackstacking.dao.TrendingRecDao;
 import top.wangruns.trackstacking.dao.UserDao;
 import top.wangruns.trackstacking.model.Collection;
+import top.wangruns.trackstacking.model.Review;
 import top.wangruns.trackstacking.model.TrendingSong;
 import top.wangruns.trackstacking.model.User;
 import top.wangruns.trackstacking.service.SearchService;
@@ -45,6 +46,13 @@ public class SearchServiceImpl implements SearchService{
 			}
 		}
 		return searchSongList;
+	}
+
+
+	public List<Review> getSearchReview(String keyword) {
+		List<Review> searchReviewList=new ArrayList<Review>();
+		searchReviewList=searchDao.selectReviewLikeKeyword(keyword);
+		return searchReviewList;
 	}
 	
 

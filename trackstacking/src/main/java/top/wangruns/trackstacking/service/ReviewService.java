@@ -54,4 +54,10 @@ public interface ReviewService {
 	 */
 	List<Review> getNewReviewBySongIdWithLikeFlag(HttpServletRequest request, int songId);
 
+	/**
+	 * 批量删除，根据数组里面的Id删除对应的评论
+	 * @param reviewIds
+	 */
+	void batchDeleteById(int[] reviewIds);
+
 }

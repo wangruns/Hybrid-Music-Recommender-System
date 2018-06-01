@@ -2,6 +2,8 @@ package top.wangruns.trackstacking.service.impl;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +51,10 @@ public class UserServiceImpl implements UserService {
 
 	public List<Integer> getAllUserIdRecords() {
 		return userDao.selectAllUserId();
+	}
+
+	public boolean isHasPrivilege(HttpServletRequest request) {
+		return true;
 	}
 
 }

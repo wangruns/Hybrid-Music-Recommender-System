@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import top.wangruns.trackstacking.model.Review;
 import top.wangruns.trackstacking.model.TrendingSong;
 
 public interface SearchService {
@@ -18,5 +19,14 @@ public interface SearchService {
 	 * 若没有结果，返回list.size()=0
 	 */
 	List<TrendingSong> getSearchSongWithCollectionFlag(HttpServletRequest request, String keyword);
+
+	/**
+	 * 根据关键词，查询评论信息
+	 * @param keyword
+	 * 搜索关键词
+	 * @return
+	 * 若没有结果，返回list.size()=0
+	 */
+	List<Review> getSearchReview(String keyword);
 
 }

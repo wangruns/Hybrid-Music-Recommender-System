@@ -6,5 +6,15 @@
 		resultType="top.wangruns.trackstacking.model.TrendingSong">
 		select * from song where songName like concat('%',#{keyword},'%')
 	</select>
+	
+	<select id="selectReviewLikeKeyword" parameterType="String"
+		resultType="top.wangruns.trackstacking.model.Review">
+		select reviewId,userName,review,reviewTime 
+		from 
+			( select * from review where review like concat('%',#{keyword},'%') ) as reviewTb,user
+		where reviewTb.userId=user.userId
+	</select>
+	
+	
 
 </mapper>

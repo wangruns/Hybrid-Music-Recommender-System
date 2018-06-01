@@ -79,6 +79,11 @@ public class ReviewController {
 
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "deleteReview.do", method = { RequestMethod.POST })
+	public void deleteReview(HttpServletRequest request, int reviewIds[]) {
+		reviewService.batchDeleteById(reviewIds);
+	}
 		
 
 }

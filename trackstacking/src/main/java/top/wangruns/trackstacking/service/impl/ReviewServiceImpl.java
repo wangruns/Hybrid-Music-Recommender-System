@@ -102,4 +102,10 @@ public class ReviewServiceImpl implements ReviewService {
 		return newReviewList;
 	}
 
+	public void batchDeleteById(int[] reviewIds) {
+		// TODO Auto-generated method stub
+		reviewDao.deleteByIds(reviewIds);
+		
+	}
+
 }

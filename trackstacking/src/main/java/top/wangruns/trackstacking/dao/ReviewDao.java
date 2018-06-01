@@ -64,4 +64,10 @@ public interface ReviewDao {
 	 */
 	List<Review> selectNewReviewWithLikeNumber(int songId);
 
+	/**
+	 * 根据数组里面的Id删除对应的评论
+	 * @param reviewIds
+	 */
+	void deleteByIds(int[] reviewIds);
+
 }

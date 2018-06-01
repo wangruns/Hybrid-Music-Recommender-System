@@ -32,7 +32,14 @@
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0" id="searchFormId">
-            <input class="form-control mr-sm-2" type="text" placeholder="音乐" aria-label="Search" name="keyword" required autofocus oninvalid="this.setCustomValidity('搜索内容不能为空')"
+          	<c:if test="${sessionScope.user!=null}">
+          	<select class="custom-select-override " id="inputGroupSelect01" name="mode">
+			    <option value="0" selected>音乐管理</option>
+			    <option value="1">用户管理</option>
+			    <option value="2">评论管理</option>
+ 		  	</select>
+ 		  	</c:if>
+            <input class="form-control mr-sm-2" id="searchInputId" type="text" placeholder="音乐" aria-label="Search" name="keyword" required autofocus oninvalid="this.setCustomValidity('搜索内容不能为空')"
  oninput="setCustomValidity('')">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
           </form>
@@ -85,6 +92,19 @@
 			$('#hot').load("personalizedRecFrameLoad.do");
 			$("#playerId").show();
 		});
+		//change search Placeholder content
+		$('#inputGroupSelect01').on('change', function (e) {
+			mode=$('#inputGroupSelect01').val();
+			if(mode==0){
+				$('#searchInputId').attr('placeholder',"音乐");
+			}else if(mode==1){
+				$('#searchInputId').attr('placeholder',"用户");
+			}else{
+				//mode=2
+				$('#searchInputId').attr('placeholder',"评论");
+			}
+		});
+		
 		
 	});
 	</script>
