@@ -18,5 +18,18 @@
 		select count(songId) as trendingCoefficient from play 
 		where songId = #{songId} 
 	</select>
+	
+	<!-- 
+	传递单个参数的批量删除：
+		（1）参数为array类型：collection=”array“
+		（2）参数为list类型：collection=”list“
+		https://blog.csdn.net/javaee_sunny/article/details/52511842
+	 -->
+	<delete id="deleteByIds" parameterType="int">
+		delete from song where songId in 
+		<foreach collection="array" item="songId" open="(" close=")" separator=",">  
+           #{songId}
+        </foreach>
+	</delete>
 
 </mapper>

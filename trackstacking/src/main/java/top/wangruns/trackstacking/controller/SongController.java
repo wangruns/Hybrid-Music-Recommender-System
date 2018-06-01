@@ -7,17 +7,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import top.wangruns.trackstacking.service.SongService;
 import top.wangruns.trackstacking.service.UserService;
 
 @Controller
-public class UserController {
+public class SongController {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private SongService songService;
 	
-	@RequestMapping(value = "deleteUser.do", method = { RequestMethod.POST })
-	public void deleteUser(HttpServletRequest request, int userIds[]) {
+	@RequestMapping(value = "deleteSong.do", method = { RequestMethod.POST })
+	public void deleteSong(HttpServletRequest request, int songIds[]) {
 		if(userService.isHasPrivilege(request)) {
-			userService.batchDeleteById(userIds);
+			songService.batchDeleteById(songIds);
 		}
 		
 	}

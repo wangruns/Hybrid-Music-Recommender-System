@@ -18,9 +18,11 @@
       	<h1></h1>
       	<h3>搜索结果 ${oneDayOneWord}</h3>
       	
+      	<c:if test="${not empty songManageSearchList}">
       	<div>
- 	    		<button class="btn btn-outline-success my-2 my-sm-0">删除</button>
+ 	    		<button id="deleteSelectId" class="btn btn-outline-success my-2 my-sm-0">删除选中</button>
       	</div>
+      	</c:if>
       	
       	<div class="row content hot-content">
       	    <!-- 前DIV -->
@@ -38,51 +40,74 @@
       	    </div><!-- 该前DIV为了中DIV居中 -->
       	    
       		<!--中DIV 歌曲部分-->
-            <div class="col-sm-10 h-item <c:if test="${not empty songManageSearchList}">border</c:if>"><!-- 中DIV -->
-               
-      		  <!-- One of three columns -->
-      		  <ul class="list-group list-group-flush" >
-				
-				<c:forEach items="${songManageSearchList}" var="song" varStatus="status">
-				
-                      <li class="list-group-item list-group-item-light " idd="${song.songId}" title="${song.songName}">
-                      	<!-- 歌曲信息区 -->
-                      	<div class="clear text-ellipsis">
-                          <span><a href="#" class="ahover" onclick="reviewLoad(${song.songId})">${status.index+1}.${song.songName}</a></span>
-                          <span class="text-muted"> -- _ _ -- </span>
-                          <span class="badge badge-pill badge-primary badge-pill">${song.trendingCoefficient}</span>
-                        </div>
-                        <!-- 播放控制区 downloadFun(${song.songAddress})-->
-                        <div class="pull-right m-l fr">
-	                        <a href="javascript:;" class="play m-r-sm" title="播放" onclick="playFunc(${song.songId})" id="play${song.songId}" name="${song.songName}" address="${song.songAddress}">
-	                          <i class="icon-control-play text  "></i>
-	                          <!-- <i class="icon-control-pause text-active"></i> -->
-	                        </a>
-	                        <a href="${pageContext.request.contextPath}/download.do?songAddress=${song.songAddress}&songId=${song.songId}" class="m-r-sm" title="下载"><i class="icon-cloud-download"></i></a>
-	                         
-	                         <a href="javascript:;"
-	                         <c:choose>
-	                         	<c:when test="${song.whetherCollected}">class="collect m-r-sm text-danger"</c:when>
-	                         	<c:otherwise>class="collect m-r-sm"</c:otherwise>
-	                         </c:choose>
-	                         <%-- <c:if test="${song.whetherCollected}">class="collect m-r-sm text-danger" </c:if> --%>
-	                         onclick="collectFunc(${song.songId})" id="${song.songId}" title="喜欢"><i class="icon-heart"></i>
-	                         </a>
-                        </div>
-                        
-                      </li>
-                      
-                   </c:forEach>
-                      
-                 </ul>
-                 
-   			 </div><!--中DIV 歌曲部分 End-->
+             <div class="col-sm-10">
+            	<h6>&nbsp;</h6>
+            	<h3 class="border-line-delete">歌曲管理</h3>
+            	<div class="container">
+            		<div class="row content">
+            		
+            			<table class="table table-striped">
+            				<thead>
+							    <tr>
+							      <th scope="col">#</th>
+							      <th scope="col">歌曲ID</th>
+							      <th scope="col">歌曲名称</th>
+							      <th scope="col">歌曲地址</th>
+							    </tr>
+							 </thead>
+							 <tbody>
+								 <c:forEach items="${songManageSearchList}" var="song" varStatus="status">
+								    <tr>
+								      <th scope="row">${status.index+1}<input type="checkbox" value="${song.songId}" aria-label="Checkbox for following text input"></th>
+								      <td>${song.songId}</td>
+								      <td>${song.songName}</td>
+								      <td>${song.songAddress}</td>
+								    </tr>
+							   	 </c:forEach>
+							 </tbody>
+            			</table>
+            			
+            		</div>
+            	</div><!-- container  End-->
+            	
+              </div><!-- 中DIV End-->
    			 <!-- 后DIV -->
    			 <div class="col-sm-1"></div><!-- 该后DIV为了中DIV居中 -->
    			 
       	</div>
 		
 	  </div><!-- /.container -->
+	  
+	  <script>
+	  $(function(){
+		//处理删除选中
+		$('#deleteSelectId').on('click', function (e) {
+			var selectedIds = [];
+			$('input:checkbox:checked').each(function() {
+				selectedIds.push($(this).val());
+	         });
+			//删除
+			var data = {        
+			        "songIds": selectedIds,
+			 };
+		    url = "deleteSong.do";
+		    $.ajax({
+		    	//traditional: true[https://www.cnblogs.com/ybyi/p/6297600.html]
+		    	traditional: true,
+		        type:"POST",
+		        url:url,
+		        data:data
+		    });
+		    //删除后变成禁止选中状态
+		    $('input:checkbox:checked').each(function() {
+                $(this).attr("disabled", "disabled");
+			});
+		    
+		    
+			
+		});
+	});
+	</script>
 
   </body>
 </html>

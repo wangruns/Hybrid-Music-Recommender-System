@@ -32,4 +32,10 @@ public interface SongService {
 	 */
 	public TrendingSong getSongByIdWithCollectionFlag(HttpServletRequest request, int songId);
 
+	/**
+	 * 批量删除，根据数组里面的Id删除对应的歌曲
+	 * @param reviewIds
+	 */
+	public void batchDeleteById(int[] songIds);
+
 }

@@ -39,4 +39,13 @@ public interface SearchService {
 	 */
 	List<User> getSearchUser(String keyword);
 
+	/**
+	 * 根据关键词，查询歌曲信息
+	 * @param keyword
+	 * 搜索关键词
+	 * @return
+	 * 若没有结果，返回list.size()=0
+	 */
+	List<TrendingSong> getSearchSong(String keyword);
+
 }

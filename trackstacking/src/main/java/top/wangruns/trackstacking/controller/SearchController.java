@@ -45,7 +45,7 @@ public class SearchController {
 			if(modeInt==0) {
 				//歌曲搜索
 				modelAndView.setViewName("songManageSearchFrame");
-				List<TrendingSong> songManageSearchList=searchService.getSearchSongWithCollectionFlag(request,keyword);
+				List<TrendingSong> songManageSearchList=searchService.getSearchSong(keyword);
 				modelAndView.addObject("songManageSearchList",songManageSearchList);
 				if(songManageSearchList.size()==0) {
 					modelAndView.addObject("oneDayOneWord","下落不明");

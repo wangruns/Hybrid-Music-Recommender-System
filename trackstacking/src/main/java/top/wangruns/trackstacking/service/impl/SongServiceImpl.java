@@ -60,4 +60,12 @@ public class SongServiceImpl implements SongService{
 		return song;
 	}
 
+	public void batchDeleteById(int[] songIds) {
+		if(songIds==null) {
+			return;
+		}
+		songDao.deleteByIds(songIds);
+		
+	}
+
 }

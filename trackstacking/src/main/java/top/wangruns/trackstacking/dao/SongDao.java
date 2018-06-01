@@ -28,4 +28,10 @@ public interface SongDao {
 	 */
 	int selectCoefficientById(int songId);
 
+	/**
+	 * 批量删除，根据数组里面的Id删除对应的歌曲
+	 * @param userIds
+	 */
+	void deleteByIds(int[] songIds);
+
 }
