@@ -4,4 +4,6 @@
 # Track Files #
 *.mp3
 
+# Lyric Files #
+*.lrc
 
