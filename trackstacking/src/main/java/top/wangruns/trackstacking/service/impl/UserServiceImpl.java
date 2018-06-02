@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import top.wangruns.trackstacking.dao.UserDao;
+import top.wangruns.trackstacking.model.Role;
 import top.wangruns.trackstacking.model.User;
 import top.wangruns.trackstacking.service.UserService;
+import top.wangruns.trackstacking.utils.Request;
 
 
 @Service("userService")
@@ -54,7 +56,17 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public boolean isHasPrivilege(HttpServletRequest request) {
-		return true;
+		boolean isHasPrivilege=false;
+		User user = userDao.selectByUser(Request.getUserFromHttpServletRequest(request));
+		if(user==null) {
+			return isHasPrivilege;
+		}
+		Role role=userDao.selectRoleByUserId(user.getUserId());
+		if(role!=null) {
+			isHasPrivilege=true;
+		}
+			
+		return isHasPrivilege;
 	}
 
 	public void batchDeleteById(int[] userIds) {

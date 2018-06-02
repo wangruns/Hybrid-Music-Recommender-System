@@ -56,9 +56,10 @@ public class SearchServiceImpl implements SearchService{
 	}
 
 
-	public List<User> getSearchUser(String keyword) {
+	public List<User> getSearchUser(HttpServletRequest request,String keyword) {
+		User user=userDao.selectByUser(Request.getUserFromHttpServletRequest(request));
 		List<User> searchUserList=new ArrayList<User>();
-		searchUserList=searchDao.selectUserLikeKeyword(keyword);
+		searchUserList=searchDao.selectUserLikeKeyword(keyword,user.getUserId());
 		return searchUserList;
 	}
 

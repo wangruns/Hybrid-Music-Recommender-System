@@ -16,12 +16,13 @@
 	</select>
 	
 	
-	<select id="selectUserLikeKeyword" parameterType="String"
+	<!-- 多个参数用#{0}按顺序表示 keyword,userId-->
+	<select id="selectUserLikeKeyword" 
 		resultType="top.wangruns.trackstacking.model.User">
-		select * from user 
-		where userName like concat('%',#{keyword},'%') 
+		select * from (select * from user where userId != #{1} )as userTb  
+		where userName like concat('%',#{0},'%') 
 			  or 
-			  email like concat('%',#{keyword},'%') 
+			  email like concat('%',#{0},'%') 
 	</select>
 
 </mapper>

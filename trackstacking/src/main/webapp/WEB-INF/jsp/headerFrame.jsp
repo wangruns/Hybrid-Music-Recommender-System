@@ -32,7 +32,7 @@
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0" id="searchFormId">
-          	<c:if test="${sessionScope.user!=null}">
+          	<c:if test="${sessionScope.isHasPrivilege}">
           	<select class="custom-select-override " id="inputGroupSelect01" name="mode">
 			    <option value="0" selected>音乐管理</option>
 			    <option value="1">用户管理</option>

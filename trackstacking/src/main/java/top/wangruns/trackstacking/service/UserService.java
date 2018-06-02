@@ -54,6 +54,7 @@ public interface UserService {
 	 * 判定当前用户是否具备权限
 	 * @param request
 	 * @return
+	 * 若有，返回true
 	 */
 	public boolean isHasPrivilege(HttpServletRequest request);
 

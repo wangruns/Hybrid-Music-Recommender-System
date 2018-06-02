@@ -29,6 +29,7 @@ public class LoginController {
 			return ReturnMsg.msg(HttpServletResponse.SC_BAD_REQUEST, "帐号或密码错误");
 		}else {
 			request.getSession().setAttribute("user", u);
+			request.getSession().setAttribute("isHasPrivilege", userService.isHasPrivilege(request));
 			return ReturnMsg.msg(HttpServletResponse.SC_OK, JSONObject.toJSON(u).toString());
 		}
 	}

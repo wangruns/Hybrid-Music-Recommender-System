@@ -56,7 +56,7 @@ public class SearchController {
 			}else if(modeInt==1) {
 				//用户搜索
 				modelAndView.setViewName("userManageSearchFrame");
-				List<User> userManageSearchList=searchService.getSearchUser(keyword);
+				List<User> userManageSearchList=searchService.getSearchUser(request,keyword);
 				modelAndView.addObject("userManageSearchList",userManageSearchList);
 				if(userManageSearchList.size()==0) {
 					modelAndView.addObject("oneDayOneWord","下落不明");

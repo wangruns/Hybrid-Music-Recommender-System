@@ -30,9 +30,10 @@ public interface SearchDao {
 	 * 根据关键字模糊查询用户信息
 	 * @param keyword
 	 * 用户名/用户邮箱
+	 * @param userId 
 	 * @return
 	 * 若查询不到，返回empty
 	 */
-	List<User> selectUserLikeKeyword(String keyword);
+	List<User> selectUserLikeKeyword(String keyword, int userId);
 
 }

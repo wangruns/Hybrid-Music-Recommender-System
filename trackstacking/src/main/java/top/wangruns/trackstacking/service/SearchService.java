@@ -31,13 +31,15 @@ public interface SearchService {
 	List<Review> getSearchReview(String keyword);
 
 	/**
-	 * 根据关键词，查询用户信息
+	 * 根据关键词，查询用户信息,不包括管理员自己
+	 * @param request 
+	 * HttpServletRequest
 	 * @param keyword
 	 * 搜索关键词
 	 * @return
 	 * 若没有结果，返回list.size()=0
 	 */
-	List<User> getSearchUser(String keyword);
+	List<User> getSearchUser(HttpServletRequest request, String keyword);
 
 	/**
 	 * 根据关键词，查询歌曲信息

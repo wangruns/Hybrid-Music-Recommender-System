@@ -2,6 +2,7 @@ package top.wangruns.trackstacking.dao;
 
 import java.util.List;
 
+import top.wangruns.trackstacking.model.Role;
 import top.wangruns.trackstacking.model.User;
 
 public interface UserDao {
@@ -52,6 +53,15 @@ public interface UserDao {
 	 * @param userIds
 	 */
 	public void deleteByIds(int[] userIds);
+
+	/**
+	 * 根据用户Id查询当前用户的角色信息
+	 * @param userId
+	 * 当前用户的Id
+	 * @return
+	 * 若没有，则返回null
+	 */
+	public Role selectRoleByUserId(int userId);
 	
 
 }

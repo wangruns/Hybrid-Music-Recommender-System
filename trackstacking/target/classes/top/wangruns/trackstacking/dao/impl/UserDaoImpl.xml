@@ -41,5 +41,11 @@
         </foreach>
 	</delete>
 	
+	<select id="selectRoleByUserId" parameterType="int" 
+		resultType="top.wangruns.trackstacking.model.Role">
+		select * from role 
+		where roleId in (select roleId from userrole where userId =#{userId} )
+	</select>
+	
 
 </mapper>
