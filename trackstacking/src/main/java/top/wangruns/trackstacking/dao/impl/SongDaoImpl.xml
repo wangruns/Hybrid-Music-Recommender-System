@@ -31,5 +31,14 @@
            #{songId}
         </foreach>
 	</delete>
+	
+	<insert id="insertOnlySong" parameterType="top.wangruns.trackstacking.model.Song">
+		insert into song(songName,songAddress) values( #{songName},#{songAddress} )
+	</insert>
+	
+	<insert id="insertSongWithLyric" parameterType="top.wangruns.trackstacking.model.Song">
+		insert into song(songName,songAddress,lyricName,lyricAddress) 
+		values( #{songName},#{songAddress},#{lyricName} ,#{lyricAddress} )
+	</insert>
 
 </mapper>

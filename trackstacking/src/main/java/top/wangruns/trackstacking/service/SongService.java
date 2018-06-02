@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import top.wangruns.trackstacking.model.Song;
 import top.wangruns.trackstacking.model.TrendingSong;
 
@@ -37,5 +39,29 @@ public interface SongService {
 	 * @param reviewIds
 	 */
 	public void batchDeleteById(int[] songIds);
+
+	/**
+	 * 检验歌曲文件，歌词文件的格式
+	 * @param song
+	 * MultipartFile 歌曲文件
+	 * @param lyric
+	 * MultipartFile 歌词文件
+	 * @return
+	 * 如果符合要求，返回true
+	 */
+	public boolean checkFormat(MultipartFile song, MultipartFile lyric);
+
+	/**
+	 * 添歌曲记录，根据上传的歌曲文件和歌词文件
+	 * @param request 
+	 * HttpServletRequest
+	 * @param song
+	 * MultipartFile 歌曲文件
+	 * @param lyric
+	 * MultipartFile 歌词文件
+	 * @return
+	 * 如果添加成功返回true
+	 */
+	public boolean addSong(HttpServletRequest request, MultipartFile song, MultipartFile lyric);
 
 }

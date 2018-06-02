@@ -34,4 +34,19 @@ public interface SongDao {
 	 */
 	void deleteByIds(int[] songIds);
 
+	/***
+	 * 插入单纯的歌曲(歌曲名称|歌曲地址)
+	 * @param song
+	 * @return
+	 * 若插入成功返回1,否则返回0,即返回受影响的行数
+	 */
+	int insertOnlySong(Song song);
+
+	/**
+	 * 插入带歌词信息的歌曲(歌曲名称|歌曲地址|歌词名称|歌曲地址)
+	 * @param song
+	 * @return
+	 */
+	int insertSongWithLyric(Song song);
+
 }

@@ -78,7 +78,17 @@
 	    border: 1px solid #ced4da;
 	    border-radius: .25rem;
 	    -moz-appearance: none;
-}
+	}
+	.margin-left-m{
+		margin-left:15px;
+	}
+	.custom-file-input-{
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    margin: 0;
+	}
 	</style>
     
   </head>
