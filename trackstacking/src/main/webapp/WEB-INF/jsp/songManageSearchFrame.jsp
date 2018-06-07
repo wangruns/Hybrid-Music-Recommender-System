@@ -156,16 +156,16 @@
 	        //判定格式
 	        if(song==null){
 	        	$('#collapse-file-error-hint').html("请选择歌曲文件");
-            	$('#collapse-file-error-hint').collapse()
+            	$('#collapse-file-error-hint').collapse();return false;
 	        }else if(song.size>maxSongSize || (lyric!=null&&lyric.size>maxLyricSize) ){
 	        	$('#collapse-file-error-hint').html("超出文件最大限制");
-            	$('#collapse-file-error-hint').collapse()
+            	$('#collapse-file-error-hint').collapse();return false;
 	        }else if(songFormat.indexOf(song.name.substr(song.name.lastIndexOf(".")+1) )==-1){
 	        	$('#collapse-file-error-hint').html("歌曲文件格式不对");
-            	$('#collapse-file-error-hint').collapse()
+            	$('#collapse-file-error-hint').collapse();return false;
 	        }else if(lyric!=null && lyricFormat.indexOf(lyric.name.substr(lyric.name.lastIndexOf(".")+1) )==-1){
 	        	$('#collapse-file-error-hint').html("歌词文件格式不对");
-            	$('#collapse-file-error-hint').collapse()
+            	$('#collapse-file-error-hint').collapse();return false;
 	        }else {
 	        }
 	       //提交
