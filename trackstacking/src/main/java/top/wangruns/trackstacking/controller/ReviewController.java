@@ -19,7 +19,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import top.wangruns.trackstacking.model.Review;
 import top.wangruns.trackstacking.model.Song;
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 import top.wangruns.trackstacking.service.RecordPlayService;
 import top.wangruns.trackstacking.service.ReviewService;
 import top.wangruns.trackstacking.service.SongService;
@@ -38,7 +38,7 @@ public class ReviewController {
 	@RequestMapping(value = "reviewFrameLoad.do", method = { RequestMethod.GET })
 	public ModelAndView reviewFrameLoad(HttpServletRequest request, int songId) {
 		//获取当前选中的歌曲
-		TrendingSong song = songService.getSongByIdWithCollectionFlag(request, songId);
+		Song song = songService.getSongByIdWithCollectionFlag(request, songId);
 		//获取选中歌曲的精彩评论
 		List<Review> hotReviewList = reviewService.getHotReviewBySongIdWithLikeFlag(request,songId);
 		//获取选中歌曲的最新评论(目前评论数据很少，先不做分页)

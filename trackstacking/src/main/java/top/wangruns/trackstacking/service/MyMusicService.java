@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 
 public interface MyMusicService {
 
@@ -15,13 +15,13 @@ public interface MyMusicService {
 	 * @return
 	 * 如果没有过收藏，则返回null
 	 */
-	List<TrendingSong> getMyCollectionWithCollectionFlag(HttpServletRequest request);
+	List<Song> getMyCollectionWithCollectionFlag(HttpServletRequest request);
 
 	/**
 	 * 获取当前用户的最近的播放里表，带收藏标记
 	 * @param request
 	 * @return
 	 */
-	List<TrendingSong> getMyRecentPlayListWithCollectionFlag(HttpServletRequest request);
+	List<Song> getMyRecentPlayListWithCollectionFlag(HttpServletRequest request);
 
 }

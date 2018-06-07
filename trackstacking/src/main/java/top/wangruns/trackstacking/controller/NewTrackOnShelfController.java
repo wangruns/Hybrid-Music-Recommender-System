@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import top.wangruns.trackstacking.model.Song;
-import top.wangruns.trackstacking.model.TrendingSong;
 import top.wangruns.trackstacking.service.NewTrackOnShelfService;
 
 @Controller
@@ -23,7 +22,7 @@ public class NewTrackOnShelfController {
 	public ModelAndView newTrackOnShelfFrameLoad(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("newTrackOnShelfFrame");
-		List<TrendingSong> newTrackSongList = newTrackOnShelfService.getNewTrackWithCollectionFlag(request);
+		List<Song> newTrackSongList = newTrackOnShelfService.getNewTrackWithCollectionFlag(request);
 
 		modelAndView.addObject("newTrackSongList", newTrackSongList);
 		modelAndView.addObject("test", "Name");

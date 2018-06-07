@@ -1,5 +1,6 @@
 package top.wangruns.trackstacking.service.impl;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,7 +18,6 @@ import top.wangruns.trackstacking.dao.TrendingRecDao;
 import top.wangruns.trackstacking.dao.UserDao;
 import top.wangruns.trackstacking.model.Collection;
 import top.wangruns.trackstacking.model.Song;
-import top.wangruns.trackstacking.model.TrendingSong;
 import top.wangruns.trackstacking.model.User;
 import top.wangruns.trackstacking.service.SongService;
 import top.wangruns.trackstacking.utils.Request;
@@ -35,13 +35,13 @@ public class SongServiceImpl implements SongService{
 		return songDao.selectAllSongId();
 	}
 
-	public TrendingSong getSongById(int songId) {
+	public Song getSongById(int songId) {
 		return songDao.selectSongById(songId);
 	}
 
-	public TrendingSong getSongByIdWithCollectionFlag(HttpServletRequest request, int songId) {
+	public Song getSongByIdWithCollectionFlag(HttpServletRequest request, int songId) {
 		//获取对应Id的歌曲
-		TrendingSong song=songDao.selectSongById(songId);
+		Song song=songDao.selectSongById(songId);
 		if(song==null) {
 			return null;
 		}
@@ -64,9 +64,22 @@ public class SongServiceImpl implements SongService{
 		return song;
 	}
 
-	public void batchDeleteById(int[] songIds) {
+	public void batchDeleteById(HttpServletRequest request,int[] songIds) {
 		if(songIds==null) {
 			return;
+		}
+		for(int id:songIds) {
+			Song song=songDao.selectSongById(id);
+			if(song!=null) {
+				String realSongPath=request.getServletContext().getRealPath(song.getSongAddress());
+				File fileSong=new File(realSongPath);
+				fileSong.delete();
+				if(song.getLyricAddress()!=null) {
+					String realLyricPath=request.getServletContext().getRealPath(song.getLyricAddress());
+					File fileLyric=new File(realLyricPath);
+					fileLyric.delete();
+				}
+			}
 		}
 		songDao.deleteByIds(songIds);
 		

@@ -9,7 +9,7 @@
 	group by songId limit 50;
 	 -->
 	<select id="selectRecentWeekRanking"
-		resultType="top.wangruns.trackstacking.model.TrendingSong">
+		resultType="top.wangruns.trackstacking.model.Song">
 		select * from weekRanking,song
 		where weekRanking.songId=song.songId order by trendingCoefficient desc
 	</select>
@@ -21,7 +21,7 @@
 	group by songId limit 50;
 	 -->
 	<select id="selectRecentMonthRanking"
-		resultType="top.wangruns.trackstacking.model.TrendingSong">
+		resultType="top.wangruns.trackstacking.model.Song">
 		select * from monthRanking,song
 		where monthRanking.songId=song.songId order by trendingCoefficient desc
 	</select>

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 import top.wangruns.trackstacking.service.RankingPageService;
 import top.wangruns.trackstacking.utils.OneDayOneWord;
 import top.wangruns.trackstacking.utils.Static;
@@ -24,8 +24,8 @@ public class RankingPageCotroller {
 	public ModelAndView rankingFrameLoad(HttpServletRequest request) {
 		ModelAndView modelAndView=new ModelAndView();
 		modelAndView.setViewName("rankingFrame");
-		List<TrendingSong> weekRankingList=rankingPageService.getRankWithCollectionFlag(request,1);
-		List<TrendingSong> monthRankingList=rankingPageService.getRankWithCollectionFlag(request,2);
+		List<Song> weekRankingList=rankingPageService.getRankWithCollectionFlag(request,1);
+		List<Song> monthRankingList=rankingPageService.getRankWithCollectionFlag(request,2);
 		
 		modelAndView.addObject("weekRankingList",weekRankingList);
 		modelAndView.addObject("monthRankingList",monthRankingList);

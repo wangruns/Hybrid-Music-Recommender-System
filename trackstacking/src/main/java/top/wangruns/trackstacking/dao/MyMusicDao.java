@@ -2,7 +2,7 @@ package top.wangruns.trackstacking.dao;
 
 import java.util.List;
 
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 import top.wangruns.trackstacking.model.User;
 
 public interface MyMusicDao {
@@ -12,13 +12,13 @@ public interface MyMusicDao {
 	 * @param user
 	 * @return
 	 */
-	public List<TrendingSong> selectCollectedSong(User user);
+	public List<Song> selectCollectedSong(User user);
 
 	/**
 	 * 查询当前用户最近的播放列表
 	 * @param user
 	 * @return
 	 */
-	public List<TrendingSong> selectMyRecentSong(User user);
+	public List<Song> selectMyRecentSong(User user);
 	
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 
 public interface RankingPageService {
 
@@ -17,6 +17,6 @@ public interface RankingPageService {
 	 * @return
 	 * 如果没有，则返回null
 	 */
-	List<TrendingSong> getRankWithCollectionFlag(HttpServletRequest request, int mode);
+	List<Song> getRankWithCollectionFlag(HttpServletRequest request, int mode);
 
 }

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 
 public interface PersonalRecService {
 
@@ -17,7 +17,7 @@ public interface PersonalRecService {
 	 * @return
 	 * 若没有获取到，返回null
 	 */
-	List<TrendingSong> getPersonalDailyRecWithCollectionFlag(HttpServletRequest request);
+	List<Song> getPersonalDailyRecWithCollectionFlag(HttpServletRequest request);
 
 	/**
 	 * 初始化当前用户的个性化音乐推荐列表

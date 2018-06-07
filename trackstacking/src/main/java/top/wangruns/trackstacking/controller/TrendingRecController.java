@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 import top.wangruns.trackstacking.service.TrendingRecService;
 
 @Controller
@@ -22,7 +22,7 @@ public class TrendingRecController {
 	public ModelAndView trendingRecFrameLoad(HttpServletRequest request) {
 		ModelAndView modelAndView=new ModelAndView();
 		modelAndView.setViewName("trendingRecFrame");
-		List<TrendingSong> trendingSongList=trendingRecService.getTrendingSongWithCollectionFlag(request);
+		List<Song> trendingSongList=trendingRecService.getSongWithCollectionFlag(request);
 		
 		modelAndView.addObject("trendingSongList",trendingSongList);
 		modelAndView.addObject("test","Name");

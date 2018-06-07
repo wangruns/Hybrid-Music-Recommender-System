@@ -2,7 +2,7 @@ package top.wangruns.trackstacking.dao;
 
 import java.util.List;
 
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 
 public interface RankingPageDao {
 
@@ -11,13 +11,13 @@ public interface RankingPageDao {
 	 * @return
 	 * 如果没有，则返回null
 	 */
-	List<TrendingSong> selectRecentWeekRanking();
+	List<Song> selectRecentWeekRanking();
 
 	/**
 	 * 获取最近一个月排行榜列表
 	 * @return
 	 * 如果没有，则返回null
 	 */
-	List<TrendingSong> selectRecentMonthRanking();
+	List<Song> selectRecentMonthRanking();
 
 }

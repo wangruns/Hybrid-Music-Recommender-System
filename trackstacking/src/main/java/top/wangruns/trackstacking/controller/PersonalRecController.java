@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 import top.wangruns.trackstacking.service.PersonalRecService;
 import top.wangruns.trackstacking.service.TrendingRecService;
 import top.wangruns.trackstacking.utils.Static;
@@ -24,7 +24,7 @@ public class PersonalRecController {
 	public ModelAndView personalizedRecFrameLoad(HttpServletRequest request) {
 		ModelAndView modelAndView=new ModelAndView();
 		modelAndView.setViewName("personalizedRecFrame");
-		List<TrendingSong> personalRecSongList=personalRecService.getPersonalDailyRecWithCollectionFlag(request);
+		List<Song> personalRecSongList=personalRecService.getPersonalDailyRecWithCollectionFlag(request);
 		
 		modelAndView.addObject("personalRecSongList",personalRecSongList);
 		if(personalRecSongList==null) {

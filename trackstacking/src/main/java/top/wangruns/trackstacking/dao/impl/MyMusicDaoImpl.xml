@@ -3,12 +3,12 @@
 <mapper namespace="top.wangruns.trackstacking.dao.MyMusicDao">
 	
 	<select id="selectCollectedSong" parameterType="top.wangruns.trackstacking.model.User"
-		resultType="top.wangruns.trackstacking.model.TrendingSong">
+		resultType="top.wangruns.trackstacking.model.Song">
 		select * from collection,song where userId=#{userId} and collection.songId=song.songId
 	</select>
 	
 	<select id="selectMyRecentSong" parameterType="top.wangruns.trackstacking.model.User"
-		resultType="top.wangruns.trackstacking.model.TrendingSong">
+		resultType="top.wangruns.trackstacking.model.Song">
 		select * from song where songId in
 		(select distinct songId from play where userId=#{userId})
 	</select>

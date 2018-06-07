@@ -9,7 +9,8 @@ public class Song {
 	private int songLength;
 	private String lyricName;
 	private String lyricAddress;
-
+	private int trendingCoefficient;
+	private boolean whetherCollected;
 
 	public Song(String songName, String songAddress) {
 		this.songName=songName;
@@ -26,6 +27,23 @@ public class Song {
 	public Song() {}
 	
 	
+	
+	public int getTrendingCoefficient() {
+		return trendingCoefficient;
+	}
+
+	public void setTrendingCoefficient(int trendingCoefficient) {
+		this.trendingCoefficient = trendingCoefficient;
+	}
+
+	public boolean isWhetherCollected() {
+		return whetherCollected;
+	}
+
+	public void setWhetherCollected(boolean whetherCollected) {
+		this.whetherCollected = whetherCollected;
+	}
+
 	public String getLyricName() {
 		return lyricName;
 	}

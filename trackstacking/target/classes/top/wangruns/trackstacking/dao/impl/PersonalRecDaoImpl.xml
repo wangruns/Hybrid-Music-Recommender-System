@@ -3,13 +3,13 @@
 <mapper namespace="top.wangruns.trackstacking.dao.PersonalRecDao">
 
 	<select id="selectPersonalRecFromA" parameterType="top.wangruns.trackstacking.model.User"
-		resultType="top.wangruns.trackstacking.model.TrendingSong">
+		resultType="top.wangruns.trackstacking.model.Song">
 		select * from reca,song
 		where reca.userId=#{userId} and reca.songId=song.songId
 	</select>
 	
 	<select id="selectPersonalRecFromB" parameterType="top.wangruns.trackstacking.model.User"
-		resultType="top.wangruns.trackstacking.model.TrendingSong">
+		resultType="top.wangruns.trackstacking.model.Song">
 		select * from recb,song
 		where recb.userId=#{userId} and recb.songId=song.songId
 	</select>

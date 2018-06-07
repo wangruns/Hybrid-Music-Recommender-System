@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import top.wangruns.trackstacking.dao.TrendingRecDao;
 import top.wangruns.trackstacking.dao.UserDao;
 import top.wangruns.trackstacking.model.Collection;
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 import top.wangruns.trackstacking.model.User;
 import top.wangruns.trackstacking.service.TrendingRecService;
 import top.wangruns.trackstacking.utils.Request;
@@ -23,8 +23,8 @@ public class TrendingRecServiceImpl implements TrendingRecService {
 	@Autowired
 	private UserDao userDao;
 
-	public List<TrendingSong> getTrendingSongWithCollectionFlag(HttpServletRequest request) {
-		List<TrendingSong> trendingRecList=new ArrayList<TrendingSong>();
+	public List<Song> getSongWithCollectionFlag(HttpServletRequest request) {
+		List<Song> trendingRecList=new ArrayList<Song>();
 		List<Collection> collectionList=new ArrayList<Collection>();
 		User user=userDao.selectByUser(Request.getUserFromHttpServletRequest(request));
 		collectionList=trendingRecDao.getCollection(user);
@@ -32,7 +32,7 @@ public class TrendingRecServiceImpl implements TrendingRecService {
 		//在热门推荐列表中给已经被该用户收藏的歌曲加上标记
 		if(collectionList!=null && trendingRecList!=null) {
 			for(Collection c:collectionList) {
-				for(TrendingSong t:trendingRecList) {
+				for(Song t:trendingRecList) {
 					if(c.getSongId()==t.getSongId()) {
 						t.setWhetherCollected(true);
 					}

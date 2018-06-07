@@ -2,7 +2,7 @@ package top.wangruns.trackstacking.dao;
 
 import java.util.List;
 
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 import top.wangruns.trackstacking.model.User;
 
 public interface PersonalRecDao {
@@ -13,7 +13,7 @@ public interface PersonalRecDao {
 	 * @return
 	 * 初始化为随机歌曲列表
 	 */
-	List<TrendingSong> selectPersonalRecFromA(User user);
+	List<Song> selectPersonalRecFromA(User user);
 
 	/**
 	 * 从表B中获取当前用户的个性化推荐列表
@@ -21,7 +21,7 @@ public interface PersonalRecDao {
 	 * @return
 	 * 初始化为随机歌曲列表
 	 */
-	List<TrendingSong> selectPersonalRecFromB(User user);
+	List<Song> selectPersonalRecFromB(User user);
 
 	/**
 	 * 像reca表中插入数据
@@ -60,7 +60,7 @@ public interface PersonalRecDao {
 	 * @param userId
 	 * 用户的Id
 	 */
-	void insertListIntoRecA(List<TrendingSong> songList, int userId);
+	void insertListIntoRecA(List<Song> songList, int userId);
 	
 	/**
 	 * 将List里面的songId和userId批量插入B表
@@ -69,7 +69,7 @@ public interface PersonalRecDao {
 	 * @param userId
 	 * 用户的Id
 	 */
-	void insertListIntoRecB(List<TrendingSong> songList, int userId);
+	void insertListIntoRecB(List<Song> songList, int userId);
 
 	/***
 	 * 将数组里面的songId和userId批量插入B表

@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 
 public interface TrendingRecService {
 
@@ -15,6 +15,6 @@ public interface TrendingRecService {
 	 * @return
 	 * 若曲库中没有任何歌曲，则返回null
 	 */
-	List<TrendingSong> getTrendingSongWithCollectionFlag(HttpServletRequest request);
+	List<Song> getSongWithCollectionFlag(HttpServletRequest request);
 
 }

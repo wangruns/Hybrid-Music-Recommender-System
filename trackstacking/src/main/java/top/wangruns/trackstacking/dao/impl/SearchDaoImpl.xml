@@ -3,7 +3,7 @@
 <mapper namespace="top.wangruns.trackstacking.dao.SearchDao">
 
 	<select id="selectSongLikeKeyword" parameterType="String"
-		resultType="top.wangruns.trackstacking.model.TrendingSong">
+		resultType="top.wangruns.trackstacking.model.Song">
 		select * from song where songName like concat('%',#{keyword},'%')
 	</select>
 	

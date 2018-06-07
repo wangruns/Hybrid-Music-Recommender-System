@@ -3,7 +3,7 @@ package top.wangruns.trackstacking.dao;
 import java.util.List;
 
 import top.wangruns.trackstacking.model.Review;
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 import top.wangruns.trackstacking.model.User;
 
 public interface SearchDao {
@@ -15,7 +15,7 @@ public interface SearchDao {
 	 * @return
 	 * 若查询不到，返回empty
 	 */
-	List<TrendingSong> selectSongLikeKeyword(String keyword);
+	List<Song> selectSongLikeKeyword(String keyword);
 
 	/**
 	 * 根据关键字模糊查询评论信息

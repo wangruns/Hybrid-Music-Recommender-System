@@ -8,7 +8,7 @@
 	from play group by songId limit 50;
 	 -->
 	<select id="getTrendingSong"
-		resultType="top.wangruns.trackstacking.model.TrendingSong">
+		resultType="top.wangruns.trackstacking.model.Song">
 		select * from trending,song
 		where trending.songId=song.songId order by trendingCoefficient desc
 	</select>

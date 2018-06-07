@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.multipart.MultipartFile;
 
 import top.wangruns.trackstacking.model.Song;
-import top.wangruns.trackstacking.model.TrendingSong;
 
 public interface SongService {
 
@@ -24,7 +23,7 @@ public interface SongService {
 	 * @return
 	 * 若没有，则返回null
 	 */
-	public TrendingSong getSongById(int songId);
+	public Song getSongById(int songId);
 
 	/**
 	 * 根据歌曲Id获取歌曲的信息，并加上是否收藏的标记
@@ -32,13 +31,14 @@ public interface SongService {
 	 * @param songId
 	 * @return
 	 */
-	public TrendingSong getSongByIdWithCollectionFlag(HttpServletRequest request, int songId);
+	public Song getSongByIdWithCollectionFlag(HttpServletRequest request, int songId);
 
 	/**
 	 * 批量删除，根据数组里面的Id删除对应的歌曲
+	 * @param request
 	 * @param reviewIds
 	 */
-	public void batchDeleteById(int[] songIds);
+	public void batchDeleteById(HttpServletRequest request,int[] songIds);
 
 	/**
 	 * 检验歌曲文件，歌词文件的格式

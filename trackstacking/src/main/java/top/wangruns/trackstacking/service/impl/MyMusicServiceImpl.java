@@ -13,7 +13,7 @@ import top.wangruns.trackstacking.dao.NewTrackOnShelfDao;
 import top.wangruns.trackstacking.dao.TrendingRecDao;
 import top.wangruns.trackstacking.dao.UserDao;
 import top.wangruns.trackstacking.model.Collection;
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 import top.wangruns.trackstacking.model.User;
 import top.wangruns.trackstacking.service.MyMusicService;
 import top.wangruns.trackstacking.utils.Request;
@@ -28,21 +28,21 @@ public class MyMusicServiceImpl implements MyMusicService{
 	private TrendingRecDao trendingRecDao;
 
 	
-	public List<TrendingSong> getMyCollectionWithCollectionFlag(HttpServletRequest request) {
-		List<TrendingSong> myCollectionList = new ArrayList<TrendingSong>();
+	public List<Song> getMyCollectionWithCollectionFlag(HttpServletRequest request) {
+		List<Song> myCollectionList = new ArrayList<Song>();
 		User user = userDao.selectByUser(Request.getUserFromHttpServletRequest(request));
 		myCollectionList = myMusicDao.selectCollectedSong(user);
 		//为该用户收藏的歌曲加上标记
 		if(myCollectionList!=null) {
-			for(TrendingSong t:myCollectionList) {
+			for(Song t:myCollectionList) {
 				t.setWhetherCollected(true);
 			}
 		}
 		return myCollectionList;
 	}
 
-	public List<TrendingSong> getMyRecentPlayListWithCollectionFlag(HttpServletRequest request) {
-		List<TrendingSong> myRecentPalyList = new ArrayList<TrendingSong>();
+	public List<Song> getMyRecentPlayListWithCollectionFlag(HttpServletRequest request) {
+		List<Song> myRecentPalyList = new ArrayList<Song>();
 		List<Collection> collectionList=new ArrayList<Collection>();
 		User user = userDao.selectByUser(Request.getUserFromHttpServletRequest(request));
 		myRecentPalyList = myMusicDao.selectMyRecentSong(user);
@@ -50,7 +50,7 @@ public class MyMusicServiceImpl implements MyMusicService{
 		//在新碟上架列表中给已经被该用户收藏的歌曲加上标记
 		if(collectionList!=null && myRecentPalyList!=null) {
 			for(Collection c:collectionList) {
-				for(TrendingSong t:myRecentPalyList) {
+				for(Song t:myRecentPalyList) {
 					if(c.getSongId()==t.getSongId()) {
 						t.setWhetherCollected(true);
 					}

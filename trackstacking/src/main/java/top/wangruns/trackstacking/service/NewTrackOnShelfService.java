@@ -5,7 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import top.wangruns.trackstacking.model.Song;
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 
 public interface NewTrackOnShelfService {
 
@@ -14,6 +14,6 @@ public interface NewTrackOnShelfService {
 	 * @param request
 	 * @return
 	 */
-	List<TrendingSong> getNewTrackWithCollectionFlag(HttpServletRequest request);
+	List<Song> getNewTrackWithCollectionFlag(HttpServletRequest request);
 
 }

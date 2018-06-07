@@ -12,7 +12,7 @@ import top.wangruns.trackstacking.dao.RankingPageDao;
 import top.wangruns.trackstacking.dao.TrendingRecDao;
 import top.wangruns.trackstacking.dao.UserDao;
 import top.wangruns.trackstacking.model.Collection;
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 import top.wangruns.trackstacking.model.User;
 import top.wangruns.trackstacking.service.RankingPageService;
 import top.wangruns.trackstacking.utils.Request;
@@ -27,8 +27,8 @@ public class RankingPageServiceImpl implements RankingPageService{
 	private TrendingRecDao trendingRecDao;
 	
 	
-	public List<TrendingSong> getRankWithCollectionFlag(HttpServletRequest request, int mode) {
-		List<TrendingSong> rankingPageList = new ArrayList<TrendingSong>();
+	public List<Song> getRankWithCollectionFlag(HttpServletRequest request, int mode) {
+		List<Song> rankingPageList = new ArrayList<Song>();
 		List<Collection> collectionList = new ArrayList<Collection>();
 		User user = userDao.selectByUser(Request.getUserFromHttpServletRequest(request));
 		collectionList = trendingRecDao.getCollection(user);
@@ -44,7 +44,7 @@ public class RankingPageServiceImpl implements RankingPageService{
 		// 在个性化列表中给已经被该用户收藏的歌曲加上标记
 		if (collectionList != null && rankingPageList != null) {
 			for (Collection c : collectionList) {
-				for (TrendingSong t : rankingPageList) {
+				for (Song t : rankingPageList) {
 					if (c.getSongId() == t.getSongId()) {
 						t.setWhetherCollected(true);
 					}

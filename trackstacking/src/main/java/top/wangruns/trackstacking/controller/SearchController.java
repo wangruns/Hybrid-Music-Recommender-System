@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import top.wangruns.trackstacking.model.Review;
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 import top.wangruns.trackstacking.model.User;
 import top.wangruns.trackstacking.service.SearchService;
 import top.wangruns.trackstacking.service.UserService;
@@ -45,7 +45,7 @@ public class SearchController {
 			if(modeInt==0) {
 				//歌曲搜索
 				modelAndView.setViewName("songManageSearchFrame");
-				List<TrendingSong> songManageSearchList=searchService.getSearchSong(keyword);
+				List<Song> songManageSearchList=searchService.getSearchSong(keyword);
 				modelAndView.addObject("songManageSearchList",songManageSearchList);
 				if(songManageSearchList.size()==0) {
 					modelAndView.addObject("oneDayOneWord","下落不明");
@@ -79,7 +79,7 @@ public class SearchController {
 		}else {
 			//普通用户及以下搜索
 			modelAndView.setViewName("searchFrame");
-			List<TrendingSong> searchSongList=searchService.getSearchSongWithCollectionFlag(request,keyword);
+			List<Song> searchSongList=searchService.getSearchSongWithCollectionFlag(request,keyword);
 			modelAndView.addObject("searchSongList",searchSongList);
 			if(searchSongList.size()==0) {
 				modelAndView.addObject("oneDayOneWord","下落不明");

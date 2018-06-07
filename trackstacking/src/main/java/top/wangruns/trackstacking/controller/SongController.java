@@ -29,7 +29,7 @@ public class SongController {
 	@RequestMapping(value = "deleteSong.do", method = { RequestMethod.POST })
 	public void deleteSong(HttpServletRequest request, int songIds[]) {
 		if(userService.isHasPrivilege(request)) {
-			songService.batchDeleteById(songIds);
+			songService.batchDeleteById(request,songIds);
 		}
 		
 	}

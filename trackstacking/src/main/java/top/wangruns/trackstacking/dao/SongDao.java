@@ -3,7 +3,6 @@ package top.wangruns.trackstacking.dao;
 import java.util.List;
 
 import top.wangruns.trackstacking.model.Song;
-import top.wangruns.trackstacking.model.TrendingSong;
 
 public interface SongDao {
 
@@ -19,7 +18,7 @@ public interface SongDao {
 	 * @param songId
 	 * @return
 	 */
-	TrendingSong selectSongById(int songId);
+	Song selectSongById(int songId);
 
 	/**
 	 * 查询歌曲的流行度，根据其Id

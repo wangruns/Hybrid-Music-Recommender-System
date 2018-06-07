@@ -19,7 +19,7 @@ import top.wangruns.trackstacking.dao.PersonalRecDao;
 import top.wangruns.trackstacking.dao.TrendingRecDao;
 import top.wangruns.trackstacking.dao.UserDao;
 import top.wangruns.trackstacking.model.Collection;
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 import top.wangruns.trackstacking.model.User;
 import top.wangruns.trackstacking.service.PersonalRecService;
 import top.wangruns.trackstacking.utils.Request;
@@ -36,8 +36,8 @@ public class PersonalRecServiceImpl implements PersonalRecService {
 	@Autowired
 	private NewTrackOnShelfDao newTrackOnShelfDao;
 
-	public List<TrendingSong> getPersonalDailyRecWithCollectionFlag(HttpServletRequest request) {
-		List<TrendingSong> personalRecList = new ArrayList<TrendingSong>();
+	public List<Song> getPersonalDailyRecWithCollectionFlag(HttpServletRequest request) {
+		List<Song> personalRecList = new ArrayList<Song>();
 		List<Collection> collectionList = new ArrayList<Collection>();
 		User user = userDao.selectByUser(Request.getUserFromHttpServletRequest(request));
 		collectionList = trendingRecDao.getCollection(user);
@@ -47,7 +47,7 @@ public class PersonalRecServiceImpl implements PersonalRecService {
 		// 在个性化列表中给已经被该用户收藏的歌曲加上标记
 		if (collectionList != null && personalRecList != null) {
 			for (Collection c : collectionList) {
-				for (TrendingSong t : personalRecList) {
+				for (Song t : personalRecList) {
 					if (c.getSongId() == t.getSongId()) {
 						t.setWhetherCollected(true);
 					}
@@ -65,9 +65,9 @@ public class PersonalRecServiceImpl implements PersonalRecService {
 	 * @param user
 	 * @return
 	 */
-	private List<TrendingSong> selectPersonalRec(User user) {
+	private List<Song> selectPersonalRec(User user) {
 		if(user==null) return null;
-		List<TrendingSong> personalRecList = new ArrayList<TrendingSong>();
+		List<Song> personalRecList = new ArrayList<Song>();
 		if(Static.isFromA) {
 			personalRecList=personalRecDao.selectPersonalRecFromA(user);
 		}else {
@@ -78,8 +78,8 @@ public class PersonalRecServiceImpl implements PersonalRecService {
 
 	public void initializePersonalRecList(HttpServletRequest request) {
 		final User user = userDao.selectByUser(Request.getUserFromHttpServletRequest(request));
-		List<TrendingSong> initialRecListA = new ArrayList<TrendingSong>();
-		List<TrendingSong> initialRecListB = new ArrayList<TrendingSong>();
+		List<Song> initialRecListA = new ArrayList<Song>();
+		List<Song> initialRecListB = new ArrayList<Song>();
 		//从新歌中随机获取10首，作为初始化列表
 		initialRecListA=newTrackOnShelfDao.selecNewSong();
 		for(int i=0;i<40;i++) {

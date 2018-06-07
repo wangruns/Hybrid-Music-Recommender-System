@@ -12,7 +12,7 @@ import top.wangruns.trackstacking.dao.UserDao;
 import top.wangruns.trackstacking.model.Collection;
 import top.wangruns.trackstacking.model.Like;
 import top.wangruns.trackstacking.model.Review;
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 import top.wangruns.trackstacking.model.User;
 import top.wangruns.trackstacking.service.ReviewService;
 import top.wangruns.trackstacking.utils.Request;

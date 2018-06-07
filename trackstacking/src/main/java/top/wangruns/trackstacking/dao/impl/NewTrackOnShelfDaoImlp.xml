@@ -3,7 +3,7 @@
 <mapper namespace="top.wangruns.trackstacking.dao.NewTrackOnShelfDao">
 	
 	<select id="selecNewSong"
-		resultType="top.wangruns.trackstacking.model.TrendingSong">
+		resultType="top.wangruns.trackstacking.model.Song">
 		select * from song order by songId desc limit 50
 	</select>
 	

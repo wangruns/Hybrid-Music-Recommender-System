@@ -9,7 +9,7 @@
 	</select>
 	
 	<select id="selectSongById" parameterType="int"
-		resultType="top.wangruns.trackstacking.model.TrendingSong">
+		resultType="top.wangruns.trackstacking.model.Song">
 		select * from song where songId = #{songId}
 	</select>
 	

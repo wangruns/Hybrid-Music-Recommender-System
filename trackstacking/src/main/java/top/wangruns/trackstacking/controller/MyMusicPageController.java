@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 import top.wangruns.trackstacking.service.MyMusicService;
 import top.wangruns.trackstacking.utils.OneDayOneWord;
 import top.wangruns.trackstacking.utils.Static;
@@ -34,7 +34,7 @@ public class MyMusicPageController {
 	public ModelAndView recentFrameLoad(HttpServletRequest request) {
 		ModelAndView modelAndView=new ModelAndView();
 		modelAndView.setViewName("recentFrame");
-		List<TrendingSong> myRecentPlayList=myMusicService.getMyRecentPlayListWithCollectionFlag(request);
+		List<Song> myRecentPlayList=myMusicService.getMyRecentPlayListWithCollectionFlag(request);
 		
 		modelAndView.addObject("myRecentPlayList",myRecentPlayList);
 		modelAndView.addObject("oneDayOneWord",OneDayOneWord.getOneDayOneWord(Static.MY_MUSIC_WORD_ARRAY));
@@ -47,7 +47,7 @@ public class MyMusicPageController {
 	public ModelAndView collectedFrameLoad(HttpServletRequest request) {
 		ModelAndView modelAndView=new ModelAndView();
 		modelAndView.setViewName("collectedFrame");
-		List<TrendingSong> myCollectionList=myMusicService.getMyCollectionWithCollectionFlag(request);
+		List<Song> myCollectionList=myMusicService.getMyCollectionWithCollectionFlag(request);
 		
 		modelAndView.addObject("myCollectionList",myCollectionList);
 		modelAndView.addObject("oneDayOneWord",OneDayOneWord.getOneDayOneWord(Static.MY_MUSIC_WORD_ARRAY));

@@ -3,7 +3,7 @@ package top.wangruns.trackstacking.dao;
 import java.util.List;
 
 import top.wangruns.trackstacking.model.Collection;
-import top.wangruns.trackstacking.model.TrendingSong;
+import top.wangruns.trackstacking.model.Song;
 import top.wangruns.trackstacking.model.User;
 
 public interface TrendingRecDao {
@@ -13,7 +13,7 @@ public interface TrendingRecDao {
 	 * @return
 	 * 若曲库中没有任何歌曲，则返回null
 	 */
-	List<TrendingSong> getTrendingSong();
+	List<Song> getTrendingSong();
 
 	/**
 	 * 获取当前用户的收藏列表
