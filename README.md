@@ -24,8 +24,6 @@
 
 ![](https://raw.githubusercontent.com/wangruns/wangruns.github.io/master/images/project/Hybrid-Music-Recommender-System/Selection_005.png)
 
-系统内置管理员橘色:root@trackstacking.top-root
-
 References:
 
 PTE: Predictive Text Embedding through Large-scale Heterogeneous Text Networks. Jian Tang, Meng Qu, Qiaozhu Mei. KDD 2015.-1508.00200
