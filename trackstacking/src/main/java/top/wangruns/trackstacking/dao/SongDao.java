@@ -48,4 +48,11 @@ public interface SongDao {
 	 */
 	int insertSongWithLyric(Song song);
 
+	/**
+	 * 获取所有具有歌词的歌曲信息
+	 * @return
+	 * 若没有，则返回null
+	 */
+	List<Song> selectAllSongsWithLyric();
+
 }

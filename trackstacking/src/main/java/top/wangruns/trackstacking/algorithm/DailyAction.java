@@ -3,20 +3,21 @@ package top.wangruns.trackstacking.algorithm;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.web.context.WebApplicationContext;
 
 import top.wangruns.trackstacking.model.Collection;
 import top.wangruns.trackstacking.model.DownloadRecord;
 import top.wangruns.trackstacking.model.PlayRecord;
+import top.wangruns.trackstacking.model.Song;
 import top.wangruns.trackstacking.service.CollectionService;
 import top.wangruns.trackstacking.service.PersonalRecService;
 import top.wangruns.trackstacking.service.RecordDownloadService;
@@ -48,12 +49,15 @@ public class DailyAction implements ApplicationListener<ContextRefreshedEvent>{
 
 	public void onApplicationEvent(ContextRefreshedEvent arg0) {
 		System.out.println("###-----Spring 容器加载完毕_-_-----###");
-		init();
+		init(arg0);
 	}
 
-	private void init() {
+	private void init(ContextRefreshedEvent arg0) {
 		if(isFirtTimeInit) {
 			System.out.println("###-----开始Listener_-_-----###");
+			ApplicationContext applicationContext = arg0.getApplicationContext();  
+			WebApplicationContext webApplicationContext = (WebApplicationContext)applicationContext;
+			final ServletContext servletContext = webApplicationContext.getServletContext();  
 			
 			Listener listener=new Listener(new TimerTask() {
 
@@ -97,6 +101,22 @@ public class DailyAction implements ApplicationListener<ContextRefreshedEvent>{
 					}else {
 						//向A中更新写数据
 						personalRecService.updatePersonalRecIntoA(user2songRecMatrix);
+					}
+					//是否开启混合
+					if(Static.IS_HYBRID) {
+						//获取歌曲信息
+						List<Song> songList=songService.getAllSongRecordsWithLyric();
+						if(songList!=null && songList.size()>1) {
+							Map<Integer,Integer[]> user2songRecMatrixHybrid=Hybrid.open(songList,user2songRecMatrix,collectionList,playList, servletContext);
+							System.out.println("----混合 done----");
+							if(Static.isFromA) {
+								//向B中添加数据
+								personalRecService.addHybridRecIntoB(user2songRecMatrixHybrid);
+							}else {
+								//向A中添加数据
+								personalRecService.addHybridRecIntoA(user2songRecMatrixHybrid);
+							}
+						}
 					}
 				}
 				

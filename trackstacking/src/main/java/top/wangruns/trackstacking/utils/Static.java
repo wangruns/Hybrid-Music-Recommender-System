@@ -31,7 +31,7 @@ public class Static {
 	/**
 	 * 更新是否从明天开始
 	 */
-	public static final boolean IS_START_TOMORROW = true;
+	public static final boolean IS_START_TOMORROW = false;
 	
 	/**
 	 * KNN k值
@@ -40,7 +40,7 @@ public class Static {
 	public static final int K = 2;
 	
 	/**
-	 * 给用户推荐歌曲的数量 n值
+	 * 基于最近邻用户的协同过滤给用户推荐歌曲的数量 n值
 	 * 歌曲很少
 	 */
 	public static final int N = 10;
@@ -63,6 +63,18 @@ public class Static {
 	public static final String [] SEARCH_WORD_ARRAY= {"众里寻他","计获事足","望眼欲穿",
 			"踏破铁鞋","如愿以偿","东寻西觅","摸索门径","寻踪觅迹"};
 	
+	/**
+	 * 是否开启混合模式，英文歌词文件较少的情况下建议关闭 
+	 * 基于最近邻用户的协同过滤	+	基于基于异构文本网络
+	 * 这里采取简单拼接的混合策略
+	 */
+	public static final boolean IS_HYBRID=true;
+	
+	/**
+	 * 基于异构文本网络给用户推荐歌曲的数量 n值
+	 * 歌曲很少很少
+	 */
+	public static final int N_HYBRID = 1;
 	
 	
 }

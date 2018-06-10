@@ -64,4 +64,11 @@ public interface SongService {
 	 */
 	public boolean addSong(HttpServletRequest request, MultipartFile song, MultipartFile lyric);
 
+	/**
+	 * 获取所有具有歌词的歌曲信息
+	 * @return
+	 * 如果没有，返回null
+	 */
+	public List<Song> getAllSongRecordsWithLyric();
+
 }

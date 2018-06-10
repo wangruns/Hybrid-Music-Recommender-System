@@ -132,6 +132,30 @@ public class PersonalRecServiceImpl implements PersonalRecService {
 		
 	}
 
+	public void addHybridRecIntoA(Map<Integer, Integer[]> user2song) {
+		user2song.forEach(new BiConsumer<Integer,Integer[]>(){
+			
+			public void accept(Integer userId, Integer[] recSongIds) {
+				//批量插入
+				personalRecDao.insertArrayIntoRecA(recSongIds,userId);
+			}
+			
+		});
+		
+	}
+
+	public void addHybridRecIntoB(Map<Integer, Integer[]> user2song) {
+		user2song.forEach(new BiConsumer<Integer,Integer[]>(){
+			
+			public void accept(Integer userId, Integer[] recSongIds) {
+				//批量插入
+				personalRecDao.insertArrayIntoRecB(recSongIds,userId);
+			}
+			
+		});
+		
+	}
+
 
 
 }

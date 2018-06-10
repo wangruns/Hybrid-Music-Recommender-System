@@ -127,17 +127,24 @@ public class SongServiceImpl implements SongService{
 		try {
 			InputStream inputStream=multipartFile.getInputStream();
 			FileOutputStream fileOutputStream = new FileOutputStream(realFilePath);  
-			int b = 0;  
-            while ((b = inputStream.read()) != -1) {  
-            	fileOutputStream.write(b);  
-            }  
-            fileOutputStream.close();  
-            fileOutputStream.close();  
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
+			try {
+				int b = 0;  
+	            while ((b = inputStream.read()) != -1) {  
+	            	fileOutputStream.write(b);  
+	            }  
+			}finally{
+				inputStream.close();  
+	            fileOutputStream.close(); 
+			}
 			
+		} catch (IOException e) {
+			throw new RuntimeException(e);
 		}
+		
+	}
+
+	public List<Song> getAllSongRecordsWithLyric() {
+		return songDao.selectAllSongsWithLyric();
 		
 	}
 

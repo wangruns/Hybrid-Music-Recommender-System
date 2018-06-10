@@ -40,5 +40,10 @@
 		insert into song(songName,songAddress,lyricName,lyricAddress) 
 		values( #{songName},#{songAddress},#{lyricName} ,#{lyricAddress} )
 	</insert>
+	
+	<select id="selectAllSongsWithLyric" 
+		resultType="top.wangruns.trackstacking.model.Song">
+		select * from song where lyricAddress is not null
+	</select>
 
 </mapper>

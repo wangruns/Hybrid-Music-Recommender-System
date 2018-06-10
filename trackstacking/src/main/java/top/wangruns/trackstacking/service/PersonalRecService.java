@@ -40,4 +40,18 @@ public interface PersonalRecService {
 	 */
 	void updatePersonalRecIntoA(Map<Integer, Integer[]> user2song);
 
+	/**
+	 * 向个性化推荐列表A添加混合推荐的结果
+	 * @param user2song
+	 * userId to songId matrix
+	 */
+	void addHybridRecIntoA(Map<Integer, Integer[]> user2song);
+
+	/**
+	 * 向个性化推荐列表B添加混合推荐的结果
+	 * @param user2song
+	 * userId to songId matrix
+	 */
+	void addHybridRecIntoB(Map<Integer, Integer[]> user2song);
+	
 }
