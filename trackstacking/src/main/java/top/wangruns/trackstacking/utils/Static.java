@@ -65,10 +65,10 @@ public class Static {
 	
 	/**
 	 * 是否开启混合模式，英文歌词文件较少的情况下建议关闭 
-	 * 基于最近邻用户的协同过滤	+	基于基于异构文本网络
+	 * 基于最近邻用户的协同过滤	+	基于异构文本网络的嵌入
 	 * 这里采取简单拼接的混合策略
 	 */
-	public static final boolean IS_HYBRID=true;
+	public static final boolean IS_HYBRID=false;
 	
 	/**
 	 * 基于异构文本网络给用户推荐歌曲的数量 n值
