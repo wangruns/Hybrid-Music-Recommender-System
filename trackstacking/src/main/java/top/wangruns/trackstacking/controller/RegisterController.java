@@ -37,7 +37,9 @@ public class RegisterController {
 			return ReturnMsg.msg(HttpServletResponse.SC_BAD_REQUEST, "发送频率太快");
 		}
 		String code=(int)(Math.random()*10000)+"";
-		boolean isSuccessful=SendEmail.sendemail("邮箱验证", "您的验证码为："+code, email);
+//		boolean isSuccessful=SendEmail.sendemail("邮箱验证", "您的验证码为："+code, email);
+		String content="Welcome to Track Stacking, your email verified code is："+code+"\n\n"+"Sincerely,";
+		boolean isSuccessful=SendEmail.sendemail("Email Validation", content, email);
 		if(isSuccessful) {
 			request.getSession().setAttribute("code", code);
 			return ReturnMsg.msg(HttpServletResponse.SC_OK, "发送成功");
