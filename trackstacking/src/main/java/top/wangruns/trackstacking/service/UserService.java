@@ -64,4 +64,13 @@ public interface UserService {
 	 */
 	public void batchDeleteById(int[] userIds);
 
+	/**
+	 * 简单限制minutes内只能操作一次
+	 * @param request
+	 * @param minutes
+	 * 限制的分钟数
+	 * @return
+	 */
+	public boolean tooQuickly(HttpServletRequest request, int minutes);
+
 }

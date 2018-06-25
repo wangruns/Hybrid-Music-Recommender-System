@@ -1,5 +1,7 @@
 package top.wangruns.trackstacking.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -75,6 +77,23 @@ public class UserServiceImpl implements UserService {
 		}
 		userDao.deleteByIds(userIds);
 		
+	}
+
+	public boolean tooQuickly(HttpServletRequest request, int minutes) {
+		//第一次操作
+		if(request.getSession().getAttribute("lastTime")==null) {
+			request.getSession().setAttribute("lastTime", new SimpleDateFormat("mm").format(new Date()));
+			return false;
+		}
+		//第二次及其以上的操作
+		String lastMinute=(String) request.getSession().getAttribute("lastTime");
+		String curMinute=new SimpleDateFormat("mm").format(new Date());
+		
+		if( Math.abs(Integer.valueOf(curMinute)- Integer.valueOf(lastMinute)) <=minutes) {
+			return true;
+		}
+		request.getSession().setAttribute("lastTime",curMinute);
+		return false;
 	}
 
 }

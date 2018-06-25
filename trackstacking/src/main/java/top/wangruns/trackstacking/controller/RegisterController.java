@@ -32,6 +32,10 @@ public class RegisterController {
 		if(isExisted) {
 			return ReturnMsg.msg(HttpServletResponse.SC_BAD_REQUEST, "该用户已存在");
 		}
+		//防止疯狂发送...，这里简单的限制一下1分钟只发发送一次
+		if(userService.tooQuickly(request,1)) {
+			return ReturnMsg.msg(HttpServletResponse.SC_BAD_REQUEST, "发送频率太快");
+		}
 		String code=(int)(Math.random()*10000)+"";
 		boolean isSuccessful=SendEmail.sendemail("邮箱验证", "您的验证码为："+code, email);
 		if(isSuccessful) {
